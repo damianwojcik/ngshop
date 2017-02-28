@@ -1,0 +1,17 @@
+{
+  "name": "ngShop",
+  "author": "DamianWojcik.IT",
+  "version": "1.0.0",
+  "description": "ngShop in AngularJS",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "browser-sync": "*",
+    "gulp": "*",
+    "gulp-sass": "*",
+    "gulp-autoprefixer": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC"
+}
