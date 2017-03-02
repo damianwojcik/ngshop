@@ -2,6 +2,14 @@
 
 var myCtrls = angular.module( 'myCtrls' , [ 'ngRoute' ] );
 
+myCtrls.controller( 'navigation' , [ '$scope' , '$location' , function( $scope , $location ){
+
+	$scope.isActive = function(path) {
+		return $location.path() === path;
+	};
+
+}]);
+
 myCtrls.controller( 'products' , [ '$scope' , '$http' , function( $scope , $http ){
 	
 	$http.get( 'model/products.json' ).
@@ -47,5 +55,9 @@ myCtrls.controller( 'productCreate' , [ '$scope' , '$http' , function( $scope , 
         console.log($scope.product);
 
     }
+
+}]);
+
+myCtrls.controller( 'users' , [ '$scope' , '$location' , function( $scope , $location ){
 
 }]);

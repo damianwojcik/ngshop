@@ -19,6 +19,11 @@ app.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $h
 		templateUrl : 'partials/product-create.html'
 	});
 
+	$routeProvider.when( '/users' , {
+		controller: 'users',
+		templateUrl : 'partials/users.html'
+	});
+
 	$routeProvider.otherwise({
 		redirectTo: '/home'
 	});
