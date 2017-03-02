@@ -11,6 +11,13 @@ myCtrls.controller( 'products' , [ '$scope' , '$http' , function( $scope , $http
 		console.log( 'Error on loading json file.' );
 	});
 
+    $scope.deleteProduct = function(product, $index) {
+
+        //TODO: save data by API
+        $scope.products.splice($index, 1);
+
+    }
+
 }]);
 
 myCtrls.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams' , function( $scope , $http , $routeParams ){

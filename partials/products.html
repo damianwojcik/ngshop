@@ -23,8 +23,9 @@
       {{product.description}}
       <br>
       {{product.price | number:2}} $
-      <br>
+      <br><br>
       <a href="#/product/edit/{{$index}}" class="btn btn-default">Edit product</a>
+      <button ng-click="deleteProduct(product, $index)" class="btn btn-danger pull-right">Delete product</button>
     </div>
 
   </div>
