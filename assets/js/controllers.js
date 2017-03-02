@@ -48,7 +48,7 @@ myCtrls.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams' , func
 
 myCtrls.controller( 'productCreate' , [ '$scope' , '$http' , function( $scope , $http ){
 
-    $scope.createProduct = function(product) {
+    $scope.createProduct = function() {
 
         //TODO: send data by API
 
@@ -72,6 +72,36 @@ myCtrls.controller( 'users' , [ '$scope' , '$http' , function( $scope , $http ){
 
 		//TODO: save data by API
 		$scope.users.splice($index, 1);
+
+	}
+
+}]);
+
+myCtrls.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' , function( $scope , $http , $routeParams ){
+
+	$http.post( 'model/users.json' ).
+	success( function( data ){
+		var users = data;
+		$scope.user = users[$routeParams.id];
+	}).error( function(){
+		console.log( 'Error on loading json file.' );
+	});
+
+	$scope.saveChanges = function(users) {
+
+		//TODO: save data by API
+
+	}
+
+}]);
+
+myCtrls.controller( 'userCreate' , [ '$scope' , '$http' , function( $scope , $http ){
+
+	$scope.createUser = function() {
+
+		//TODO: send data by API
+
+		console.log($scope.user);
 
 	}
 
