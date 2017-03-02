@@ -1,12 +1,20 @@
 <div class="container">
+
   <div class="row">
+
     <div class="col-xs-6">
       <input type="text" class="form-control" placeholder="Search..." ng-model="search">
       <br>
     </div>
+
+    <div class="col-xs-6">
+      <a href="#/product/create" class="btn btn-success pull-right">Add product</a>
+    </div>
+
   </div>
 
   <div ng-controller="products">
+
     <div class="alert alert-info" ng-repeat="product in products | filter : search">
       <span class="text-capitalize">{{product.nazwa}}</span>
       <br>
@@ -15,8 +23,10 @@
       {{product.description}}
       <br>
       {{product.price | number:2}} $
-        <br>
-      <a href="#/product/{{$index}}" class="btn btn-default">Edit product</a>
+      <br>
+      <a href="#/product/edit/{{$index}}" class="btn btn-default">Edit product</a>
     </div>
+
   </div>
+
 </div>

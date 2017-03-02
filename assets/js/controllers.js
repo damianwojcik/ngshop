@@ -1,10 +1,8 @@
 'use strict';
 
-var controllers = angular.module( 'controllers' , [ 'ngRoute' ] );
+var myCtrls = angular.module( 'myCtrls' , [ 'ngRoute' ] );
 
-	// console.log(  );
-
-controllers.controller( 'products' , [ '$scope' , '$http' , function( $scope , $http ){
+myCtrls.controller( 'products' , [ '$scope' , '$http' , function( $scope , $http ){
 	
 	$http.get( 'model/products.json' ).
 	success( function( data ){
@@ -15,15 +13,32 @@ controllers.controller( 'products' , [ '$scope' , '$http' , function( $scope , $
 
 }]);
 
+myCtrls.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams' , function( $scope , $http , $routeParams ){
 
-controllers.controller( 'product' , [ '$scope' , '$http' , '$routeParams' , function( $scope , $http , $routeParams ){
-
-	$http.get( 'model/products.json' ).
+    $http.post( 'model/products.json' ).
 	success( function( data ){
 		var products = data;
 		$scope.product = products[$routeParams.id];
 	}).error( function(){
         console.log( 'Error on loading json file.' );
 	});
+
+    $scope.saveChanges = function(product) {
+
+        //TODO: save data by API
+
+    }
+
+}]);
+
+myCtrls.controller( 'productCreate' , [ '$scope' , '$http' , function( $scope , $http ){
+
+    $scope.createProduct = function(product) {
+
+        //TODO: send data by API
+
+        console.log($scope.product);
+
+    }
 
 }]);

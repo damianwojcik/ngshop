@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module( 'app' , [ 'ngRoute' , 'controllers' ] );
+var app = angular.module( 'app' , [ 'ngRoute' , 'myCtrls' ] );
 
 app.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $httpProvider ) {
 
@@ -9,9 +9,14 @@ app.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $h
 		templateUrl : 'partials/products.html'
 	});
 
-	$routeProvider.when( '/product/:id' , {
-		controller: 'product',
-		templateUrl : 'partials/product.html'
+	$routeProvider.when( '/product/edit/:id' , {
+		controller: 'productEdit',
+		templateUrl : 'partials/product-edit.html'
+	});
+
+	$routeProvider.when( '/product/create' , {
+		controller: 'productCreate',
+		templateUrl : 'partials/product-create.html'
 	});
 
 	$routeProvider.otherwise({
