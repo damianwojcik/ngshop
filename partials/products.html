@@ -3,7 +3,7 @@
   <div class="row">
 
     <div class="col-xs-6">
-      <input type="text" class="form-control" placeholder="Search..." ng-model="search">
+      <input type="text" class="form-control" placeholder="Search products..." ng-model="search">
       <br>
     </div>
 
@@ -13,19 +13,19 @@
 
   </div>
 
-  <div ng-controller="products">
+  <div class="row">
 
-    <div class="alert alert-info" ng-repeat="product in products | filter : search">
-      <span class="text-capitalize">{{product.nazwa}}</span>
-      <br>
-      {{product.name}}
-      <br>
-      {{product.description}}
-      <br>
-      {{product.price | number:2}} $
-      <br><br>
-      <a href="#/product/edit/{{$index}}" class="btn btn-default">Edit product</a>
-      <button ng-click="deleteProduct(product, $index)" class="btn btn-danger pull-right">Delete product</button>
+    <div class="col-sm-12">
+
+      <div class="alert alert-info" ng-repeat="product in products | filter : search">
+        <h2>{{product.name}}</h2>
+        <p>{{product.description}}</p>
+        <h3><span class="label label-warning">{{product.price | number:2}} $</span></h3>
+        <br>
+        <a href="#/product/edit/{{$index}}" class="btn btn-default">Edit product</a>
+        <button ng-click="delete(product, $index)" class="btn btn-danger pull-right">Delete product</button>
+      </div>
+
     </div>
 
   </div>

@@ -1,0 +1,1 @@
+-paginacja produktów i uzytkowników: http://stackoverflow.com/questions/10816073/how-to-do-paging-in-angularjs

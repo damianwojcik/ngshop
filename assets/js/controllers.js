@@ -19,7 +19,7 @@ myCtrls.controller( 'products' , [ '$scope' , '$http' , function( $scope , $http
 		console.log( 'Error on loading json file.' );
 	});
 
-    $scope.deleteProduct = function(product, $index) {
+    $scope.delete = function(product, $index) {
 
         //TODO: save data by API
         $scope.products.splice($index, 1);
@@ -58,6 +58,21 @@ myCtrls.controller( 'productCreate' , [ '$scope' , '$http' , function( $scope , 
 
 }]);
 
-myCtrls.controller( 'users' , [ '$scope' , '$location' , function( $scope , $location ){
+
+myCtrls.controller( 'users' , [ '$scope' , '$http' , function( $scope , $http ){
+
+	$http.get( 'model/users.json' ).
+	success( function( data ){
+		$scope.users = data;
+	}).error( function(){
+		console.log( 'Error on loading json file.' );
+	});
+
+	$scope.delete = function(user, $index) {
+
+		//TODO: save data by API
+		$scope.users.splice($index, 1);
+
+	}
 
 }]);
