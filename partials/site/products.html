@@ -21,6 +21,7 @@
                     <h3><span class="label label-warning">{{product.price | number:2}} $</span></h3>
                     <br>
                     <a href="#/product/{{$index}}" class="btn btn-info">Details</a>
+                    <button ng-click="addToCart(product)" class="btn btn-success">Add to Shopping Cart</button>
 
                 </div>
 

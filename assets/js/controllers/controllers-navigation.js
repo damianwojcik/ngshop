@@ -2,7 +2,7 @@
 
 var controllersNavigation = angular.module( 'controllersNavigation', [] );
 
-controllersNavigation.controller( 'navigation' , [ '$scope' , '$location' , function( $scope , $location ){
+controllersNavigation.controller( 'navigation' , [ '$scope' , '$location' , 'cartService', function( $scope , $location, cartService ){
 
 	$scope.navigation = function () {
 		if(/^\/admin/.test($location.path())) {

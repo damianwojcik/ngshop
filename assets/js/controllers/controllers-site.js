@@ -2,7 +2,7 @@
 
 var controllersSite = angular.module( 'controllersSite' , [] );
 
-controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , function( $scope , $http ){
+controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', function( $scope , $http, cartService ){
 
     $http.get( 'model/products.json' ).
     success( function( data ){
@@ -11,9 +11,13 @@ controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , function( $s
         console.log( 'Error on loading json file.' );
     });
 
+    $scope.addToCart = function (product) {
+        cartService.add(product);
+    };
+
 }]);
 
-controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams' , function( $scope , $http , $routeParams ){
+controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams' , 'cartService', function( $scope , $http , $routeParams, cartService ){
 
     $http.post( 'model/products.json' ).
     success( function( data ){
@@ -22,6 +26,10 @@ controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams
     }).error( function(){
         console.log( 'Error on loading json file.' );
     });
+
+    $scope.addToCart = function (product) {
+        cartService.add(product);
+    };
 
 }]);
 
@@ -33,5 +41,15 @@ controllersSite.controller( 'siteOrders' , [ '$scope' , '$http' , function( $sco
     }).error( function(){
         console.log( 'Error on loading json file.' );
     });
+
+}]);
+
+controllersSite.controller( 'cartCtrl' , [ '$scope' , '$http' , 'cartService', function( $scope , $http, cartService ){
+
+    $scope.cart = cartService.show();
+
+    $scope.emptyCart = function () {
+        cartService.empty();
+    };
 
 }]);
