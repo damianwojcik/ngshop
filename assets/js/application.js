@@ -36,6 +36,12 @@ app.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $h
 		templateUrl : 'partials/user-create.html'
 	});
 
+	// ============ ORDERS ============
+	$routeProvider.when( '/orders' , {
+		controller: 'orders',
+		templateUrl : 'partials/orders.html'
+	});
+
 	// ============ DEFAULT ============
 	$routeProvider.otherwise({
 		redirectTo: '/home'

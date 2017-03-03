@@ -106,3 +106,32 @@ myCtrls.controller( 'userCreate' , [ '$scope' , '$http' , function( $scope , $ht
 	}
 
 }]);
+
+myCtrls.controller( 'orders' , [ '$scope' , '$http' , function( $scope , $http ){
+
+	$http.get( 'model/orders.json' ).
+	success( function( data ){
+		$scope.orders = data;
+	}).error( function(){
+		console.log( 'Error on loading json file.' );
+	});
+
+	$scope.delete = function(order, $index) {
+
+		//TODO: save data by API
+		$scope.orders.splice($index, 1);
+
+	}
+
+	$scope.changeStatus = function(order) {
+
+		//TODO: send data by API
+		if(order.status == 0) {
+			order.status = 1;
+		} else {
+			order.status = 0;
+		}
+
+	}
+
+}]);
