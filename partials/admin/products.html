@@ -22,7 +22,7 @@
         <p>{{product.description}}</p>
         <h3><span class="label label-warning">{{product.price | number:2}} $</span></h3>
         <br>
-        <a href="#/product/edit/{{$index}}" class="btn btn-default">Edit product</a>
+        <a href="#/admin/product/edit/{{$index}}" class="btn btn-default">Edit product</a>
         <button ng-click="delete(product, $index)" class="btn btn-danger pull-right">Delete product</button>
       </div>
 

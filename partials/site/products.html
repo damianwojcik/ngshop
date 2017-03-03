@@ -1,0 +1,33 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-xs-6">
+            <input type="text" class="form-control" placeholder="Search products..." ng-model="search">
+            <br>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <div class="panel panel-default" ng-repeat="product in products | filter : search">
+
+                <div class="panel-body">
+
+                    <h2><a href="#/product/{{$index}}">{{product.name}}</a></h2>
+                    <h3><span class="label label-warning">{{product.price | number:2}} $</span></h3>
+                    <br>
+                    <a href="#/product/{{$index}}" class="btn btn-info">Details</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
