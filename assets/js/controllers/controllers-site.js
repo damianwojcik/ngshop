@@ -52,4 +52,25 @@ controllersSite.controller( 'cartCtrl' , [ '$scope' , '$http' , 'cartService', f
         cartService.empty();
     };
 
+    $scope.total = function () {
+        var total = 0;
+        angular.forEach($scope.cart, function(item) {
+            total += item.amount * item.price;
+        });
+        return total;
+    };
+
+    $scope.removeItem = function ($index) {
+        $scope.cart.splice($index, 1);
+        cartService.update($scope.cart);
+    };
+
+    $scope.setOrder = function ($event) {
+        $event.preventDefault();
+    };
+
+    $scope.$watch(function () {
+       cartService.update($scope.cart);
+    });
+
 }]);

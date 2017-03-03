@@ -1,17 +1,94 @@
-<div class="container">
+<form name="orderForm" ng-submit="setOrder($event)" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
-    <div class="row">
+    <div class="container">
 
-        <div class="col-sm-12">
+        <div class="row">
 
-            <h1>Shopping Cart</h1>
+            <div class="col-sm-12">
 
-            {{cart}}
+                <h1>Shopping Cart</h1>
 
-            <button ng-click="emptyCart()" class="btn btn-danger">Empty Cart</button>
+                <div ng-if="!cart.length" class="alert alert-info">
+                    Shopping cart is empty.
+                </div>
+
+                <div ng-if="cart.length">
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Name
+                                </td>
+                                <td>
+                                    Price
+                                </td>
+                                <td>
+                                    Amount
+                                </td>
+                                <td>
+                                    Summary
+                                </td>
+                                <td>
+                                    Delete
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in cart">
+                                <td>
+                                    {{item.name}}
+                                </td>
+                                <td>
+                                    {{item.price | number:2}} $
+                                </td>
+                                <td>
+                                    <div class="form-group" ng-class="{'has-error' : orderForm.input{{$index}}.$error.required || orderForm.input{{$index}}.$error.number || orderForm.input{{$index}}.$error.min || orderForm.input{{$index}}.$error.max}">
+                                        <input name="input{{$index}}" class="form-control" style="width: 80px" type="number" ng-model="item.amount" min="1" max="20" required>
+                                    </div>
+                                    <span class="text-danger" ng-show="orderForm.input{{$index}}.$error.required">Insert amount</span>
+                                    <span class="text-danger" ng-show="orderForm.input{{$index}}.$error.number">Amount in numbers</span>
+                                    <span class="text-danger" ng-show="orderForm.input{{$index}}.$error.max">Not enough amount in magazine</span>
+                                    <span class="text-danger" ng-show="orderForm.input{{$index}}.$error.min">Must be a positive number</span>
+                                </td>
+                                <td>
+                                    <strong>{{item.amount * item.price | number:2}} $</strong>
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm" ng-click="removeItem($index)"><span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td>
+                                    <strong>Total: {{total() | number:2}} $</strong>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <input type="hidden" name="cmd" value="_cart">
+                    <input type="hidden" name="upload" value="1">
+                    <input type="hidden" name="charset" value="utf-8">
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="hidden" name="business" value="khamian@gmail.com">
+
+                    <div ng-repeat="item in cart">
+                        <input type="hidden" name="item_name_{{$index+1}}" value="{{item.name}}">
+                        <input type="hidden" name="quantity_{{$index+1}}" value="{{item.amount}}">
+                        <input type="hidden" name="amount_{{$index+1}}" value="{{item.price}}">
+                    </div>
+
+                    <button ng-click="emptyCart()" class="btn btn-danger">Empty Cart</button>
+                    <button ng-disabled="!orderForm.$valid" type="submit" value="PayPal" class="btn btn-success pull-right">Pay for order</button>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+</form>
