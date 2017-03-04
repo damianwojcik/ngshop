@@ -1,0 +1,65 @@
+<form ng-submit="formSubmit()">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-sm-6 center-block">
+
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+
+                        <h3 class="panel-title">
+                            <strong>Register new account</strong>
+                        </h3>
+
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="form-group" ng-class="{ 'has-error' : errors.firstName, 'has-success' : !errors.firstName && submit }">
+                            <label for="firstName">First Name</label>
+                            <input id="firstName" type="text" class="form-control" ng-model="input.firstName" placeholder="Enter your first name.">
+                            <span class="text-danger">{{errors.firstName}}</span>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : errors.lastName, 'has-success' : !errors.lastName && submit }">
+                            <label for="lastName">Last Name</label>
+                            <input id="lastName" type="text" class="form-control" ng-model="input.lastName" placeholder="Enter your last name.">
+                            <span class="text-danger">{{errors.lastName}}</span>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : errors.email, 'has-success' : !errors.email && submit }">
+                            <label for="email">Email address</label>
+                            <input id="email" type="email" class="form-control" ng-model="input.email" placeholder="Enter your email address.">
+                            <span class="text-danger">{{errors.email}}</span>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : errors.password, 'has-success' : !errors.password && submit }">
+                            <label for="password">Password</label>
+                            <input id="password" type="password" class="form-control" ng-model="input.password" placeholder="Your password.">
+                            <span class="text-danger">{{errors.password}}</span>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : errors.passconf, 'has-success' : !errors.passconf && submit }">
+                            <label for="passconf">Confirm password</label>
+                            <input id="passconf" type="password" class="form-control" ng-model="input.passconf" placeholder="Confirm your password.">
+                            <span class="text-danger">{{errors.passconf}}</span>
+                        </div>
+
+                        <br>
+
+                        <button class="btn btn-primary btn-block">Sign in</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>

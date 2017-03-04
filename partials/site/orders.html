@@ -1,0 +1,99 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        First Name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Shopping cart
+                    </th>
+                    <th>
+                        To pay
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="order in orders | filter:search">
+                    <td>
+                        {{$index}}
+                    </td>
+                    <td>
+                        {{order.firstName}}
+                    </td>
+                    <td>
+                        {{order.lastName}}
+                    </td>
+                    <td>
+                        {{order.email}}
+                    </td>
+                    <td>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>
+                                    Product
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                <th>
+                                    Amount
+                                </th>
+                                <th>
+                                    Total
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in order.items">
+                                <td>
+                                    {{item.name}}
+                                </td>
+                                <td>
+                                    {{item.price}} $
+                                </td>
+                                <td>
+                                    {{item.amount}}
+                                </td>
+                                <td>
+                                    {{item.price * item.amount | number:2}} $
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <h3><strong>{{order.total}} $</strong></h3>
+                    </td>
+                    <td>
+                        <button ng-if="order.status == 0" class="btn btn-warning btn-sm" disabled>Pending...</button>
+                        <button ng-if="order.status == 1" class="btn btn-success btn-sm" disabled>Realized</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

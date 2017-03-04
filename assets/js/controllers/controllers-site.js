@@ -93,3 +93,40 @@ controllersSite.controller( 'cartCtrl' , [ '$scope' , '$http' , '$filter', 'cart
     });
 
 }]);
+
+controllersSite.controller( 'orders' , [ '$scope' , '$http' , function( $scope , $http ){
+
+    $http.get( 'model/orders.json' ).
+    success( function( data ){
+        $scope.orders = data;
+    }).error( function(){
+        console.log( 'Error on loading json file.' );
+    });
+
+}]);
+
+controllersSite.controller( 'login' , [ '$scope' , '$http' , function( $scope , $http ){
+
+    //TODO: get data from form and send to db(authorization)
+
+    $scope.input = {};
+
+    $scope.formSubmit = function () {
+        $scope.errors = {};
+        $scope.errors.login = 'Given password and email address does not match.';
+        console.log($scope.input);
+    };
+
+}]);
+
+controllersSite.controller( 'register' , [ '$scope' , '$http' , function( $scope , $http ){
+
+    //TODO: get data from form and send to db(authorization)
+
+    $scope.formSubmit = function () {
+        $scope.errors = {};
+        $scope.submit = true;
+        console.log($scope.input);
+    };
+
+}]);
