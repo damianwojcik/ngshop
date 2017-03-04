@@ -1,4 +1,4 @@
-<form name="orderForm" ng-submit="setOrder($event)" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<form id="paypalForm" name="orderForm" ng-submit="setOrder($event)" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
     <div class="container">
 
@@ -8,7 +8,11 @@
 
                 <h1>Shopping Cart</h1>
 
-                <div ng-if="!cart.length" class="alert alert-info">
+                <div ng-if="alert" class="alert alert-{{alert.type}}">
+                    {{alert.msg}}
+                </div>
+
+                <div ng-if="!cart.length && alert.type != 'success'" class="alert alert-info">
                     Shopping cart is empty.
                 </div>
 
