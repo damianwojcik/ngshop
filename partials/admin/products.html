@@ -17,13 +17,19 @@
 
     <div class="col-sm-12">
 
-      <div class="alert alert-info" ng-repeat="product in products | filter : search">
-        <h2>{{product.name}}</h2>
-        <p>{{product.description}}</p>
-        <h3><span class="label label-warning">{{product.price | number:2}} $</span></h3>
-        <br>
-        <a href="#/admin/product/edit/{{$index}}" class="btn btn-default">Edit product</a>
-        <button ng-click="delete(product, $index)" class="btn btn-danger pull-right">Delete product</button>
+      <div class="panel panel-default" ng-repeat="product in products | filter : search">
+
+        <div class="panel-body">
+
+          <h2>{{product.name}}</h2>
+          <p>{{product.description}}</p>
+          <h3><span class="label label-warning">{{product.price | number:2}} $</span></h3>
+          <br>
+          <a href="#/admin/product/edit/{{$index}}" class="btn btn-success">Edit product</a>
+          <button ng-click="delete(product, $index)" class="btn btn-danger pull-right">Delete product</button>
+
+        </div>
+
       </div>
 
     </div>

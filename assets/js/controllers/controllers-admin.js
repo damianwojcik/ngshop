@@ -1,6 +1,6 @@
 'use strict';
 
-var controllersAdmin = angular.module( 'controllersAdmin' , [] );
+var controllersAdmin = angular.module( 'controllersAdmin' , ['angularFileUpload', 'myDirectives'] );
 
 controllersAdmin.controller( 'products' , [ '$scope' , '$http' , function( $scope , $http ){
 
@@ -13,6 +13,10 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , function( $scop
 
     $scope.delete = function(product, $index) {
 
+        if (!confirm('Are you really want to delete this product?')) {
+            return false;
+        }
+
         //TODO: save data by API
         $scope.products.splice($index, 1);
 
@@ -20,7 +24,7 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , function( $scop
 
 }]);
 
-controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams' , function( $scope , $http , $routeParams ){
+controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', function( $scope , $http , $routeParams, FileUploader ){
 
     $http.post( 'model/products.json' ).
     success( function( data ){
@@ -35,6 +39,22 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
         //TODO: save data by API
 
     }
+
+    var uploader = $scope.uploader = new FileUploader({
+       url: '' //TODO: path to api serving upload
+    });
+
+    uploader.filters.push({
+        name: 'imageFilter',
+        fn: function(item /*{File|FileLikeObject}*/, options) {
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+    });
+
+    uploader.onCompleteItem = function(fileItem, response, status, headers) {
+        console.info('onCompleteItem', fileItem, response, status, headers);
+    };
 
 }]);
 
@@ -61,6 +81,10 @@ controllersAdmin.controller( 'users' , [ '$scope' , '$http' , function( $scope ,
     });
 
     $scope.delete = function(user, $index) {
+
+        if (!confirm('Are you really want to delete this user?')) {
+            return false;
+        }
 
         //TODO: save data by API
         $scope.users.splice($index, 1);
@@ -109,6 +133,10 @@ controllersAdmin.controller( 'orders' , [ '$scope' , '$http' , function( $scope 
     });
 
     $scope.delete = function(order, $index) {
+
+        if (!confirm('Are you really want to delete this order?')) {
+            return false;
+        }
 
         //TODO: save data by API
         $scope.orders.splice($index, 1);
