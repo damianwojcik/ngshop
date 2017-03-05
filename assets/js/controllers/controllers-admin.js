@@ -26,22 +26,36 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , function( $scop
 
 controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', function( $scope , $http , $routeParams, FileUploader ){
 
+    var id = $routeParams.id;
+    $scope.id = id;
+
     $http.post( 'model/products.json' ).
     success( function( data ){
         var products = data;
-        $scope.product = products[$routeParams.id];
+        $scope.product = products[id];
     }).error( function(){
         console.log( 'Error on loading json file.' );
     });
+
+    function getImages () {
+        $http.get( 'api/index.php/admin/images/get/' + id ).
+        success( function( data ){
+            $scope.images = data;
+        }).error( function(){
+            console.log( 'Error on loading json file.' );
+        });
+    }
+
+    getImages();
 
     $scope.saveChanges = function(product) {
 
         //TODO: save data by API
 
-    }
+    };
 
     var uploader = $scope.uploader = new FileUploader({
-       url: 'api/index.php/admin/images/upload/' + $routeParams.id
+       url: 'api/index.php/admin/images/upload/' + id
     });
 
     uploader.filters.push({
@@ -53,7 +67,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
     });
 
     uploader.onCompleteItem = function(fileItem, response, status, headers) {
-        console.info('onCompleteItem', fileItem, response, status, headers);
+        getImages();
     };
 
 }]);
