@@ -109,8 +109,9 @@
 
         <p>&nbsp;</p>
 
-        <div ng-repeat="image in images">
-          <img ng-src="uploads/{{id}}/{{image}}" alt="{{image}}" class="img-thumbnail pull-left" style="width: 150px;margin:5px;">
+        <div ng-repeat="image in images" class="pull-left" style="position:relative;">
+          <button type="button" ng-click="delImage(image, $index)" class="btn btn-danger btn-xs" style="position: absolute;margin-left:-20px;right: 0;"><strong>&times;</strong></button>
+          <img ng-src="uploads/{{id}}/{{image}}" alt="{{image}}" class="img-thumbnail" style="width: 150px;margin:5px;">
         </div>
 
       </div>

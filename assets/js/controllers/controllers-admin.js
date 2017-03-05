@@ -26,19 +26,19 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , function( $scop
 
 controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', function( $scope , $http , $routeParams, FileUploader ){
 
-    var id = $routeParams.id;
-    $scope.id = id;
+    var productId = $routeParams.id;
+    $scope.id = productId;
 
     $http.post( 'model/products.json' ).
     success( function( data ){
         var products = data;
-        $scope.product = products[id];
+        $scope.product = products[productId];
     }).error( function(){
         console.log( 'Error on loading json file.' );
     });
 
     function getImages () {
-        $http.get( 'api/index.php/admin/images/get/' + id ).
+        $http.get( 'api/index.php/admin/images/get/' + productId ).
         success( function( data ){
             $scope.images = data;
         }).error( function(){
@@ -55,7 +55,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
     };
 
     var uploader = $scope.uploader = new FileUploader({
-       url: 'api/index.php/admin/images/upload/' + id
+       url: 'api/index.php/admin/images/upload/' + productId
     });
 
     uploader.filters.push({
@@ -68,6 +68,23 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
     uploader.onCompleteItem = function(fileItem, response, status, headers) {
         getImages();
+    };
+
+    $scope.delImage = function (imageName, $index) {
+
+        $scope.images.splice($index, 1);
+
+        $http.post( 'api/index.php/admin/images/delete/', {
+
+            id : productId,
+            image: imageName
+
+        }).success( function(){
+
+        }).error( function(){
+            console.log( 'Error on loading json file.' );
+        });
+
     };
 
 }]);
