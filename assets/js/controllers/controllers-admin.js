@@ -4,7 +4,7 @@ var controllersAdmin = angular.module( 'controllersAdmin' , ['angularFileUpload'
 
 controllersAdmin.controller( 'products' , [ '$scope' , '$http' , function( $scope , $http ){
 
-    $http.get( 'model/products.json' ).
+    $http.get( 'api/index.php/admin/products/get' ).
     success( function( data ){
         $scope.products = data;
     }).error( function(){
@@ -29,10 +29,9 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
     var productId = $routeParams.id;
     $scope.id = productId;
 
-    $http.post( 'model/products.json' ).
+    $http.get( 'api/index.php/admin/products/get/' + productId ).
     success( function( data ){
-        var products = data;
-        $scope.product = products[productId];
+        $scope.product = data;
     }).error( function(){
         console.log( 'Error on loading json file.' );
     });
