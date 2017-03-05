@@ -58,6 +58,7 @@ app.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $h
 		templateUrl : 'partials/site/cart.html'
 	});
 
+	// ============ SITE ORDERS ============
 	$routeProvider.when( '/orders' , {
 		controller: 'siteOrders',
 		templateUrl : 'partials/site/orders.html'

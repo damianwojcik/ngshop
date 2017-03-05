@@ -41,7 +41,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
     }
 
     var uploader = $scope.uploader = new FileUploader({
-       url: '' //TODO: path to api serving upload
+       url: 'api/index.php/admin/images/upload/' + $routeParams.id
     });
 
     uploader.filters.push({
