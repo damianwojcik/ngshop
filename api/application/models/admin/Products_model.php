@@ -18,4 +18,21 @@ class Products_model extends CI_Model {
         return $q;
     }
 
+    public function update($product)
+    {
+        $this->db->where('id', $product['id']);
+        $this->db->update('products', $product);
+    }
+
+    public function create($product)
+    {
+        $this->db->insert('products', $product);
+    }
+
+    public function delete($product)
+    {
+        $this->db->where('id', $product['id']);
+        $this->db->delete('products');
+    }
+
 }

@@ -1,4 +1,4 @@
-<form ng-submit="createProduct()">
+<form ng-submit="createProduct(product)">
 
     <div class="container">
 
@@ -39,7 +39,8 @@
 
                 <hr>
 
-                <button class="btn btn-primary" type="submit">Save changes</button>
+                <button class="btn btn-primary" type="submit" ng-if="!success">Add product</button>
+                <button class="btn btn-success" type="button" ng-if="success" disabled>Product added</button>
                 <a href="#/admin/products" class="btn btn-default">Return</a>
 
             </div>

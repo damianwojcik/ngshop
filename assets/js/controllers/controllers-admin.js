@@ -17,14 +17,19 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , function( $scop
             return false;
         }
 
-        //TODO: save data by API
         $scope.products.splice($index, 1);
+
+        $http.post( 'api/index.php/admin/products/delete/', {
+            product: product
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
 
     }
 
 }]);
 
-controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', function( $scope , $http , $routeParams, FileUploader ){
+controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', '$timeout', function( $scope , $http , $routeParams, FileUploader, $timeout ){
 
     var productId = $routeParams.id;
     $scope.id = productId;
@@ -49,7 +54,17 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
     $scope.saveChanges = function(product) {
 
-        //TODO: save data by API
+        $http.post( 'api/index.php/admin/products/update/', {
+            product: product
+        }).success( function(){
+            $scope.success = true;
+
+            $timeout(function(){
+                $scope.success = false;
+            }, 3000);
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
 
     };
 
@@ -78,8 +93,6 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
             id : productId,
             image: imageName
 
-        }).success( function(){
-
         }).error( function(){
             console.log( 'Error on loading json file.' );
         });
@@ -88,13 +101,21 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
 }]);
 
-controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , function( $scope , $http ){
+controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout', function( $scope , $http, $timeout ){
 
-    $scope.createProduct = function() {
+    $scope.createProduct = function(product) {
 
-        //TODO: send data by API
-
-        console.log($scope.product);
+        $http.post( 'api/index.php/admin/products/create/', {
+            product: product
+        }).success( function( ){
+            $scope.success = true;
+            $scope.product = {};
+            $timeout(function(){
+                $scope.success = false;
+            }, 3000);
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
 
     }
 

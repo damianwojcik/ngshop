@@ -10,15 +10,35 @@ class Products extends CI_Controller {
         $post = file_get_contents('php://input');
         $_POST = json_decode($post, true);
 
+        $this->load->model('admin/Products_model');
+
     }
 
     public function get($id = false)
     {
 
-        $this->load->model('admin/Products_model');
         $result = $this->Products_model->get($id);
 
         echo json_encode($result);
+    }
+
+    public function update()
+    {
+        $product = $this->input->post('product');
+        $this->Products_model->update($product);
+    }
+
+    public function create()
+    {
+        $product = $this->input->post('product');
+        $this->Products_model->create($product);
+    }
+
+    public function delete()
+    {
+        $product = $this->input->post('product');
+        $this->Products_model->delete($product);
+
     }
 
 }
