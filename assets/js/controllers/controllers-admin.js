@@ -41,17 +41,6 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
         console.log( 'Error on loading json file.' );
     });
 
-    function getImages () {
-        $http.get( 'api/index.php/admin/images/get/' + productId ).
-        success( function( data ){
-            $scope.images = data;
-        }).error( function(){
-            console.log( 'Error on loading json file.' );
-        });
-    }
-
-    getImages();
-
     $scope.saveChanges = function(product) {
 
         $http.post( 'api/index.php/admin/products/update/', {
@@ -67,6 +56,17 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
         });
 
     };
+
+    function getImages () {
+        $http.get( 'api/index.php/admin/images/get/' + productId ).
+        success( function( data ){
+            $scope.images = data;
+        }).error( function(){
+            console.log( 'Error on loading json file.' );
+        });
+    }
+
+    getImages();
 
     var uploader = $scope.uploader = new FileUploader({
        url: 'api/index.php/admin/images/upload/' + productId
@@ -124,7 +124,7 @@ controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout'
 
 controllersAdmin.controller( 'users' , [ '$scope' , '$http' , function( $scope , $http ){
 
-    $http.get( 'model/users.json' ).
+    $http.get( 'api/index.php/admin/users/get' ).
     success( function( data ){
         $scope.users = data;
     }).error( function(){
@@ -137,38 +137,95 @@ controllersAdmin.controller( 'users' , [ '$scope' , '$http' , function( $scope ,
             return false;
         }
 
-        //TODO: save data by API
         $scope.users.splice($index, 1);
+
+        $http.post( 'api/index.php/admin/users/delete/', {
+            user: user
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
 
     }
 
 }]);
 
-controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' , function( $scope , $http , $routeParams ){
+controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' , '$timeout', function( $scope , $http , $routeParams, $timeout ){
 
-    $http.post( 'model/users.json' ).
+    var userId = $routeParams.id;
+    $scope.id = userId;
+
+    $http.get( 'api/index.php/admin/users/get/' + userId ).
     success( function( data ){
-        var users = data;
-        $scope.user = users[$routeParams.id];
+        $scope.user = data;
     }).error( function(){
         console.log( 'Error on loading json file.' );
     });
 
-    $scope.saveChanges = function(users) {
+    $scope.saveChanges = function(user) {
 
-        //TODO: save data by API
+        $http.post( 'api/index.php/admin/users/update/', {
+            id: userId,
+            user : user,
+            firstName : user.firstName,
+            lastName : user.lastName,
+            email : user.email,
+            password : user.password,
+            passconf : user.passconf
+        }).success( function(errors){
 
-    }
+            $scope.submit = true;
+
+            if (errors) {
+                $scope.errors = errors;
+            } else {
+                $scope.success = true;
+                $timeout(function(){
+                    $scope.success = false;
+                }, 3000);
+            }
+
+            $scope.submit = true;
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
+
+    };
 
 }]);
 
-controllersAdmin.controller( 'userCreate' , [ '$scope' , '$http' , function( $scope , $http ){
+controllersAdmin.controller( 'userCreate' , [ '$scope' , '$http' , '$timeout', function( $scope , $http, $timeout ){
 
-    $scope.createUser = function() {
+    $scope.user = {};
+    $scope.user.role = 'user';
 
-        //TODO: send data by API
+    $scope.createUser = function(user) {
 
-        console.log($scope.user);
+        $http.post( 'api/index.php/admin/users/create/', {
+            user : user,
+            firstName : user.firstName,
+            lastName : user.lastName,
+            email : user.email,
+            password : user.password,
+            passconf : user.passconf
+        }).success( function( errors ){
+
+            $scope.submit = true;
+
+            if (errors) {
+                $scope.errors = errors;
+            } else {
+                $scope.user = {};
+                $scope.success = true;
+                $timeout(function(){
+                    $scope.success = false;
+                }, 3000);
+            }
+
+            $scope.submit = true;
+
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
 
     }
 

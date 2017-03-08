@@ -46,7 +46,7 @@
                 <tbody>
                     <tr ng-repeat="user in users | filter:search">
                         <td>
-                            {{$index}}
+                            {{user.id}}
                         </td>
                         <td>
                             {{user.firstName}}
@@ -61,7 +61,7 @@
                             {{user.role}}
                         </td>
                         <td>
-                            <a href="#/admin/user/edit/{{$index}}" class="btn btn-success btn-sm pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a href="#/admin/user/edit/{{user.id}}" class="btn btn-success btn-sm pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
                         </td>
                         <td>
                             <button ng-click="delete(user, $index)" class="btn btn-danger btn-sm pull-right"><span class="glyphicon glyphicon-trash"></span></button>
@@ -69,9 +69,6 @@
                     </tr>
                 </tbody>
             </table>
-
-
-
 
         </div>
 

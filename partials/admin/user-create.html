@@ -6,29 +6,34 @@
 
             <div class="col-sm-4 center-block">
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{'has-error' : errors.firstName, 'has-success' : !errors.firstName && submit && !success}">
                     <label for="firstName">First Name:</label>
                     <input id="firstName" type="text" class="form-control" ng-model="user.firstName">
+                    <span class="text-danger">{{errors.firstName}}</span>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{'has-error' : errors.lastName, 'has-success' : !errors.lastName && submit && !success}">
                     <label for="lastName">Last Name:</label>
                     <input id="lastName" type="text" class="form-control" ng-model="user.lastName">
+                    <span class="text-danger">{{errors.lastName}}</span>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{'has-error' : errors.email, 'has-success' : !errors.email && submit && !success}">
                     <label for="email">Email:</label>
                     <input id="email" type="email" class="form-control" ng-model="user.email">
+                    <span class="text-danger">{{errors.email}}</span>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{'has-error' : errors.password, 'has-success' : !errors.password && submit && !success}">
                     <label for="password">Password:</label>
                     <input id="password" type="password" class="form-control" ng-model="user.password">
+                    <span class="text-danger">{{errors.password}}</span>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" ng-class="{'has-error' : errors.passconf, 'has-success' : !errors.passconf && submit && !success}">
                     <label for="passconf">Confirm password:</label>
                     <input id="passconf" type="password" class="form-control" ng-model="user.passconf">
+                    <span class="text-danger">{{errors.passconf}}</span>
                 </div>
 
                 <div class="form-group">
@@ -41,7 +46,8 @@
 
                 <hr>
 
-                <button class="btn btn-primary" type="submit">Add user</button>
+                <button class="btn btn-primary" type="submit" ng-if="!success">Add user</button>
+                <button class="btn btn-success" type="button" ng-if="success" disabled>User added</button>
                 <a href="#/users" class="btn btn-default">Return</a>
 
             </div>
