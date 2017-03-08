@@ -8,7 +8,7 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , function( $scop
     success( function( data ){
         $scope.products = data;
     }).error( function(){
-        console.log( 'Error on loading json file.' );
+        console.log( 'Error on communicate with API.' );
     });
 
     $scope.delete = function(product, $index) {
@@ -38,7 +38,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
     success( function( data ){
         $scope.product = data;
     }).error( function(){
-        console.log( 'Error on loading json file.' );
+        console.log( 'Error on communicate with API.' );
     });
 
     $scope.saveChanges = function(product) {
@@ -62,7 +62,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
         success( function( data ){
             $scope.images = data;
         }).error( function(){
-            console.log( 'Error on loading json file.' );
+            console.log( 'Error on communicate with API.' );
         });
     }
 
@@ -94,7 +94,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
             image: imageName
 
         }).error( function(){
-            console.log( 'Error on loading json file.' );
+            console.log( 'Error on communicate with API.' );
         });
 
     };
@@ -128,7 +128,7 @@ controllersAdmin.controller( 'users' , [ '$scope' , '$http' , function( $scope ,
     success( function( data ){
         $scope.users = data;
     }).error( function(){
-        console.log( 'Error on loading json file.' );
+        console.log( 'Error on communicate with API.' );
     });
 
     $scope.delete = function(user, $index) {
@@ -158,7 +158,7 @@ controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' 
     success( function( data ){
         $scope.user = data;
     }).error( function(){
-        console.log( 'Error on loading json file.' );
+        console.log( 'Error on communicate with API.' );
     });
 
     $scope.saveChanges = function(user) {

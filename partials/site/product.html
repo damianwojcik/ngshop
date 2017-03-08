@@ -12,7 +12,18 @@
                     <p>{{product.description}}</p>
                     <h3><span class="label label-warning">{{product.price | number:2 }}$</span></h3>
 
-                    <button ng-click="addToCart(product)" class="btn btn-success">Add to Shopping Cart</button>
+                    <div ng-repeat="image in images" class="pull-left" style="position:relative;">
+                        <a href="uploads/{{product.id}}/{{image}}">
+                            <img ng-src="uploads/{{product.id}}/{{image}}" alt="{{image}}" class="pull-left img-thumbnail" style="width: 150px;margin:5px;">
+                        </a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <br>
+
+                    <button ng-click="addToCart(product); checkCart(product)" class="btn btn-success" ng-if="!product.amount">Add to Shopping Cart</button>
+                    <button ng-click="addToCart(product); checkCart(product)" class="btn btn-success" ng-if="product.amount">In cart: {{product.amount}}</button>
 
                 </div>
 

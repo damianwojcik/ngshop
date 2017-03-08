@@ -4,32 +4,65 @@ var controllersSite = angular.module( 'controllersSite' , [] );
 
 controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', function( $scope , $http, cartService ){
 
-    $http.get( 'model/products.json' ).
+    $http.get( 'api/index.php/site/products/get' ).
     success( function( data ){
         $scope.products = data;
     }).error( function(){
-        console.log( 'Error on loading json file.' );
+        console.log( 'Error on communicate with API.' );
     });
 
     $scope.addToCart = function (product) {
         cartService.add(product);
+    };
+
+    $scope.checkCart = function (product) {
+        if (cartService.show().length) {
+            angular.forEach(cartService.show(), function(item) {
+                if (item.id == product.id) {
+                    product.amount = item.amount;
+                }
+            });
+        }
     };
 
 }]);
 
 controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams' , 'cartService', function( $scope , $http , $routeParams, cartService ){
 
-    $http.post( 'model/products.json' ).
+    var id = $routeParams.id;
+
+    $http.post( 'api/index.php/site/products/get/' + id ).
     success( function( data ){
-        var products = data;
-        $scope.product = products[$routeParams.id];
+        $scope.product = data;
+        $scope.checkCart(data);
     }).error( function(){
-        console.log( 'Error on loading json file.' );
+        console.log( 'Error on communicate with API.' );
     });
 
     $scope.addToCart = function (product) {
         cartService.add(product);
     };
+
+    $scope.checkCart = function (product) {
+        if (cartService.show().length) {
+            angular.forEach(cartService.show(), function(item) {
+                if (item.id == product.id) {
+                    product.amount = item.amount;
+                }
+            });
+        }
+    };
+
+    function getImages () {
+        $http.get( 'api/index.php/site/products/getImages/' + id ).
+        success( function( data ){
+            $scope.images = data;
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
+    }
+
+    getImages();
 
 }]);
 

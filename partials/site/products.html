@@ -15,13 +15,14 @@
 
             <div class="panel panel-default" ng-repeat="product in products | filter : search">
 
-                <div class="panel-body">
+                <div class="panel-body" ng-init="checkCart(product)">
 
-                    <h2><a href="#/product/{{$index}}">{{product.name}}</a></h2>
+                    <h2><a href="#/product/{{product.id}}">{{product.name}}</a></h2>
                     <h3><span class="label label-warning">{{product.price | number:2}} $</span></h3>
                     <br>
-                    <a href="#/product/{{$index}}" class="btn btn-info">Details</a>
-                    <button ng-click="addToCart(product)" class="btn btn-success">Add to Shopping Cart</button>
+                    <a href="#/product/{{product.id}}" class="btn btn-info">Details</a>
+                    <button ng-click="addToCart(product); checkCart(product)" class="btn btn-success" ng-if="!product.amount">Add to Shopping Cart</button>
+                    <button ng-click="addToCart(product); checkCart(product)" class="btn btn-success" ng-if="product.amount">In cart: {{product.amount}}</button>
 
                 </div>
 
