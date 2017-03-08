@@ -16,9 +16,7 @@ class Users extends CI_Controller {
 
     public function get($id = false)
     {
-
         $result = $this->Users_model->get($id);
-
         echo json_encode($result);
     }
 
@@ -35,6 +33,7 @@ class Users extends CI_Controller {
         if ($this->form_validation->run())
         {
             $user = $this->input->post('user');
+            $user['password'] = crypt($user['password'], config_item('encryption_key'));
             $this->Users_model->update($user);
         } else
         {

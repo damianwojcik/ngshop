@@ -154,12 +154,32 @@ controllersSite.controller( 'login' , [ '$scope' , '$http' , function( $scope , 
 
 controllersSite.controller( 'register' , [ '$scope' , '$http' , function( $scope , $http ){
 
-    //TODO: get data from form and send to db(authorization)
+    $scope.user = {};
 
-    $scope.formSubmit = function () {
-        $scope.errors = {};
-        $scope.submit = true;
-        console.log($scope.input);
+    $scope.formSubmit = function (user) {
+
+        $http.post( 'api/index.php/site/user/create/', {
+            user : user,
+            firstName : user.firstName,
+            lastName : user.lastName,
+            email : user.email,
+            password : user.password,
+            passconf : user.passconf
+        }).success( function( errors ){
+
+            $scope.submit = true;
+            $scope.user = {};
+
+            if (errors) {
+                $scope.errors = errors;
+            } else {
+                $scope.errors = {};
+                $scope.success = true;
+            }
+
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
     };
 
 }]);

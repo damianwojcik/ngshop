@@ -209,8 +209,6 @@ controllersAdmin.controller( 'userCreate' , [ '$scope' , '$http' , '$timeout', f
             passconf : user.passconf
         }).success( function( errors ){
 
-            $scope.submit = true;
-
             if (errors) {
                 $scope.errors = errors;
             } else {
