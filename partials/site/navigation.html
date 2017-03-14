@@ -25,13 +25,18 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li ng-if="cart" ng-class="{ active : isActive('/cart') }"><a href="#/cart">Shopping Cart{{'(' + cart + ')' }}</a></li>
                             <li ng-class="{ active : isActive('/orders') }"><a href="#/orders">Orders</a></li>
-                            <li ng-class="{ active : isActive('/login') }"><a href="#/login">Login</a></li>
-                            <li ng-class="{ active : isActive('/register') }"><a href="#/register">Register</a></li>
-                            <li ng-class="{ active : isActive('/admin/orders') }"><a href="#/admin/orders">Admin</a></li>
+                            <li ng-class="{ active : isActive('/login') }" ng-if="!loggedIn"><a href="#/login">Login</a></li>
+                            <li ng-class="{ active : isActive('/logout') }" ng-if="loggedIn"><a href="#" ng-click="logout()">Logout</a></li>
+                            <li ng-class="{ active : isActive('/register') }" ng-if="!loggedIn"><a href="#/register">Register</a></li>
+                            <li ng-class="{ active : isActive('/admin/orders') }" ng-if="isAdmin"><a href="#/admin/orders">Admin</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
             </nav>
+
+            <div class="alert alert-warning" ng-if="notAdmin">
+                You have no rights to access admin page.
+            </div>
 
         </div>
 

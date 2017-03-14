@@ -138,16 +138,35 @@ controllersSite.controller( 'orders' , [ '$scope' , '$http' , function( $scope ,
 
 }]);
 
-controllersSite.controller( 'login' , [ '$scope' , '$http' , function( $scope , $http ){
+controllersSite.controller( 'login' , [ '$scope' , '$http' , 'store', 'checkToken', '$location', function( $scope , $http, store, checkToken, $location ){
 
-    //TODO: get data from form and send to db(authorization)
+    if(checkToken.loggedIn()) {
 
-    $scope.input = {};
+        $location.path('/products');
 
-    $scope.formSubmit = function () {
-        $scope.errors = {};
-        $scope.errors.login = 'Given password and email address does not match.';
-        console.log($scope.input);
+    }
+
+    $scope.user = {};
+
+    $scope.formSubmit = function (user) {
+        $http.post( 'api/index.php/site/user/login/', {
+            email : user.email,
+            password : user.password
+        }).success( function( data ){
+
+            $scope.submit = true;
+            $scope.error = data.error;
+
+            if (!data.error) {
+
+                store.set('token', data.token);
+                $location.path('/products');
+
+            }
+
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
     };
 
 }]);

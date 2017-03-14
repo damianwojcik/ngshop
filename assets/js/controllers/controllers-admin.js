@@ -122,7 +122,7 @@ controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout'
 }]);
 
 
-controllersAdmin.controller( 'users' , [ '$scope' , '$http' , function( $scope , $http ){
+controllersAdmin.controller( 'users' , [ '$scope' , '$http', function( $scope , $http ){
 
     $http.get( 'api/index.php/admin/users/get' ).
     success( function( data ){

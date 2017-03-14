@@ -16,7 +16,7 @@ class User extends CI_Controller {
 
     public function get($id)
     {
-        $result = $this->Users_model->get($id);
+        $result = $this->User_model->get($id);
         echo json_encode($result);
     }
 
@@ -47,6 +47,33 @@ class User extends CI_Controller {
             echo json_encode($errors);
         }
 
+    }
+
+    public function login()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $user['password'] = crypt($password, config_item('encryption_key'));
+
+        $login = $this->User_model->login($email, $password);
+
+        if (!$login)
+        {
+            $output['error'] = 'Wrong password or email address.';
+        } else
+        {
+            $token = $this->jwt->encode(array(
+                'userId' => $login->id,
+                'firstName' => $login->firstName,
+                'lastName' => $login->lastName,
+                'email' => $login->email,
+                'role' => $login->role
+            ), config_item('encryption_key'));
+
+            $output['token'] = $token;
+        }
+
+        echo json_encode($output);
     }
 
 }

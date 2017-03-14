@@ -17,4 +17,24 @@ class User_model extends CI_Model {
         $this->db->insert('users', $user);
     }
 
+    public function login($email, $password)
+    {
+        $this->db->where('email', $email);
+        $q = $this->db->get('users');
+        $result = $q->row();
+
+        $password = crypt($password, config_item('encryption_key'));
+
+        if (empty($result) || $password != $result->password)
+        {
+            $output = false;
+        } else
+        {
+            $output = $result;
+        }
+
+        return $output;
+
+    }
+
 }
