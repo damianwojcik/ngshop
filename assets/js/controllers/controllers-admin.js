@@ -229,13 +229,24 @@ controllersAdmin.controller( 'userCreate' , [ '$scope' , '$http' , '$timeout', f
 
 }]);
 
-controllersAdmin.controller( 'orders' , [ '$scope' , '$http' , function( $scope , $http ){
+controllersAdmin.controller( 'orders' , [ '$scope' , '$http' , 'checkToken', function( $scope , $http, checkToken ){
 
-    $http.get( 'model/orders.json' ).
-    success( function( data ){
+    $http.post( 'api/index.php/admin/orders/get/' , {
+
+        token: checkToken.raw(),
+        payload: checkToken.payload()
+
+    }).success( function( data ){
+
         $scope.orders = data;
+
+        angular.forEach( $scope.orders , function( order , key ){
+            var parsed = JSON.parse( order.items );
+            $scope.orders[key].items = parsed;
+        });
+
     }).error( function(){
-        console.log( 'Error on loading json file.' );
+        console.log( 'Error on communicate with API.' );
     });
 
     $scope.delete = function(order, $index) {
@@ -244,20 +255,37 @@ controllersAdmin.controller( 'orders' , [ '$scope' , '$http' , function( $scope 
             return false;
         }
 
-        //TODO: save data by API
         $scope.orders.splice($index, 1);
 
-    }
+        $http.post( 'api/index.php/admin/orders/delete/' , {
+
+            token: checkToken.raw(),
+            id: order.id
+
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
+
+    };
 
     $scope.changeStatus = function(order) {
 
-        //TODO: send data by API
         if(order.status == 0) {
             order.status = 1;
         } else {
             order.status = 0;
         }
 
-    }
+        $http.post( 'api/index.php/admin/orders/update/' , {
+
+            token: checkToken.raw(),
+            id: order.id,
+            status: order.status
+
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
+
+    };
 
 }]);

@@ -66,18 +66,29 @@ controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams
 
 }]);
 
-controllersSite.controller( 'siteOrders' , [ '$scope' , '$http' , function( $scope , $http ){
+controllersSite.controller( 'siteOrders' , [ '$scope' , '$http' , 'checkToken', function( $scope , $http, checkToken ){
 
-    $http.get( 'model/orders.json' ).
-    success( function( data ){
+    $http.post( 'api/index.php/site/orders/get/', {
+
+        token: checkToken.raw(),
+        payload: checkToken.payload()
+
+    }).success( function( data ){
+
         $scope.orders = data;
+
+        angular.forEach( $scope.orders , function( order , key ){
+            var parsed = JSON.parse( order.items );
+            $scope.orders[key].items = parsed;
+        });
+
     }).error( function(){
-        console.log( 'Error on loading json file.' );
+        console.log( 'Error on communicate with API.' );
     });
 
 }]);
 
-controllersSite.controller( 'cartCtrl' , [ '$scope' , '$http' , '$filter', 'cartService', function( $scope , $http, $filter, cartService ){
+controllersSite.controller( 'cartCtrl' , [ '$scope' , '$http' , '$filter', 'cartService', 'checkToken', function( $scope , $http, $filter, cartService, checkToken ){
 
     $scope.cart = cartService.show();
 
@@ -101,24 +112,30 @@ controllersSite.controller( 'cartCtrl' , [ '$scope' , '$http' , '$filter', 'cart
 
     $scope.setOrder = function ($event) {
 
-        //TODO: chceck if user is logged in
-        var loggedIn = true;
+        $event.preventDefault();
 
-        if (!loggedIn) {
+        if (!checkToken.loggedIn()) {
             $scope.alert = {type: 'warning', msg: 'You have to be logged in.'};
-            $event.preventDefault();
             return false;
         }
 
-        //TODO: save order to db
-        console.log($scope.total());
-        console.log($scope.cart);
+        $http.post( 'api/index.php/site/orders/create/', {
 
-        $scope.alert = {type: 'success', msg: 'Order in process. Dont refresh the page.'};
-        cartService.empty();
+            token: checkToken.raw(),
+            payload: checkToken.payload(),
+            items: $scope.cart,
+            total: $scope.total()
 
-        $event.preventDefault();
-        $('#paypalForm').submit();
+        }).success( function( data ){
+
+            cartService.empty();
+            $scope.alert = {type: 'success', msg: 'Order in process. Dont refresh the page.'};
+            $('#paypalForm').submit();
+
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
+
     };
 
     $scope.$watch(function () {
@@ -127,13 +144,24 @@ controllersSite.controller( 'cartCtrl' , [ '$scope' , '$http' , '$filter', 'cart
 
 }]);
 
-controllersSite.controller( 'orders' , [ '$scope' , '$http' , function( $scope , $http ){
+controllersSite.controller( 'siteOrders' , [ '$scope' , '$http' , 'checkToken', function( $scope , $http, checkToken ){
 
-    $http.get( 'model/orders.json' ).
-    success( function( data ){
+    $http.post( 'api/index.php/site/orders/get/' , {
+
+        token: checkToken.raw(),
+        payload: checkToken.payload()
+
+    }).success( function( data ){
+
         $scope.orders = data;
+
+        angular.forEach( $scope.orders , function( order , key ){
+            var parsed = JSON.parse( order.items );
+            $scope.orders[key].items = parsed;
+        });
+
     }).error( function(){
-        console.log( 'Error on loading json file.' );
+        console.log( 'Error on communicate with API.' );
     });
 
 }]);
