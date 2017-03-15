@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://bootswatch.com/{{theme}}/bootstrap.min.css">
+
 <div class="container">
 
     <div class="row">
@@ -36,6 +38,12 @@
 
             <div class="alert alert-warning" ng-if="notAdmin">
                 You have no rights to access admin page.
+            </div>
+
+            <div class="col-xs-6 pull-right">
+                <select class="form-control" ng-model="theme">
+                    <option ng-repeat="name in [ 'cosmo', 'darkly', 'flatly', 'lumen' ]">{{name}}</option>
+                </select>
             </div>
 
         </div>

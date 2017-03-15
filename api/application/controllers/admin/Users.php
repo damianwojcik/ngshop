@@ -12,6 +12,15 @@ class Users extends CI_Controller {
 
         $this->load->model('admin/Users_model');
 
+        $token = $this->input->post('token');
+        $token = $this->jwt->decode($token, config_item('encryption_key'));
+
+        if ($token->role != 'admin') {
+
+            exit('You are not admin');
+
+        }
+
     }
 
     public function get($id = false)

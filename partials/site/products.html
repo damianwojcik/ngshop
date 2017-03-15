@@ -20,6 +20,7 @@
                     <h2><a href="#/product/{{product.id}}">{{product.name}}</a></h2>
                     <h3><span class="label label-warning">{{product.price | number:2}} $</span></h3>
                     <br>
+                    <img src="uploads/{{product.id}}/{{product.thumbnail}}" alt="Image Thumbnail" class="img-thumbnail" style="max-width: 300px;">
                     <a href="#/product/{{product.id}}" class="btn btn-info">Details</a>
                     <button ng-click="addToCart(product); checkCart(product)" class="btn btn-success" ng-if="!product.amount">Add to Shopping Cart</button>
                     <button ng-click="addToCart(product); checkCart(product)" class="btn btn-success" ng-if="product.amount">In cart: {{product.amount}}</button>

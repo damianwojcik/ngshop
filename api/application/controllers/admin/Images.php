@@ -3,6 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Images extends CI_Controller {
 
+    public function __construct ()
+    {
+        parent::__construct();
+
+        $this->load->model('admin/Products_model');
+
+    }
+
     public function upload($id)
     {
 
@@ -59,6 +67,15 @@ class Images extends CI_Controller {
         $post = file_get_contents('php://input');
         $_POST = json_decode($post, true);
 
+        $token = $this->input->post('token');
+        $token = $this->jwt->decode($token, config_item('encryption_key'));
+
+        if ($token->role != 'admin') {
+
+            exit('You are not admin');
+
+        }
+
         $id = $this->input->post('id');
         $image = $this->input->post('image');
 
@@ -67,6 +84,31 @@ class Images extends CI_Controller {
         $imagePath = $imagePath . $image;
 
         unlink($imagePath);
+
+    }
+
+    public function setThumbnail ()
+    {
+
+        $post = file_get_contents('php://input');
+        $_POST = json_decode($post, true);
+
+        $token = $this->input->post('token');
+        $token = $this->jwt->decode($token, config_item('encryption_key'));
+
+        if ($token->role != 'admin') {
+
+            exit('You are not admin');
+
+        }
+
+        $input = $this->input->post('product');
+        $productId = $input['id'];
+        $imageName = $this->input->post('image');
+
+        $product['thumbnail'] = $imageName;
+
+        $this->Products_model->setThumbnail($productId, $product);
 
     }
 

@@ -2,10 +2,13 @@
 
 var controllersAdmin = angular.module( 'controllersAdmin' , ['angularFileUpload', 'myDirectives'] );
 
-controllersAdmin.controller( 'products' , [ '$scope' , '$http' , function( $scope , $http ){
+controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', function( $scope , $http, checkToken ){
 
-    $http.get( 'api/index.php/admin/products/get' ).
-    success( function( data ){
+    $http.post( 'api/index.php/admin/products/get', {
+
+       token: checkToken.raw()
+
+    }).success( function( data ){
         $scope.products = data;
     }).error( function(){
         console.log( 'Error on communicate with API.' );
@@ -20,7 +23,10 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , function( $scop
         $scope.products.splice($index, 1);
 
         $http.post( 'api/index.php/admin/products/delete/', {
+
+            token: checkToken.raw(),
             product: product
+
         }).error( function(){
             console.log( 'Error on communicate with API.' );
         });
@@ -29,13 +35,16 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , function( $scop
 
 }]);
 
-controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', '$timeout', function( $scope , $http , $routeParams, FileUploader, $timeout ){
+controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', '$timeout', 'checkToken', function( $scope , $http , $routeParams, FileUploader, $timeout, checkToken ){
 
     var productId = $routeParams.id;
     $scope.id = productId;
 
-    $http.get( 'api/index.php/admin/products/get/' + productId ).
-    success( function( data ){
+    $http.post( 'api/index.php/admin/products/get/' + productId, {
+
+       token: checkToken.raw()
+
+    }).success( function( data ){
         $scope.product = data;
     }).error( function(){
         console.log( 'Error on communicate with API.' );
@@ -44,7 +53,10 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
     $scope.saveChanges = function(product) {
 
         $http.post( 'api/index.php/admin/products/update/', {
+
+            token: checkToken.raw(),
             product: product
+
         }).success( function(){
             $scope.success = true;
 
@@ -57,9 +69,12 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
     };
 
-    function getImages () {
-        $http.get( 'api/index.php/admin/images/get/' + productId ).
-        success( function( data ){
+    function getImages() {
+        $http.post( 'api/index.php/admin/images/get/' + productId , {
+
+            token: checkToken.raw()
+
+        }).success( function( data ){
             $scope.images = data;
         }).error( function(){
             console.log( 'Error on communicate with API.' );
@@ -69,7 +84,8 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
     getImages();
 
     var uploader = $scope.uploader = new FileUploader({
-       url: 'api/index.php/admin/images/upload/' + productId
+        token: checkToken.raw(),
+        url: 'api/index.php/admin/images/upload/' + productId
     });
 
     uploader.filters.push({
@@ -90,6 +106,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
         $http.post( 'api/index.php/admin/images/delete/', {
 
+            token: checkToken.raw(),
             id : productId,
             image: imageName
 
@@ -99,14 +116,32 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
     };
 
+    $scope.setThumbnail = function (product, image) {
+
+        $http.post( 'api/index.php/admin/images/setThumbnail/', {
+
+            token: checkToken.raw(),
+            product: product,
+            image: image
+
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
+
+
+    };
+
 }]);
 
-controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout', function( $scope , $http, $timeout ){
+controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout', 'checkToken', function( $scope , $http, $timeout, checkToken ){
 
     $scope.createProduct = function(product) {
 
         $http.post( 'api/index.php/admin/products/create/', {
+
+            token: checkToken.raw(),
             product: product
+
         }).success( function( ){
             $scope.success = true;
             $scope.product = {};
@@ -122,10 +157,13 @@ controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout'
 }]);
 
 
-controllersAdmin.controller( 'users' , [ '$scope' , '$http', function( $scope , $http ){
+controllersAdmin.controller( 'users' , [ '$scope' , '$http', 'checkToken', function( $scope , $http, checkToken ){
 
-    $http.get( 'api/index.php/admin/users/get' ).
-    success( function( data ){
+    $http.post( 'api/index.php/admin/users/get', {
+
+        token: checkToken.raw()
+
+    }).success( function( data ){
         $scope.users = data;
     }).error( function(){
         console.log( 'Error on communicate with API.' );
@@ -149,13 +187,16 @@ controllersAdmin.controller( 'users' , [ '$scope' , '$http', function( $scope , 
 
 }]);
 
-controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' , '$timeout', function( $scope , $http , $routeParams, $timeout ){
+controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' , '$timeout', 'checkToken', function( $scope , $http , $routeParams, $timeout, checkToken ){
 
     var userId = $routeParams.id;
     $scope.id = userId;
 
-    $http.get( 'api/index.php/admin/users/get/' + userId ).
-    success( function( data ){
+    $http.post( 'api/index.php/admin/users/get/' + userId, {
+
+       token: checkToken.raw()
+
+    }).success( function( data ){
         $scope.user = data;
     }).error( function(){
         console.log( 'Error on communicate with API.' );
@@ -164,6 +205,8 @@ controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' 
     $scope.saveChanges = function(user) {
 
         $http.post( 'api/index.php/admin/users/update/', {
+
+            token: checkToken.raw(),
             id: userId,
             user : user,
             firstName : user.firstName,
@@ -171,6 +214,7 @@ controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' 
             email : user.email,
             password : user.password,
             passconf : user.passconf
+
         }).success( function(errors){
 
             $scope.submit = true;
@@ -193,7 +237,7 @@ controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' 
 
 }]);
 
-controllersAdmin.controller( 'userCreate' , [ '$scope' , '$http' , '$timeout', function( $scope , $http, $timeout ){
+controllersAdmin.controller( 'userCreate' , [ '$scope' , '$http' , '$timeout', 'checkToken', function( $scope , $http, $timeout, checkToken ){
 
     $scope.user = {};
     $scope.user.role = 'user';
@@ -201,12 +245,15 @@ controllersAdmin.controller( 'userCreate' , [ '$scope' , '$http' , '$timeout', f
     $scope.createUser = function(user) {
 
         $http.post( 'api/index.php/admin/users/create/', {
+
+            token: checkToken.raw(),
             user : user,
             firstName : user.firstName,
             lastName : user.lastName,
             email : user.email,
             password : user.password,
             passconf : user.passconf
+
         }).success( function( errors ){
 
             if (errors) {

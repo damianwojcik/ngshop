@@ -15,6 +15,15 @@ class Orders extends CI_Controller {
         $token = $this->input->post('token');
         $this->jwt->decode($token, config_item('encryption_key'));
 
+        $token = $this->input->post('token');
+        $token = $this->jwt->decode($token, config_item('encryption_key'));
+
+        if ($token->role != 'admin') {
+
+            exit('You are not admin');
+
+        }
+
     }
 
     public function get()
