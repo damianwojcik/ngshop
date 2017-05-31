@@ -86,9 +86,22 @@
 
                             <li ng-if="!cart.length">No products in shopping cart.</li>
 
-                            <li ng-repeat="item in cart">
-                                {{ item }}
-                                <img  src="{{ item.thumbnail }}" alt="Image Thumbnail">
+                            <li ng-repeat="item in cart track by $index">
+
+                                <img src="{{ item.thumbnail }}" alt="Image Thumbnail">
+
+                                <div class="mini-cart__text">
+
+                                    <span>{{ item.name }}</span>
+
+                                    <span>{{ item.amount }} x {{ item.price | number:2 }} $</span>
+
+                                    <div class="btn-group">
+                                        <a class="btn btn-default" href="#/cart"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <button type='button' class="btn btn-gray" ng-click="removeItem($index); $event.stopPropagation();"><span class="glyphicon glyphicon-trash"></span></button>
+                                    </div>
+
+                                </div>
 
                             </li>
 

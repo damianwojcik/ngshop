@@ -71,12 +71,9 @@ controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$locati
 
 	};
 
-	$scope.theme = store.get('theme');
-
-	$scope.$watch(function() {
-
-		store.set('theme', $scope.theme);
-
-	});
+    $scope.removeItem = function ($index) {
+        $scope.cart.splice($index, 1);
+        cartService.update($scope.cart);
+    };
 
 }]);

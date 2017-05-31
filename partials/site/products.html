@@ -23,8 +23,8 @@
                         <span class="thumbnail-label">Białko</span>
                     </a>
 
-                    <h2 class="panel-title"><a href="#/product/{{product.id}}">{{product.name}}</a></h2>
-                    <h3 class="panel-label">{{product.price | number:2}} $</h3>
+                    <h2 class="panel-title"><a href="#/product/{{product.id}}">{{ product.name }}</a></h2>
+                    <h3 class="panel-label">{{ product.price | number:2 }} $</h3>
                     <br>
 
                     <button ng-click="addToCart(product); checkCart(product)" class="btn btn-success" ng-if="!product.amount">Add to Shopping Cart</button>

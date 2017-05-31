@@ -83,7 +83,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
     uploader.onCompleteItem = function(fileItem, response, status, headers) {
         getImages();
-        //$scope.product.thumbnail = fileItem._file.name;
+        $scope.product.thumbnail = "uploads/" + productId + "/" + fileItem._file.name;
     };
 
     $scope.delImage = function (image, $index) {

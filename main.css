@@ -5956,12 +5956,15 @@ p {
     background-color: #000;
     color: #FFF; }
 
+.btn-gray {
+  background-color: #ddd; }
+
 .img-thumbnail {
   border-radius: 0;
   width: 100%;
   padding: 0; }
   .img-thumbnail.active {
-    border-color: #0484c7; }
+    border: 2px solid #0484c7; }
 
 .thumbnail-link {
   display: block;
@@ -6052,14 +6055,41 @@ p {
   .mini-cart ul {
     list-style-type: none;
     padding: 0;
-    margin: 0; }
-    .mini-cart ul li:not(:last-child) {
-      margin-bottom: 15px;
-      padding-bottom: 15px;
-      border-bottom: 1px dotted rgba(0, 0, 0, 0.1); }
+    margin: 0;
+    display: table;
+    width: 100%; }
+    .mini-cart ul li {
+      display: table;
+      width: 100%; }
+      .mini-cart ul li:not(:last-child) {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px dotted rgba(0, 0, 0, 0.1); }
+      .mini-cart ul li span {
+        display: block;
+        margin-bottom: 7px; }
     .mini-cart ul img {
       width: 57px;
-      height: 57px; }
+      height: 57px;
+      float: left; }
+  .mini-cart__text {
+    width: 75%;
+    float: left;
+    padding-left: 10px; }
+    .mini-cart__text .btn-group {
+      display: block;
+      float: right; }
+    .mini-cart__text .btn-group .btn {
+      padding: 0;
+      line-height: 20px; }
+      .mini-cart__text .btn-group .btn:hover {
+        border: 1px solid #000; }
+      .mini-cart__text .btn-group .btn span {
+        font-size: 10px;
+        padding: 0 7px;
+        height: auto;
+        margin-bottom: 0;
+        line-height: 20px; }
   .mini-cart__section {
     padding: 20px; }
     .mini-cart__section:last-child {

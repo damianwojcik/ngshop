@@ -378,7 +378,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
     uploader.onCompleteItem = function(fileItem, response, status, headers) {
         getImages();
-        //$scope.product.thumbnail = fileItem._file.name;
+        $scope.product.thumbnail = "uploads/" + productId + "/" + fileItem._file.name;
     };
 
     $scope.delImage = function (image, $index) {
@@ -716,13 +716,10 @@ controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$locati
 
 	};
 
-	$scope.theme = store.get('theme');
-
-	$scope.$watch(function() {
-
-		store.set('theme', $scope.theme);
-
-	});
+    $scope.removeItem = function ($index) {
+        $scope.cart.splice($index, 1);
+        cartService.update($scope.cart);
+    };
 
 }]);
 'use strict';
@@ -738,13 +735,25 @@ controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService
         console.log( 'Error on communicate with API.' );
     });
 
+    $scope.$watch(function () {
+
+        $scope.cart = cartService.show();
+
+        function( $scope.cart ) {
+            console.log( "Function watched" );
+            // This becomes the value we're "watching".
+            return( "Function: Best friend is " + $scope.bestFriend.name );
+        }
+
+    });
+
     $scope.addToCart = function (product) {
         cartService.add(product);
     };
 
     $scope.checkCart = function (product) {
-        if (cartService.show().length) {
-            angular.forEach(cartService.show(), function(item) {
+        if ($scope.cart.length) {
+            angular.forEach($scope.cart, function(item) {
                 if (item.id == product.id) {
                     product.amount = item.amount;
                 }
