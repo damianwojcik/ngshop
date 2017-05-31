@@ -110,13 +110,18 @@
         <p>&nbsp;</p>
 
         <div ng-repeat="image in images" class="pull-left" style="position:relative;">
+
             <button type="button" ng-click="delImage( image , $index )" class="btn btn-danger btn-xs" style="position:absolute; right:0;"><strong>&times;</strong></button>
-            <img ng-click="setThumbnail(product, image)" ng-src="uploads/{{product.id}}/{{image}}" alt="{{image}}" class="pull-left img-thumbnail" style="width: 150px;margin:5px;cursor:pointer;">
+
+            <img ng-class="{ active : image == product.thumbnail }" ng-click="setThumbnail(product, image)" ng-src="{{image}}" alt="{{image}}" class="pull-left img-thumbnail" style="width: 150px;margin:5px;cursor:pointer;">
+
         </div>
 
         <div class="clearfix"></div>
 
         <br>
+
+        <p ng-if="images.length">Click image to choose thumbnail.</p>
 
       </div>
 

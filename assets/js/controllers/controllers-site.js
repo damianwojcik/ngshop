@@ -4,7 +4,7 @@ var controllersSite = angular.module( 'controllersSite' , [] );
 
 controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', function( $scope , $http, cartService ){
 
-    $http.get( 'api/index.php/site/products/get' ).
+    $http.get( 'api/site/products/get' ).
     success( function( data ){
         $scope.products = data;
     }).error( function(){
@@ -27,11 +27,12 @@ controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService
 
 }]);
 
+
 controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams' , 'cartService', function( $scope , $http , $routeParams, cartService ){
 
     var id = $routeParams.id;
 
-    $http.post( 'api/index.php/site/products/get/' + id ).
+    $http.post( 'api/site/products/get/' + id ).
     success( function( data ){
         $scope.product = data;
         $scope.checkCart(data);
@@ -54,7 +55,7 @@ controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams
     };
 
     function getImages () {
-        $http.get( 'api/index.php/site/products/getImages/' + id ).
+        $http.get( 'api/site/products/getImages/' + id ).
         success( function( data ){
             $scope.images = data;
         }).error( function(){
@@ -68,7 +69,7 @@ controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams
 
 controllersSite.controller( 'siteOrders' , [ '$scope' , '$http' , 'checkToken', function( $scope , $http, checkToken ){
 
-    $http.post( 'api/index.php/site/orders/get/', {
+    $http.post( 'api/site/orders/get/', {
 
         token: checkToken.raw(),
         payload: checkToken.payload()
@@ -119,7 +120,7 @@ controllersSite.controller( 'cartCtrl' , [ '$scope' , '$http' , '$filter', 'cart
             return false;
         }
 
-        $http.post( 'api/index.php/site/orders/create/', {
+        $http.post( 'api/site/orders/create/', {
 
             token: checkToken.raw(),
             payload: checkToken.payload(),
@@ -146,7 +147,7 @@ controllersSite.controller( 'cartCtrl' , [ '$scope' , '$http' , '$filter', 'cart
 
 controllersSite.controller( 'siteOrders' , [ '$scope' , '$http' , 'checkToken', function( $scope , $http, checkToken ){
 
-    $http.post( 'api/index.php/site/orders/get/' , {
+    $http.post( 'api/site/orders/get/' , {
 
         token: checkToken.raw(),
         payload: checkToken.payload()
@@ -177,7 +178,7 @@ controllersSite.controller( 'login' , [ '$scope' , '$http' , 'store', 'checkToke
     $scope.user = {};
 
     $scope.formSubmit = function (user) {
-        $http.post( 'api/index.php/site/user/login/', {
+        $http.post( 'api/site/user/login/', {
             email : user.email,
             password : user.password
         }).success( function( data ){
@@ -205,7 +206,7 @@ controllersSite.controller( 'register' , [ '$scope' , '$http' , function( $scope
 
     $scope.formSubmit = function (user) {
 
-        $http.post( 'api/index.php/site/user/create/', {
+        $http.post( 'api/site/user/create/', {
             user : user,
             firstName : user.firstName,
             lastName : user.lastName,

@@ -1,0 +1,15 @@
+.textgrowth {
+  animation: textgrowth 2s alternate;
+}
+
+@keyframes textgrowth {
+  0% {
+    font-size: 11px;
+  }
+  50% {
+    font-size: 15px;
+  }
+  100% {
+    font-size: 1px;
+  }
+}

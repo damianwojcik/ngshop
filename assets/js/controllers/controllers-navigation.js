@@ -2,7 +2,7 @@
 
 var controllersNavigation = angular.module( 'controllersNavigation', [] );
 
-controllersNavigation.controller( 'navigation' , [ '$scope' , '$location' , 'cartService', 'checkToken', 'store',  function( $scope , $location, cartService, checkToken, store ){
+controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$location' , 'cartService', 'checkToken', 'store',  function( $scope , $http, $location, cartService, checkToken, store ){
 
 	$scope.navigation = function () {
 
@@ -60,7 +60,7 @@ controllersNavigation.controller( 'navigation' , [ '$scope' , '$location' , 'car
 
 	$scope.$watch(function () {
 
-		$scope.cart = cartService.show().length;
+        $scope.cart = cartService.show();
 
 	});
 
@@ -80,4 +80,3 @@ controllersNavigation.controller( 'navigation' , [ '$scope' , '$location' , 'car
 	});
 
 }]);
-

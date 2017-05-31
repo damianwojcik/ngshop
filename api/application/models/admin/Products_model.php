@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Products_model extends CI_Model {
 
-    public function get($id = false)
+    public function get( $id = false )
     {
 
         if ( $id == false )
@@ -22,24 +22,24 @@ class Products_model extends CI_Model {
 
     }
 
-    public function update($product)
+    public function update( $product )
     {
         $this->db->where('id', $product['id']);
         $this->db->update('products', $product);
     }
 
-    public function create($product)
+    public function create( $product )
     {
         $this->db->insert('products', $product);
     }
 
-    public function delete($product)
+    public function delete( $product )
     {
         $this->db->where('id', $product['id']);
         $this->db->delete('products');
     }
 
-    public function setThumbnail($productId, $product)
+    public function setThumbnail( $productId, $product )
     {
         $this->db->where('id', $productId);
         $this->db->update('products', $product);

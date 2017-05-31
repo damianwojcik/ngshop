@@ -1,1 +1,20 @@
 -paginacja produktów i uzytkowników: http://stackoverflow.com/questions/10816073/how-to-do-paging-in-angularjs
+-usunac hashe z hrefow
+-dodac kategorie produktów
+-dodać taby Opis produktu / skład /wartości odżywcze / opinie
+-zoom jak na kfd
+-layout jak pasjonat.cc
+-owl jako ng directive
+-wrzucic na hosting / portfolio
+-zapis i reset bazy co 24h
+-animacje ng animate
+-gdy strona na serverze zmienic enviroment z development na testing (w api/index.php)
+-dodać wiadomość Witaj, {{user.firstname}}
+-zablkoowac dostep uzytkownikom do: http://localhost/ngshop/api/site/user/get/4 (moga pobrac maile)
+-na windowsie (serverze) zmienic w api/controllers/admin/images mkdir( $basePath , 0777 ); na 0700
+-dodac image thumbnail jesli nie ma obrazka
+-strona category/id (pojedynczej kategorii)
+- style z index.html przeniesc
+- service z kategoriami
+-admin moze zmieniac role uzytkownika (select)
+-dodac opcję przeceny (%)

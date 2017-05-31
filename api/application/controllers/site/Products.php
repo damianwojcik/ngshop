@@ -14,7 +14,7 @@ class Products extends CI_Controller {
 
     }
 
-    public function get($id = false)
+    public function get( $id = false )
     {
 
         $result = $this->Products_model->get($id);
@@ -22,12 +22,12 @@ class Products extends CI_Controller {
         echo json_encode($result);
     }
 
-    public function getImages($id) {
+    public function getImages( $id ) {
 
         $basePath = FCPATH . '..' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
         $basePath = $basePath . $id . DIRECTORY_SEPARATOR;
 
-        if (!is_dir($basePath)) {
+        if ( !is_dir($basePath) ) {
             return;
         }
 

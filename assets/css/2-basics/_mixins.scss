@@ -1,0 +1,6 @@
+//background image center cover no-repeat
+@mixin background-img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

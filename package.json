@@ -8,7 +8,11 @@
     "browser-sync": "*",
     "gulp": "*",
     "gulp-sass": "*",
-    "gulp-autoprefixer": "*"
+    "gulp-autoprefixer": "*",
+    "gulp-clean-css": "*",
+    "gulp-uglify": "*",
+    "gulp-rename" : "*",
+    "gulp-concat" : "*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,0 +1,33 @@
+/* BEGIN TYPOGRAPHY */
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1.2;
+	margin-bottom: 0;
+}
+
+strong {
+	font-weight: 700;
+}
+
+p {
+	margin-bottom: 0;
+	line-height: 1.4;
+
+	br {
+		content: " ";
+		line-height: 32px;
+	}
+}
+
+.offscreen {
+	left: -1000em;
+	position: absolute;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.case-c {
+	text-transform: capitalize!important;
+}
+/* BEGIN TYPOGRAPHY */

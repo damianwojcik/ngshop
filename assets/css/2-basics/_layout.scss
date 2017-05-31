@@ -1,0 +1,22 @@
+/* BEGIN LATOUT */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.page-wrapper {
+  background-color: #FFF;
+  width: 1230px;
+  position: relative;
+  margin: auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #131416;
+  padding-bottom: 30px;
+}
+
+.container {
+  position: relative;
+  padding: 0 15px;
+  max-width: 1170px;
+}
+
+/* END LATOUT */
