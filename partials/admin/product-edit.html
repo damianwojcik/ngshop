@@ -7,18 +7,31 @@
       <div class="col-sm-6">
 
         <div class="form-group">
+
           <label for="name">Product name:</label>
           <input id="name" type="text" class="form-control" ng-model="product.name">
+
         </div>
 
         <div class="form-group">
+
+          <label for="category">Category:</label> <br>
+          <select name="category" id="category" ng-options="option.name for option in categories track by option.id" ng-model="product.category"></select>
+
+        </div>
+
+        <div class="form-group">
+
           <label for="description">Product description:</label>
           <textarea id="description" rows="3" class="form-control" ng-model="product.description" style="resize:vertical;"></textarea>
+
         </div>
 
         <div class="form-group">
+
           <label for="price">Product price:</label>
           <input id="price" type="text" class="form-control" ng-model="product.price">
+
         </div>
 
         <h3>Upload product photo</h3>
@@ -136,7 +149,7 @@
         <a href="#/admin/products" class="btn btn-default">Return</a>
 
         <button class="btn btn-primary" type="submit" ng-if="!success">Save changes</button>
-        <button class="btn btn-success" type="button" ng-if="success" disabled>Changes saved</button>
+        <button class="btn btn-success" type="button" ng-if="success" disabled>Saving changes...</button>
 
         <p>&nbsp;</p>
 

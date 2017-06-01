@@ -282,17 +282,26 @@ myServices.service('checkToken', ['store', 'jwtHelper', function(store, jwtHelpe
 
 }]);
 
+myServices.service('categoriesService', [ '$http' , function ( $http ) {
 
-// myServices.service('categoriesService', ['$scope' , '$http' , function ( $scope , $http ) {
-//
-//     $http.get( 'api/site/categories/get' ).
-//     success( function( data ){
-//         $scope.categories = data;
-//     }).error( function(){
-//         console.log( 'Error on communicate with API.' );
-//     });
-//
-// }]);
+
+    this.getData = function() {
+
+        return $http.get('api/site/categories/get')
+
+            .success(function(data){
+
+                return data;
+
+            }).error(function(){
+
+                console.log( 'Error on communicate with API.' );
+
+            });
+
+    };
+
+}]);
 'use strict';
 
 var controllersAdmin = angular.module( 'controllersAdmin' , ['angularFileUpload', 'myDirectives'] );
@@ -332,21 +341,36 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', f
 
 }]);
 
-controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', '$timeout', 'checkToken', function( $scope , $http , $routeParams, FileUploader, $timeout, checkToken ){
+controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', '$timeout', 'checkToken', 'categoriesService', function( $scope , $http , $routeParams, FileUploader, $timeout, checkToken, categoriesService ){
 
     var productId = $routeParams.id;
     $scope.id = productId;
 
+    // get product
     $http.post( 'api/admin/products/get/' + productId, {
 
        token: checkToken.raw()
 
     }).success( function( data ){
+
         $scope.product = data;
+
+        // get categories
+        categoriesService.getData().then(function(data) {
+
+            $scope.categories = data.data;
+
+            $scope.product.category = $scope.categories[$scope.product.category - 1];
+
+        });
+
     }).error( function(){
+
         console.log( 'Error on communicate with API.' );
+
     });
 
+    // get images
     function getImages() {
         $http.post( 'api/admin/images/get/' + productId , {
 
@@ -357,12 +381,15 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
             $scope.images = data;
 
         }).error( function(){
+
             console.log( 'Error on communicate with API.' );
+
         });
     }
 
     getImages();
 
+    // init uploader
     var uploader = $scope.uploader = new FileUploader({
         token: checkToken.raw(),
         url: 'api/admin/images/upload/' + productId
@@ -381,6 +408,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
         $scope.product.thumbnail = "uploads/" + productId + "/" + fileItem._file.name;
     };
 
+    // delete image
     $scope.delImage = function (image, $index) {
 
         $scope.images.splice($index, 1);
@@ -397,6 +425,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
     };
 
+    // set thumbnail
     $scope.setThumbnail = function (product, image) {
 
         if($scope.product.thumbnail == image) {
@@ -407,24 +436,45 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
     };
 
+    // save changes
     $scope.saveChanges = function(product) {
 
+        if(product) {
+            product.category = product.category.id;
+        }
 
+        // post product
         $http.post( 'api/admin/products/update/', {
 
             token: checkToken.raw(),
             product: product
 
         }).success( function(){
+
             $scope.success = true;
 
+            // get categories
+            categoriesService.getData().then(function(data) {
+
+                $scope.categories = data.data;
+
+                $scope.product.category = $scope.categories[$scope.product.category - 1];
+
+            });
+
             $timeout(function(){
+
                 $scope.success = false;
+
             }, 3000);
+
         }).error( function(){
+
             console.log( 'Error on communicate with API.' );
+
         });
 
+        // post thumbnail
         $http.post( 'api/admin/images/setThumbnail/', {
 
             token: checkToken.raw(),
@@ -440,9 +490,24 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
 }]);
 
-controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout', 'checkToken', function( $scope , $http, $timeout, checkToken ){
+controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout', 'checkToken', 'categoriesService', function( $scope , $http, $timeout, checkToken, categoriesService ){
 
+    $scope.product = {};
+
+    // get categories
+    categoriesService.getData().then(function(data) {
+
+        $scope.categories = data.data;
+        $scope.product.category = data.data[0];
+
+    });
+
+    // post product
     $scope.createProduct = function(product) {
+
+        if(product) {
+            product.category = product.category.id;
+        }
 
         $http.post( 'api/admin/products/create/', {
 
@@ -450,13 +515,23 @@ controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout'
             product: product
 
         }).success( function( ){
+
             $scope.success = true;
             $scope.product = {};
             $timeout(function(){
                 $scope.success = false;
+                categoriesService.getData().then(function(data) {
+
+                    $scope.categories = data.data;
+                    $scope.product.category = data.data[0];
+
+                });
             }, 3000);
+
         }).error( function(){
+
             console.log( 'Error on communicate with API.' );
+
         });
 
     }
@@ -504,9 +579,13 @@ controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' 
        token: checkToken.raw()
 
     }).success( function( data ){
+
         $scope.user = data;
+
     }).error( function(){
+
         console.log( 'Error on communicate with API.' );
+
     });
 
     $scope.saveChanges = function(user) {
@@ -647,7 +726,7 @@ controllersAdmin.controller( 'orders' , [ '$scope' , '$http' , 'checkToken', fun
 
 var controllersNavigation = angular.module( 'controllersNavigation', [] );
 
-controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$location' , 'cartService', 'checkToken', 'store',  function( $scope , $http, $location, cartService, checkToken, store ){
+controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$location' , 'checkToken', 'store', 'cartService', 'categoriesService',  function( $scope , $http, $location, checkToken, store, cartService, categoriesService ){
 
 	$scope.navigation = function () {
 
@@ -717,43 +796,62 @@ controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$locati
 	};
 
     $scope.removeItem = function ($index) {
+
         $scope.cart.splice($index, 1);
         cartService.update($scope.cart);
+
     };
+
+    categoriesService.getData().then(function(data) {
+
+        $scope.categories = data.data;
+
+    });
 
 }]);
 'use strict';
 
 var controllersSite = angular.module( 'controllersSite' , [] );
 
-controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', function( $scope , $http, cartService ){
+controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', 'categoriesService', function( $scope , $http, cartService, categoriesService ){
 
+    // get products
     $http.get( 'api/site/products/get' ).
     success( function( data ){
+
         $scope.products = data;
+
+
     }).error( function(){
+
         console.log( 'Error on communicate with API.' );
+
     });
 
+    categoriesService.getData().then(function(data) {
+
+        $scope.categories = data.data;
+
+    });
+
+    // get cart
     $scope.$watch(function () {
 
         $scope.cart = cartService.show();
-
-        function( $scope.cart ) {
-            console.log( "Function watched" );
-            // This becomes the value we're "watching".
-            return( "Function: Best friend is " + $scope.bestFriend.name );
-        }
+        //todo usuwanie z mini-carta czysci w produktach
 
     });
 
+
     $scope.addToCart = function (product) {
+
         cartService.add(product);
+
     };
 
     $scope.checkCart = function (product) {
-        if ($scope.cart.length) {
-            angular.forEach($scope.cart, function(item) {
+        if (cartService.show().length) {
+            angular.forEach(cartService.show(), function(item) {
                 if (item.id == product.id) {
                     product.amount = item.amount;
                 }

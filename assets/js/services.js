@@ -127,14 +127,23 @@ myServices.service('checkToken', ['store', 'jwtHelper', function(store, jwtHelpe
 
 }]);
 
+myServices.service('categoriesService', [ '$http' , function ( $http ) {
 
-// myServices.service('categoriesService', ['$scope' , '$http' , function ( $scope , $http ) {
-//
-//     $http.get( 'api/site/categories/get' ).
-//     success( function( data ){
-//         $scope.categories = data;
-//     }).error( function(){
-//         console.log( 'Error on communicate with API.' );
-//     });
-//
-// }]);
+
+    this.getData = function() {
+
+        return $http.get('api/site/categories/get')
+
+            .success(function(data){
+
+                return data;
+
+            }).error(function(){
+
+                console.log( 'Error on communicate with API.' );
+
+            });
+
+    };
+
+}]);

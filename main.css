@@ -5959,52 +5959,8 @@ p {
 .btn-gray {
   background-color: #ddd; }
 
-.img-thumbnail {
-  border-radius: 0;
-  width: 100%;
-  padding: 0; }
-  .img-thumbnail.active {
-    border: 2px solid #0484c7; }
-
-.thumbnail-link {
-  display: block;
-  position: relative; }
-
-.thumbnail-label {
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: #0484c7;
-  color: #FFF;
-  font-size: 11px;
-  text-transform: uppercase;
-  padding: 10px 13px; }
-
-.panel {
-  border-radius: 0;
-  border: 0; }
-  .panel-body {
-    padding: 0 0 15px 0;
-    text-align: center; }
-  .panel-title {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.2;
-    color: #131416;
-    display: block;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    padding: 0; }
-    .panel-title a {
-      color: inherit; }
-  .panel-label {
-    color: #e30000;
-    padding: 0;
-    display: block;
-    font-size: 26px;
-    font-weight: 700;
-    margin-top: 0; }
+select {
+  min-width: 300px; }
 
 .nav-bottom {
   margin-bottom: 30px; }
@@ -6111,6 +6067,54 @@ canvas {
   border: 1px solid #c3c3c3;
   height: 100px;
   margin: 6px 0 0 6px; }
+
+.img-thumbnail {
+  border-radius: 0;
+  width: 100%;
+  padding: 0; }
+  .img-thumbnail.active {
+    border: 2px solid #0484c7; }
+
+.thumbnail-link {
+  display: block;
+  position: relative; }
+
+.thumbnail-label {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #0484c7;
+  color: #FFF;
+  font-size: 11px;
+  text-transform: uppercase;
+  padding: 10px 13px; }
+
+.panel {
+  border-radius: 0;
+  border: 0; }
+  .panel-body {
+    padding: 0 0 15px 0;
+    text-align: center; }
+  .panel-title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #131416;
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding: 0;
+    height: 32px; }
+    .panel-title a {
+      color: inherit; }
+  .panel-label {
+    color: #e30000;
+    padding: 0;
+    display: block;
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 0; }
 
 /* BEGIN HEADER */
 .header {

@@ -2,7 +2,7 @@
 
 var controllersNavigation = angular.module( 'controllersNavigation', [] );
 
-controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$location' , 'cartService', 'checkToken', 'store',  function( $scope , $http, $location, cartService, checkToken, store ){
+controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$location' , 'checkToken', 'store', 'cartService', 'categoriesService',  function( $scope , $http, $location, checkToken, store, cartService, categoriesService ){
 
 	$scope.navigation = function () {
 
@@ -72,8 +72,16 @@ controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$locati
 	};
 
     $scope.removeItem = function ($index) {
+
         $scope.cart.splice($index, 1);
         cartService.update($scope.cart);
+
     };
+
+    categoriesService.getData().then(function(data) {
+
+        $scope.categories = data.data;
+
+    });
 
 }]);

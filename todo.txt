@@ -20,4 +20,5 @@
 -dodac opcję przeceny (%)
 - poprawic checkcart ( chyba trzseba przekazac caly cart) do strony products bo po wywaleniu z koszyka nadal pisze ze mamy w koszyku - albo przy usuwaniu wywolacz checkCart
 - przy dodawaniu produktu dodac placeholder thumbnaila jesli uzytkownik nie wybierze zdjecia (i zapisywac go do bazy! bo potem sa odczytywane na podstawie bazy)
+-smart search
 -animacja powiekszania cyfry w koszyku przy dodaniu produktu

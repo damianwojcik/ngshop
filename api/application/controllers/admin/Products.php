@@ -34,6 +34,7 @@ class Products extends CI_Controller {
     public function update()
     {
         $product = $this->input->post('product');
+        var_dump($product);
         $this->Products_model->update($product);
     }
 
@@ -41,6 +42,10 @@ class Products extends CI_Controller {
     {
         $product = $this->input->post('product');
         $this->Products_model->create($product);
+
+        $new_product_id = $this->db->insert_id();
+        mkdir(FCPATH . '..' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $new_product_id);
+
     }
 
     public function delete()

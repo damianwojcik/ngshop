@@ -2,17 +2,40 @@
 
 var controllersSite = angular.module( 'controllersSite' , [] );
 
-controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', function( $scope , $http, cartService ){
+controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', 'categoriesService', function( $scope , $http, cartService, categoriesService ){
 
+    // get products
     $http.get( 'api/site/products/get' ).
     success( function( data ){
+
         $scope.products = data;
+
+
     }).error( function(){
+
         console.log( 'Error on communicate with API.' );
+
     });
 
+    categoriesService.getData().then(function(data) {
+
+        $scope.categories = data.data;
+
+    });
+
+    // get cart
+    $scope.$watch(function () {
+
+        $scope.cart = cartService.show();
+        //todo usuwanie z mini-carta czysci w produktach
+
+    });
+
+
     $scope.addToCart = function (product) {
+
         cartService.add(product);
+
     };
 
     $scope.checkCart = function (product) {

@@ -71,7 +71,7 @@
 
             <ul class="nav text-center case-c">
                 <li class="active"><a href="/">Wszystkie</a></li>
-                <li ng-repeat="category in categories"><a href="/category/{{ category.id }}">{{ category.name }}</a></li>
+                <li ng-repeat="category in categories"><a href="/{{ category.slug }}">{{ category.name }}</a></li>
             </ul>
 
             <div class="navbar-btn-group btn-group navbar-right">
@@ -88,7 +88,7 @@
 
                             <li ng-repeat="item in cart track by $index">
 
-                                <img src="{{ item.thumbnail }}" alt="Image Thumbnail">
+                                <img ng-src="{{ item.thumbnail }}" alt="Image Thumbnail">
 
                                 <div class="mini-cart__text">
 
