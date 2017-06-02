@@ -340,7 +340,7 @@ myServices.service('categoriesService', [ '$http' , function ( $http ) {
 }]);
 'use strict';
 
-var controllersAdmin = angular.module( 'controllersAdmin' , ['angularFileUpload', 'myDirectives'] );
+var controllersAdmin = angular.module( 'controllersAdmin' , ['angularFileUpload', 'myDirectives', 'ui.select', 'ngSanitize' ] );
 
 controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', function( $scope , $http, checkToken ){
 
@@ -626,16 +626,13 @@ controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout
 
     $scope.category = {};
 
-    $scope.initSelect2 = function() {
+    // get categories
+    categoriesService.getData().then(function(data) {
 
-        $(".select2").select2({
-            placeholder: "Select products",
-            allowClear: true
-        });
+        $scope.categories = data.data;
+        $scope.category['id'] = $scope.categories.length + 1;
 
-    };
-
-    $scope.initSelect2();
+    });
 
     // get products without category - category '1'
     productsService.getByCategory(1).then(function(data) {
@@ -645,7 +642,28 @@ controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout
     });
 
     // create category
-    $scope.createCategory = function(category) {
+    $scope.createCategory = function(category, products) {
+
+        angular.forEach(products.selected, function(item) {
+            item.category = category.id;
+            console.log(item);
+
+            $http.post( 'api/admin/products/update/', {
+
+                token: checkToken.raw(),
+                product: item
+
+            }).success( function(){
+
+                $scope.success = true;
+
+            }).error( function(){
+
+                console.log( 'Error on communicate with API.' );
+
+            });
+
+        });
 
         $http.post( 'api/admin/categories/create/', {
 
@@ -656,6 +674,17 @@ controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout
 
             $scope.success = true;
             $scope.category = {};
+            categoriesService.getData().then(function(data) {
+
+                $scope.categories = data.data;
+                $scope.category['id'] = $scope.categories.length + 1;
+
+            });
+            productsService.getByCategory(1).then(function(data) {
+
+                $scope.products = data.data;
+
+            });
             $timeout(function(){
                 $scope.success = false;
             }, 3000);

@@ -24,3 +24,5 @@
 -animacja powiekszania cyfry w koszyku przy dodaniu produktu
 - po usunieciu kategorii w produktach kategoria zmienia się na '0', trzeba by dodac kategorie 'uncategorized'
 - wywalic console.log / var_dump
+-style buttonow poprawic
+-wiadomosc przy usuwaniu kategorii ze wszystkie produkty z tej kategorii trafia do 'uncategorized'

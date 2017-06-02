@@ -9,7 +9,7 @@
                 <div class="form-group">
 
                     <label for="name">Product name:</label>
-                    <input id="name" type="text" class="form-control" ng-model="product.name">
+                    <input id="name" type="text" class="form-control" ng-model="product.name" required>
 
                 </div>
 
@@ -30,7 +30,7 @@
                 <div class="form-group">
 
                     <label for="price">Product price:</label>
-                    <input id="price" type="text" class="form-control" ng-model="product.price">
+                    <input id="price" type="text" class="form-control" ng-model="product.price" required>
 
                 </div>
 
@@ -38,9 +38,10 @@
 
             <div class="col-sm-6">
 
-                <h2>{{product.name}}</h2>
-                <p>{{product.description}}</p>
-                <h3><span class="label label-warning">{{product.price | number:2 }}$</span></h3>
+                <h2>{{ product.name }}</h2>
+                <h5>{{ product.category.name }}</h5>
+                <p>{{ product.description }}</p>
+                <h3><span class="label label-warning">{{ product.price | number:2 }}$</span></h3>
 
             </div>
 
