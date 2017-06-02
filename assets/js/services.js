@@ -127,6 +127,26 @@ myServices.service('checkToken', ['store', 'jwtHelper', function(store, jwtHelpe
 
 }]);
 
+myServices.service('productsService', [ '$http' , function ( $http ) {
+
+    this.getByCategory = function ( id ) {
+
+        return $http.get('api/site/products/getByCategory/' + id)
+
+            .success(function(data){
+
+                return data;
+
+            }).error(function(){
+
+                console.log( 'Error on communicate with API.' );
+
+            });
+
+    };
+
+}]);
+
 myServices.service('categoriesService', [ '$http' , function ( $http ) {
 
 

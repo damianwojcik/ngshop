@@ -22,6 +22,14 @@ class Products extends CI_Controller {
         echo json_encode($result);
     }
 
+    public function getByCategory( $id = false )
+    {
+
+        $result = $this->Products_model->getByCategory($id);
+
+        echo json_encode($result);
+    }
+
     public function getImages( $id ) {
 
         $basePath = FCPATH . '..' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;

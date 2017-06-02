@@ -78,6 +78,7 @@ controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$locati
 
     };
 
+	// get categories
     categoriesService.getData().then(function(data) {
 
         $scope.categories = data.data;

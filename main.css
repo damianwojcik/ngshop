@@ -5909,6 +5909,9 @@ p {
   left: -1000em;
   position: absolute; }
 
+.inline {
+  display: inline; }
+
 .text-center {
   text-align: center; }
 
@@ -5978,6 +5981,24 @@ select {
     position: relative; }
   .nav-bottom .nav li {
     display: inline-block; }
+    .nav-bottom .nav li.item-symbol {
+      color: #FFF; }
+      .nav-bottom .nav li.item-symbol a {
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        position: relative;
+        top: 12px; }
+        .nav-bottom .nav li.item-symbol a:hover {
+          color: inherit;
+          background-color: #0484c7; }
+      .nav-bottom .nav li.item-symbol span {
+        position: absolute;
+        top: 48%;
+        left: 52%;
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        padding: 0; }
     .nav-bottom .nav li a {
       height: 55px;
       padding: 0 20px;
@@ -5990,7 +6011,7 @@ select {
       height: 3px;
       width: 100%;
       background: #0484c7;
-      top: -1px;
+      top: -3px;
       bottom: 0;
       left: 0;
       right: 0;
@@ -6091,12 +6112,14 @@ canvas {
   padding: 10px 13px; }
 
 .panel {
-  border-radius: 0;
+  border-radius: 0; }
+
+.col-sm-3 .panel {
   border: 0; }
-  .panel-body {
+  .col-sm-3 .panel-body {
     padding: 0 0 15px 0;
     text-align: center; }
-  .panel-title {
+  .col-sm-3 .panel-title {
     font-size: 14px;
     font-weight: 700;
     line-height: 1.2;
@@ -6106,9 +6129,9 @@ canvas {
     margin-bottom: 15px;
     padding: 0;
     height: 32px; }
-    .panel-title a {
+    .col-sm-3 .panel-title a {
       color: inherit; }
-  .panel-label {
+  .col-sm-3 .panel-label {
     color: #e30000;
     padding: 0;
     display: block;
@@ -6158,6 +6181,12 @@ canvas {
           display: block;
           float: left;
           margin-top: 25px; }
+          .header .left-col .nav ul li.active,
+          .header .right-col .nav ul li.active {
+            color: #e30000; }
+            .header .left-col .nav ul li.active a,
+            .header .right-col .nav ul li.active a {
+              color: inherit; }
           .header .left-col .nav ul li a,
           .header .right-col .nav ul li a {
             display: block;

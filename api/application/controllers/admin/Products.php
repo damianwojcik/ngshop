@@ -34,7 +34,6 @@ class Products extends CI_Controller {
     public function update()
     {
         $product = $this->input->post('product');
-        var_dump($product);
         $this->Products_model->update($product);
     }
 

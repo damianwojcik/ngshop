@@ -29,6 +29,22 @@ app.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $h
 		templateUrl : 'partials/admin/product-create.html'
 	});
 
+    // ============ ADMIN CATEGORIES ============
+    $routeProvider.when( '/admin/categories' , {
+        controller : 'categories',
+        templateUrl : 'partials/admin/categories.html'
+    });
+
+    // $routeProvider.when( '/admin/category/edit/:id' , {
+    //     controller: 'categoryEdit',
+    //     templateUrl : 'partials/admin/category-edit.html'
+    // });
+    //
+    $routeProvider.when( '/admin/category/create' , {
+        controller: 'categoryCreate',
+        templateUrl : 'partials/admin/category-create.html'
+    });
+
 	// ============ ADMIN USERS ============
 	$routeProvider.when( '/admin/users' , {
 		controller: 'users',
@@ -277,6 +293,26 @@ myServices.service('checkToken', ['store', 'jwtHelper', function(store, jwtHelpe
     this.del = function () {
 
         store.remove('token');
+
+    };
+
+}]);
+
+myServices.service('productsService', [ '$http' , function ( $http ) {
+
+    this.getByCategory = function ( id ) {
+
+        return $http.get('api/site/products/getByCategory/' + id)
+
+            .success(function(data){
+
+                return data;
+
+            }).error(function(){
+
+                console.log( 'Error on communicate with API.' );
+
+            });
 
     };
 
@@ -534,7 +570,103 @@ controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout'
 
         });
 
-    }
+    };
+
+}]);
+
+controllersAdmin.controller( 'categories' , [ '$scope' , '$http' , 'categoriesService', 'productsService', 'checkToken', function( $scope , $http, categoriesService, productsService, checkToken ){
+
+
+    // get categories
+    categoriesService.getData().then(function(data) {
+
+        $scope.categories = data.data;
+
+    });
+
+    // get products from given category
+    $scope.products = [];
+    $scope.productsCount = [];
+
+    $scope.getProducts = function( id ){
+
+        productsService.getByCategory( id ).then(function(data) {
+
+            $scope.products[id] = data.data;
+            $scope.productsCount[id] = $scope.products[id].length;
+
+        });
+
+    };
+
+    $scope.delete = function(category, $index) {
+
+        if (!confirm('Are you really want to delete this category?')) {
+            return false;
+        }
+
+        $scope.categories.splice($index, 1);
+
+        $http.post( 'api/admin/categories/delete/', {
+
+            token: checkToken.raw(),
+            category: category
+
+        }).error( function(){
+
+            console.log( 'Error on communicate with API.' );
+
+        });
+
+    };
+
+}]);
+
+controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout', 'checkToken', 'categoriesService', 'productsService', function( $scope , $http, $timeout, checkToken, categoriesService, productsService ){
+
+    $scope.category = {};
+
+    $scope.initSelect2 = function() {
+
+        $(".select2").select2({
+            placeholder: "Select products",
+            allowClear: true
+        });
+
+    };
+
+    $scope.initSelect2();
+
+    // get products without category - category '1'
+    productsService.getByCategory(1).then(function(data) {
+
+        $scope.products = data.data;
+
+    });
+
+    // create category
+    $scope.createCategory = function(category) {
+
+        $http.post( 'api/admin/categories/create/', {
+
+            token: checkToken.raw(),
+            category: category
+
+        }).success( function( ){
+
+            $scope.success = true;
+            $scope.category = {};
+            $timeout(function(){
+                $scope.success = false;
+            }, 3000);
+
+        }).error( function(){
+
+            console.log( 'Error on communicate with API.' );
+
+        });
+
+    };
 
 }]);
 
@@ -802,6 +934,7 @@ controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$locati
 
     };
 
+	// get categories
     categoriesService.getData().then(function(data) {
 
         $scope.categories = data.data;

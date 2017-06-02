@@ -1,42 +1,144 @@
-<div class="container">
+<header class="header">
 
-    <div class="row">
+    <div class="container">
 
-        <div class="col-sm-12">
+        <div class="row">
 
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#/home">ngShop</a>
-                    </div>
+            <div class="col-sm-12">
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li ng-class="{ active : isActive('/admin/users') }"><a href="#/admin/users">Users</a></li>
-                            <li ng-class="{ active : isActive('/admin/products') }"><a href="#/admin/products">Products</a></li>
-                            <li ng-class="{ active : isActive('/admin/orders') }"><a href="#/admin/orders">Orders</a></li>
+                <div class="brand-col hidden-xs">
+
+                    <a href="#">
+                        <img src="assets/img/logo.png" alt="Logo">
+                    </a>
+
+                </div><!-- /.brand-col -->
+
+                <div class="left-col">
+
+                    <nav class="nav navbar-nav navbar-right" role="navigation">
+
+                        <div class="vcenter">
+
+                            <ul>
+                                <li>
+                                    <a href="#">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#/admin/products">Products</a>
+                                </li>
+                                <li>
+                                    <a href="#/admin/categories">Categories</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </nav>
+
+                </div><!-- /.left-col -->
+
+                <div class="right-col">
+
+                    <nav class="nav navbar-nav navbar-right" role="navigation">
+
+                        <div class="vcenter">
+
+                            <ul>
+                                <li>
+                                    <a href="#/admin/orders">Orders</a>
+                                </li>
+                                <li>
+                                    <a href="#/admin/users">Users</a>
+                                </li>
+                                <li>
+                                    <a href="#" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout</a>
+                                </li>
+                                <li class="active">
+                                    <a href="#/admin/products">
+                                        <span class="glyphicon glyphicon-asterisk"></span>Admin
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </nav>
+
+                </div><!-- /.right-col -->
+
+            </div><!-- /.col-sm-12 -->
+
+        </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+</header><!-- /.header -->
+
+<nav class="nav-bottom">
+
+    <div class="container">
+
+        <div class="collapse navbar-collapse">
+
+            <ul class="nav text-center case-c">
+                <li class="active"><a href="/">Wszystkie</a></li>
+                <li ng-repeat="category in categories"><a href="/{{ category.slug }}">{{ category.name }}</a></li>
+                <!--<li class="item-symbol">-->
+                    <!--<a href="#/admin/category/create">-->
+                        <!--<span class="glyphicon glyphicon-plus"></span>-->
+                    <!--</a>-->
+                <!--</li>-->
+            </ul>
+
+            <div class="navbar-btn-group btn-group navbar-right">
+
+                <a class="btn btn-outline" data-toggle="dropdown"><b class="cart-count">{{ cart.length }}</b><span class="glyphicon glyphicon-shopping-cart"></span></a>
+
+                <div class="mini-cart dropdown-menu" data-keep-open="true">
+
+                    <section class="mini-cart__section">
+
+                        <ul>
+
+                            <li ng-if="!cart.length">No products in shopping cart.</li>
+
+                            <li ng-repeat="item in cart track by $index">
+
+                                <img ng-src="{{ item.thumbnail }}" alt="Image Thumbnail">
+
+                                <div class="mini-cart__text">
+
+                                    <span>{{ item.name }}</span>
+
+                                    <span>{{ item.amount }} x {{ item.price | number:2 }} $</span>
+
+                                    <div class="btn-group">
+                                        <a class="btn btn-default" href="#/cart"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <button type='button' class="btn btn-gray" ng-click="removeItem($index); $event.stopPropagation();"><span class="glyphicon glyphicon-trash"></span></button>
+                                    </div>
+
+                                </div>
+
+                            </li>
+
                         </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#" ng-click="logout()">Logout</a></li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
 
-            <div class="alert alert-warning" ng-if="notAdmin">
-                You have no rights to access admin page.
-            </div>
+                    </section><!-- /.mini-cart__section -->
 
-        </div>
+                    <section class="mini-cart__section">
 
-    </div><!-- /.row -->
+                        <a href="#/cart" class="btn btn-block btn-default">Go to shopping cart</a>
 
-</div><!-- /.container -->
+                    </section><!-- /.mini-cart__section -->
+
+                </div><!-- /.mini-cart -->
+
+            </div><!-- /.navbar-btn-group btn group navbar-right -->
+
+        </div><!-- /.navbar-collapse -->
+
+    </div><!-- /.container -->
+
+</nav>
+

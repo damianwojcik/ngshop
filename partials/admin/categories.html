@@ -1,0 +1,51 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-xs-6">
+            <input type="text" class="form-control" placeholder="Search categories..." ng-model="search">
+            <br>
+        </div>
+
+        <div class="col-xs-6">
+            <a href="#/admin/category/create" class="btn btn-success pull-right">Add category</a>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <div class="panel panel-default" ng-repeat="category in categories track by $index | filter : search">
+
+                <div class="panel-body" ng-init="getProducts(category.id)">
+
+                    <h2>
+                        <a ng-if="$index != 0" href="#/admin/category/edit/{{ category.id }}">{{ category.name }}</a>
+                        <span ng-if="$index == 0" >{{ category.name }}</span>
+                    </h2>
+                    <h4>
+                        Products in category:
+                        <a ng-if="$index != 0" class="inline" href="#/admin/category/edit/{{ category.id }}">
+                            {{ productsCount[category.id] }}
+                        </a>
+                        <span ng-if="$index == 0" class="inline">
+                            {{ productsCount[category.id] }}
+                        </span>
+                    </h4>
+
+                    <div ng-if="$index != 0">
+                        <button ng-click="delete(category, $index)" class="btn btn-danger pull-right">Delete category</button>
+                        <a href="#/admin/category/edit/{{ category.id }}" class="btn btn-success pull-right">Edit category</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

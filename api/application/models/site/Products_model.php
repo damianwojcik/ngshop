@@ -16,6 +16,26 @@ class Products_model extends CI_Model {
         }
 
         return $q;
+
+    }
+
+    public function getByCategory( $id = false )
+    {
+
+        if ( $id == false )
+        {
+            $q = $this->db->get( 'products' );
+            $q = $q->result();
+        }
+        else
+        {
+            $this->db->where( 'category' , $id );
+            $q = $this->db->get( 'products' );
+            $q = $q->result_array();
+        }
+
+        return $q;
+
     }
 
 }
