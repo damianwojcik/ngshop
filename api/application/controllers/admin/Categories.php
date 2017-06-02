@@ -11,6 +11,7 @@ class Categories extends CI_Controller {
         $_POST = json_decode($post, true);
 
         $this->load->model('admin/Categories_model');
+        $this->load->helper('slugify');
 
         $token = $this->input->post('token');
         $token = $this->jwt->decode($token, config_item('encryption_key'));
@@ -27,6 +28,7 @@ class Categories extends CI_Controller {
     {
 
         $category = $this->input->post('category');
+        $category['slug'] = slugify($category['name']);
         $this->Categories_model->create($category);
 
     }
