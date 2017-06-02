@@ -26,11 +26,11 @@ app.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $h
         templateUrl : 'partials/admin/categories.html'
     });
 
-    // $routeProvider.when( '/admin/category/edit/:id' , {
-    //     controller: 'categoryEdit',
-    //     templateUrl : 'partials/admin/category-edit.html'
-    // });
-    //
+    $routeProvider.when( '/admin/category/edit/:id' , {
+        controller: 'categoryEdit',
+        templateUrl : 'partials/admin/category-edit.html'
+    });
+
     $routeProvider.when( '/admin/category/create' , {
         controller: 'categoryCreate',
         templateUrl : 'partials/admin/category-create.html'

@@ -1,0 +1,70 @@
+<form ng-submit="saveChanges(category, products)">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-sm-6">
+
+                <div class="form-group">
+
+                    <label for="name">Category name:</label>
+                    <input id="name" type="text" class="form-control" ng-model="category.name" required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="products">Products:</label>
+
+                    <br>
+
+                    <ui-select id="products" name="products" ng-model="products.selected" sortable="true" close-on-select="false" multiple>
+                        <ui-select-choices repeat="product in products | filter: { name: $select.search }">
+                            <div ng-bind-html="product.name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                        <ui-select-match placeholder="Select products...">{{ $item.name }}</ui-select-match>
+                    </ui-select>
+
+                    <br>
+
+                    <small>
+                        Showing products from category 'uncategorized'.
+                    </small>
+
+                </div>
+
+            </div>
+
+            <div class="col-sm-6">
+
+                <h2>{{ category.name }}</h2>
+
+                <h4>Products:</h4>
+
+                <ul>
+                    <li ng-repeat="item in products.selected">{{ item.name }}</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-12 text-right">
+
+                <hr>
+
+                <a href="#/admin/categories" class="btn btn-default">Return</a>
+
+                <button class="btn btn-primary" type="submit" ng-if="!success">Save changes</button>
+                <button class="btn btn-success" type="button" ng-if="success" disabled>Saving changes...</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>

@@ -305,8 +305,8 @@ controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout
     $scope.createCategory = function(category, products) {
 
         angular.forEach(products.selected, function(item) {
+
             item.category = category.id;
-            console.log(item);
 
             $http.post( 'api/admin/products/update/', {
 
@@ -356,6 +356,142 @@ controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout
         });
 
     };
+
+}]);
+
+controllersAdmin.controller( 'categoryEdit', [ '$scope' , '$http' , '$q', '$timeout', '$routeParams', 'checkToken' , function( $scope , $http, $q, $timeout, $routeParams, checkToken ) {
+
+    // arrays difference
+    Array.prototype.diff = function(a) {
+        return this.filter(function(i) {return a.indexOf(i) < 0;});
+    };
+
+    var categoryId = $routeParams.id;
+    $scope.id = categoryId;
+
+    // get category
+    $http.post( 'api/admin/categories/get/' + categoryId, {
+
+        token: checkToken.raw()
+
+    }).success( function( data ){
+
+        $scope.category = data;
+
+    }).error( function(){
+
+        console.log( 'Error on communicate with API.' );
+
+    });
+
+    // get products from this category + uncategorized
+    $scope.productsUncategorized = $http.get('api/site/products/getByCategory/1', {cache: false});
+    $scope.productsFromCategory = $http.get('api/site/products/getByCategory/' + categoryId, {'cache': false});
+
+    $q.all([$scope.productsUncategorized, $scope.productsFromCategory]).then(function(data) {
+        $scope.products = data[0].data.concat(data[1].data);
+    });
+
+    $http.get( 'api/site/products/getByCategory/' + categoryId).success( function( data ){
+
+        $scope.products.selected = data;
+
+    }).error( function(){
+
+        console.log( 'Error on communicate with API.' );
+
+    });
+
+    // save changes
+    $scope.saveChanges = function(category, products) {
+
+        var productsArr = products.filter(function( obj ) {
+            return obj.id !== products.length;
+        });
+
+        var unselectedProductsArr = [];
+
+        if(productsArr.length === products.selected.length ) {
+
+            unselectedProductsArr = [];
+
+        } else {
+
+            unselectedProductsArr = productsArr.diff(products.selected);
+
+        }
+
+        $http.post( 'api/admin/categories/update/', {
+
+            token: checkToken.raw(),
+            category: category
+
+        }).success( function(){
+
+            $scope.success = true;
+
+            $timeout(function(){
+
+                $scope.success = false;
+
+            }, 3000);
+
+        }).error( function(){
+
+            console.log( 'Error on communicate with API.' );
+
+        });
+
+        // update selected products category
+        angular.forEach(products.selected, function(item) {
+
+            item.category = category.id;
+
+            $http.post( 'api/admin/products/update/', {
+
+                token: checkToken.raw(),
+                product: item
+
+            }).success( function(){
+
+                $scope.success = true;
+
+            }).error( function(){
+
+                console.log( 'Error on communicate with API.' );
+
+            });
+
+        });
+
+        if(unselectedProductsArr.length) {
+
+            // update unselected products category
+            angular.forEach(unselectedProductsArr, function(item) {
+
+                item.category = 1;
+
+                $http.post( 'api/admin/products/update/', {
+
+                    token: checkToken.raw(),
+                    product: item
+
+                }).success( function(){
+
+                    $scope.success = true;
+
+                }).error( function(){
+
+                    console.log( 'Error on communicate with API.' );
+
+                });
+
+            });
+
+        }
+
+    };
+
 
 }]);
 

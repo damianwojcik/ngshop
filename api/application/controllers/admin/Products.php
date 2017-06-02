@@ -31,12 +31,6 @@ class Products extends CI_Controller {
         echo json_encode($result);
     }
 
-    public function update()
-    {
-        $product = $this->input->post('product');
-        $this->Products_model->update($product);
-    }
-
     public function create()
     {
         $product = $this->input->post('product');
@@ -45,6 +39,12 @@ class Products extends CI_Controller {
         $new_product_id = $this->db->insert_id();
         mkdir(FCPATH . '..' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $new_product_id);
 
+    }
+
+    public function update()
+    {
+        $product = $this->input->post('product');
+        $this->Products_model->update($product);
     }
 
     public function delete()

@@ -24,6 +24,14 @@ class Categories extends CI_Controller {
 
     }
 
+    public function get($id = false)
+    {
+
+        $result = $this->Categories_model->get($id);
+
+        echo json_encode($result);
+    }
+
     public function create()
     {
 
@@ -31,6 +39,12 @@ class Categories extends CI_Controller {
         $category['slug'] = slugify($category['name']);
         $this->Categories_model->create($category);
 
+    }
+
+    public function update()
+    {
+        $category = $this->input->post('category');
+        $this->Categories_model->update($category);
     }
 
     public function delete()
