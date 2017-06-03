@@ -471,14 +471,14 @@ myServices.service('categoriesService', [ '$http' , function ( $http ) {
 }]);
 'use strict';
 
-var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'myDirectives', 'ui.select', 'ngSanitize', 'angular-owl-carousel-2', 'ui.bootstrap' ] );
+var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'myDirectives', 'ui.select', 'ngSanitize', 'angular-owl-carousel-2' ] );
 
 controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', 'productsService', function( $scope , $http, checkToken, productsService ){
 
     // get products
     $http.post( 'api/admin/products/get', {
 
-  
+       token: checkToken.raw()
 
     }).then( function( data ){
 
@@ -1293,7 +1293,7 @@ controllersAdmin.controller( 'adminCategory' , [ '$scope', '$http', '$location',
 
 }]);
 
-controllersAdmin.controller( 'adminHome' , [ '$scope', '$uibModal', '$log', '$document', function( $scope, $uibModal, $log, $document ){
+controllersAdmin.controller( 'adminHome' , [ '$scope', function( $scope){
 
     var owlAPi;
     $scope.showModal = false;
