@@ -30,6 +30,14 @@ class Products extends CI_Controller {
         echo json_encode($result);
     }
 
+    public function getCategoryName( $id )
+    {
+
+        $result = $this->Products_model->getCategoryName($id);
+
+        echo json_encode($result);
+    }
+
     public function getByCategorySlug( $slug )
     {
 

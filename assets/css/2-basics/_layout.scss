@@ -15,8 +15,13 @@
 
 .container {
   position: relative;
-  padding: 0 15px;
-  max-width: 1170px;
+  padding: 0 30px;
+  width: 1170px;
+  margin: 0 auto;
 }
 
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
 /* END LATOUT */

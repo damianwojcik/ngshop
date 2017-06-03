@@ -116,9 +116,10 @@
 
       <div class="col-sm-6">
 
-        <h2>{{product.name}}</h2>
-        <p>{{product.description}}</p>
-        <h3><span class="label label-warning">{{product.price | number:2 }}$</span></h3>
+        <h2>{{ product.name }}</h2>
+        <h4>{{ product.category.name }}</h4>
+        <p>{{ product.description }}</p>
+        <h3><span class="label label-warning">{{ product.price | number:2 }}$</span></h3>
 
         <p>&nbsp;</p>
 
@@ -126,7 +127,7 @@
 
             <button type="button" ng-click="delImage( image , $index )" class="btn btn-danger btn-xs" style="position:absolute; right:0;"><strong>&times;</strong></button>
 
-            <img ng-class="{ active : image == product.thumbnail }" ng-click="setThumbnail(product, image)" ng-src="{{image}}" alt="{{image}}" class="pull-left img-thumbnail" style="width: 150px;margin:5px;cursor:pointer;">
+            <img ng-class="{ active : image == product.thumbnail }" ng-click="setThumbnail(product, image)" ng-src="{{ image }}" ng-alt="{{ image }}" class="pull-left img-thumbnail" style="width: 150px;margin:5px;cursor:pointer;">
 
         </div>
 

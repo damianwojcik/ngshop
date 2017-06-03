@@ -68,6 +68,7 @@ class Users extends CI_Controller {
         if ($this->form_validation->run())
         {
             $user = $this->input->post('user');
+            unset($user['passconf']);
             $this->Users_model->create($user);
         } else
         {

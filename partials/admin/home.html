@@ -1,0 +1,40 @@
+<div class="container">
+
+    {{ showModal }}
+
+    <button type="button" class="btn btn-default" ng-click="open()"><span class="glyphicon glyphicon-save"></span></button>
+
+    <div class="row">
+
+        <ng-owl-carousel class="owl-theme" owl-items="items" owl-properties="properties" owl-ready="ready($api)">
+
+            <div class="item">
+
+                <a href="#">
+                    <img src="uploads/promos/promo2.jpg" alt="Promo 1">
+                </a>
+
+                <div class="btn-group">
+
+                    <a class="btn btn-default" href="#/cart"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a class="btn btn-default" href="#/cart"><span class="glyphicon glyphicon-upload"></span></a>
+                    <button type="button" class="btn btn-gray" ng-click="removeItem($index); $event.stopPropagation();"><span class="glyphicon glyphicon-trash"></span></button>
+                </div>
+
+            </div>
+
+            <div class="item" data-ng-repeat="item in items">
+                <a href="#">
+                    <img src="" alt="">
+                </a>
+            </div>
+
+        </ng-owl-carousel>
+
+    </div><!-- ./row -->
+
+</div><!-- ./container-->
+
+<div class="modal-demo">
+
+</div>

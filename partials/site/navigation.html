@@ -22,7 +22,7 @@
 
                             <ul>
                                 <li>
-                                    <a href="#">Home</a>
+                                    <a href="#/">Home</a>
                                 </li>
                                 <li>
                                     <a href="#products">Products</a>
@@ -46,7 +46,7 @@
                                 <li ng-class="{ active : isActive('/login') }" ng-if="!loggedIn"><a href="#/login"><span class="glyphicon glyphicon-user"></span>Login</a></li>
                                 <li ng-class="{ active : isActive('/logout') }" ng-if="loggedIn"><a href="#" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
                                 <li ng-class="{ active : isActive('/register') }" ng-if="!loggedIn"><a href="#/register"><span class="glyphicon glyphicon-edit"></span>Register</a></li>
-                                <li ng-class="{ active : isActive('/admin/products') }" ng-if="isAdmin"><a href="#/admin/products"><span class="glyphicon glyphicon-asterisk"></span>Admin</a></li>
+                                <li ng-class="{ active : isActive('/admin/products') }" ng-if="isAdmin"><a href="#/admin"><span class="glyphicon glyphicon-asterisk"></span>Admin</a></li>
                             </ul>
 
                         </div>

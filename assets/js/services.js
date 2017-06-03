@@ -60,7 +60,6 @@ myServices.service('checkToken', ['store', 'jwtHelper', function(store, jwtHelpe
 
     }
 
-
     this.payload = function () {
 
         if ( store.get( 'token' ) ){
@@ -133,15 +132,31 @@ myServices.service('productsService', [ '$http' , function ( $http ) {
 
         return $http.get('api/site/products/getByCategoryId/' + id)
 
-            .success(function(data){
+            .then(function ( data ){
 
                 return data;
 
-            }).error(function(){
+            }, (function (){
 
                 console.log( 'Error on communicate with API.' );
 
-            });
+            }));
+
+    };
+
+    this.getCategoryName = function ( id ) {
+
+        return $http.get('api/site/products/getCategoryName/' + id)
+
+            .then(function ( data ){
+
+                return data;
+
+            }, (function (){
+
+                console.log( 'Error on communicate with API.' );
+
+            }));
 
     };
 
@@ -149,15 +164,15 @@ myServices.service('productsService', [ '$http' , function ( $http ) {
 
         return $http.get('api/site/products/getByCategorySlug/' + slug)
 
-            .success(function(data){
+            .then(function(data){
 
                 return data;
 
-            }).error(function(){
+            }, (function(){
 
                 console.log( 'Error on communicate with API.' );
 
-            });
+            }));
 
     };
 
@@ -169,15 +184,15 @@ myServices.service('categoriesService', [ '$http' , function ( $http ) {
 
         return $http.get('api/site/categories/get')
 
-            .success(function(data){
+            .then(function(data){
 
                 return data;
 
-            }).error(function(){
+            }, (function(){
 
                 console.log( 'Error on communicate with API.' );
 
-            });
+            }));
 
     };
 
@@ -185,15 +200,15 @@ myServices.service('categoriesService', [ '$http' , function ( $http ) {
 
         return $http.get('api/site/categories/getByCategorySlug/' + slug)
 
-            .success(function(data){
+            .then(function(data){
 
                 return data;
 
-            }).error(function(){
+            }, (function(){
 
                 console.log( 'Error on communicate with API.' );
 
-            });
+            }));
 
     };
 

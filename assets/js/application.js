@@ -2,111 +2,129 @@
 
 var app = angular.module( 'app' , [ 'ngRoute' , 'angular-storage', 'angular-jwt', 'controllersNavigation', 'controllersAdmin', 'controllersSite', 'myServices' ] );
 
-app.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $httpProvider ) {
+app.config( [ '$routeProvider' , '$httpProvider' , '$locationProvider', function( $routeProvider , $httpProvider, $locationProvider ) {
+
+    $locationProvider.hashPrefix('');
 
 	// ============ ADMIN PRODUCTS ============
 	$routeProvider.when( '/admin/products' , {
 		controller : 'products',
 		templateUrl : 'partials/admin/products.html'
-	});
+	})
 
-	$routeProvider.when( '/admin/product/edit/:id' , {
+	.when( '/admin/product/edit/:id' , {
 		controller: 'productEdit',
 		templateUrl : 'partials/admin/product-edit.html'
-	});
+	})
 
-	$routeProvider.when( '/admin/product/create' , {
+	.when( '/admin/product/create' , {
 		controller: 'productCreate',
 		templateUrl : 'partials/admin/product-create.html'
-	});
+	})
 
     // ============ ADMIN CATEGORIES ============
-    $routeProvider.when( '/admin/categories' , {
+    .when( '/admin/categories' , {
         controller : 'categories',
         templateUrl : 'partials/admin/categories.html'
-    });
+    })
 
-    $routeProvider.when( '/admin/category/edit/:id' , {
+    .when( '/admin/category/edit/:id' , {
         controller: 'categoryEdit',
         templateUrl : 'partials/admin/category-edit.html'
-    });
+    })
 
-    $routeProvider.when( '/admin/category/create' , {
+    .when( '/admin/category/create' , {
         controller: 'categoryCreate',
         templateUrl : 'partials/admin/category-create.html'
-    });
+    })
 
 	// ============ ADMIN USERS ============
-	$routeProvider.when( '/admin/users' , {
+	.when( '/admin/users' , {
 		controller: 'users',
 		templateUrl : 'partials/admin/users.html'
-	});
+	})
 
-	$routeProvider.when( '/admin/user/edit/:id' , {
+	.when( '/admin/user/edit/:id' , {
 		controller: 'userEdit',
 		templateUrl : 'partials/admin/user-edit.html'
-	});
+	})
 
-	$routeProvider.when( '/admin/user/create' , {
+	.when( '/admin/user/create' , {
 		controller: 'userCreate',
 		templateUrl : 'partials/admin/user-create.html'
-	});
+	})
 
 	// ============ ADMIN ORDERS ============
-	$routeProvider.when( '/admin/orders' , {
+	.when( '/admin/orders' , {
 		controller: 'orders',
 		templateUrl : 'partials/admin/orders.html'
-	});
+	})
 
     // ============ ADMIN CATEGORY ============
-    $routeProvider.when( '/admin/:slug' , {
+    .when( '/admin/:slug' , {
         controller: 'adminCategory',
         templateUrl : 'partials/admin/category.html'
-    });
+    })
 
 	// ============ SITE PRODUCTS ============
-	$routeProvider.when( '/products' , {
+	.when( '/products' , {
 		controller : 'siteProducts',
 		templateUrl : 'partials/site/products.html'
-	});
+	})
 
-	$routeProvider.when( '/product/:id' , {
+	.when( '/product/:id' , {
 		controller: 'siteProduct',
 		templateUrl : 'partials/site/product.html'
-	});
+	})
 
-	$routeProvider.when( '/cart' , {
+	.when( '/cart' , {
 		controller: 'cartCtrl',
 		templateUrl : 'partials/site/cart.html'
-	});
+	})
 
 	// ============ SITE ORDERS ============
-	$routeProvider.when( '/orders' , {
+	.when( '/orders' , {
 		controller: 'siteOrders',
 		templateUrl : 'partials/site/orders.html'
-	});
-
-    // ============ SITE CATEGORY ============
-    $routeProvider.when( '/:slug' , {
-        controller: 'siteCategory',
-        templateUrl : 'partials/site/category.html'
-    });
+	})
 
 	// ============ LOGIN & REGISTER ============
-	$routeProvider.when( '/login' , {
+	.when( '/login' , {
 		controller: 'login',
 		templateUrl : 'partials/site/login.html'
-	});
+	})
 
-	$routeProvider.when( '/register' , {
+	.when( '/register' , {
 		controller: 'register',
 		templateUrl : 'partials/site/register.html'
-	});
+	})
 
-	// ============ DEFAULT ============
-	$routeProvider.otherwise({
-		redirectTo: '/products'
-		//todo: /home page
+    // ============ ADMIN HOME ============
+    .when( '/admin' , {
+        controller: 'adminHome',
+        templateUrl : 'partials/admin/home.html'
+    })
+
+    // ============ SITE HOME ============
+    .when( '/' , {
+        controller: 'siteHome',
+        templateUrl : 'partials/site/home.html'
+    })
+
+    // ============ 404 ============
+	.when( '/404' , {
+		controller: '404',
+		templateUrl : 'partials/site/404.html'
+	})
+
+    // ============ SITE CATEGORY ============
+	.when( '/:slug' , {
+		controller: 'siteCategory',
+		templateUrl : 'partials/site/category.html'
+	})
+
+	.otherwise({
+		redirectTo: '/404'
 	});
 
 }]);

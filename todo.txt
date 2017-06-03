@@ -40,3 +40,6 @@
 - przy usuwaniu kategorii zeby znikaly z menu
 - po wybraniu z categories-> category zmianna active w menu
 - glowna nawigacja (na samej górze) podświetlać active
+- ukrywanie uncategorized po stronie site(u admina widoczne)
+- /:slug problem
+- search filter wszedzie poprawic

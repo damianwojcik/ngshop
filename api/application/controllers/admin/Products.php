@@ -23,7 +23,7 @@ class Products extends CI_Controller {
 
     }
 
-    public function get($id = false)
+    public function get( $id = false )
     {
 
         $result = $this->Products_model->get($id);

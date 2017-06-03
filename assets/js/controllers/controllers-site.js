@@ -1,27 +1,31 @@
 'use strict';
 
-var controllersSite = angular.module( 'controllersSite' , [] );
+var controllersSite = angular.module( 'controllersSite' , [ 'myDirectives', 'angular-owl-carousel-2' ] );
 
-controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', 'categoriesService', function( $scope , $http, cartService, categoriesService ){
+controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', 'categoriesService', 'productsService', function( $scope , $http, cartService, categoriesService, productsService ){
 
     // get products
     $http.get( 'api/site/products/get' ).
-    success( function( data ){
+    then( function( data ){
 
-        $scope.products = data;
+        $scope.products = data.data;
 
-    }).error( function(){
+        angular.forEach($scope.products, function( item ) {
+
+            productsService.getCategoryName( item.category ).then(function( data ) {
+
+                item.categoryName = data.data.replace(/['"]+/g, '');
+
+            });
+
+        });
+
+    }, ( function(){
 
         console.log( 'Error on communicate with API.' );
 
-    });
+    }));
 
-    // get categories
-    categoriesService.getData().then(function(data) {
-
-        $scope.categories = data.data;
-
-    });
 
     // get cart
     $scope.$watch(function () {
@@ -39,13 +43,21 @@ controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService
     };
 
     $scope.checkCart = function (product) {
+
         if (cartService.show().length) {
+
             angular.forEach(cartService.show(), function(item) {
+
                 if (item.id == product.id) {
+
                     product.amount = item.amount;
+
                 }
+
             });
+
         }
+
     };
 
 }]);
@@ -56,15 +68,22 @@ controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams
     var id = $routeParams.id;
 
     $http.post( 'api/site/products/get/' + id ).
-    success( function( data ){
-        $scope.product = data;
-        $scope.checkCart(data);
-    }).error( function(){
+
+    then( function( data ){
+
+        $scope.product = data.data;
+        $scope.checkCart(data.data);
+
+    }, ( function(){
+
         console.log( 'Error on communicate with API.' );
-    });
+
+    }));
 
     $scope.addToCart = function (product) {
+
         cartService.add(product);
+
     };
 
     $scope.checkCart = function (product) {
@@ -79,11 +98,15 @@ controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams
 
     function getImages () {
         $http.get( 'api/site/products/getImages/' + id ).
-        success( function( data ){
-            $scope.images = data;
-        }).error( function(){
+        then( function( data ){
+
+            $scope.images = data.data;
+
+        }, ( function(){
+
             console.log( 'Error on communicate with API.' );
-        });
+
+        }));
     }
 
     getImages();
@@ -97,7 +120,7 @@ controllersSite.controller( 'siteOrders' , [ '$scope' , '$http' , 'checkToken', 
         token: checkToken.raw(),
         payload: checkToken.payload()
 
-    }).success( function( data ){
+    }).then( function( data ){
 
         $scope.orders = data;
 
@@ -106,9 +129,11 @@ controllersSite.controller( 'siteOrders' , [ '$scope' , '$http' , 'checkToken', 
             $scope.orders[key].items = parsed;
         });
 
-    }).error( function(){
+    }, ( function(){
+
         console.log( 'Error on communicate with API.' );
-    });
+
+    }));
 
 }]);
 
@@ -150,15 +175,17 @@ controllersSite.controller( 'cartCtrl' , [ '$scope' , '$http' , '$filter', 'cart
             items: $scope.cart,
             total: $scope.total()
 
-        }).success( function( data ){
+        }).then( function( data ){
 
             cartService.empty();
             $scope.alert = {type: 'success', msg: 'Order in process. Dont refresh the page.'};
             $('#paypalForm').submit();
 
-        }).error( function(){
+        }, ( function(){
+
             console.log( 'Error on communicate with API.' );
-        });
+
+        }));
 
     };
 
@@ -175,18 +202,20 @@ controllersSite.controller( 'siteOrders' , [ '$scope' , '$http' , 'checkToken', 
         token: checkToken.raw(),
         payload: checkToken.payload()
 
-    }).success( function( data ){
+    }).then( function( data ){
 
-        $scope.orders = data;
+        $scope.orders = data.data;
 
         angular.forEach( $scope.orders , function( order , key ){
             var parsed = JSON.parse( order.items );
             $scope.orders[key].items = parsed;
         });
 
-    }).error( function(){
+    }, ( function(){
+
         console.log( 'Error on communicate with API.' );
-    });
+
+    }));
 
 }]);
 
@@ -236,23 +265,27 @@ controllersSite.controller( 'login' , [ '$scope' , '$http' , 'store', 'checkToke
 
     $scope.formSubmit = function (user) {
         $http.post( 'api/site/user/login/', {
+
             email : user.email,
             password : user.password
-        }).success( function( data ){
+
+        }).then( function( data ){
 
             $scope.submit = true;
             $scope.error = data.error;
 
             if (!data.error) {
 
-                store.set('token', data.token);
+                store.set('token', data.data.token);
                 $location.path('/products');
 
             }
 
-        }).error( function(){
+        }, ( function(){
+
             console.log( 'Error on communicate with API.' );
-        });
+
+        }));
     };
 
 }]);
@@ -264,27 +297,63 @@ controllersSite.controller( 'register' , [ '$scope' , '$http' , function( $scope
     $scope.formSubmit = function (user) {
 
         $http.post( 'api/site/user/create/', {
+
             user : user,
             firstName : user.firstName,
             lastName : user.lastName,
             email : user.email,
             password : user.password,
             passconf : user.passconf
-        }).success( function( errors ){
+
+        }).then( function( errors ){
 
             $scope.submit = true;
             $scope.user = {};
 
             if (errors) {
-                $scope.errors = errors;
+
+                $scope.errors = errors.data;
+
             } else {
+
                 $scope.errors = {};
                 $scope.success = true;
+
             }
 
-        }).error( function(){
+        }, ( function(){
+
             console.log( 'Error on communicate with API.' );
-        });
+
+        }));
+    };
+
+}]);
+
+controllersSite.controller( 'siteHome' , [ '$scope' , '$http', '$timeout', function( $scope , $http, $timeout ){
+
+    var owlAPi;
+    $scope.items = [1, 2, 3, 4, 5, 6, 7, 8, 10];
+
+    $scope.properties = {
+
+        animateIn: 'fadeIn',
+        lazyLoad: true,
+        loop: true,
+        items: 1,
+        autoplay: true,
+        autoplayHoverPause: true,
+        nav: true,
+        dots: false,
+        navText: [
+            "<span class='glyphicon glyphicon-chevron-left'></span>",
+            "<span class='glyphicon glyphicon-chevron-right'></span>"
+        ]
+
+    };
+
+    $scope.ready = function ($api) {
+        owlAPi = $api;
     };
 
 }]);

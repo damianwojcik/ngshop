@@ -1,0 +1,43 @@
+/* BEGIN SLIDER */
+.owl-carousel {
+  position: relative;
+}
+
+.owl-theme .owl-nav {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.owl-theme .owl-nav .owl-prev,
+.owl-theme .owl-nav .owl-next {
+  border: 2px solid $white;
+  display: inline-block;
+  background: transparent;
+  border-radius: 0;
+  width: 52px;
+  height: 52px;
+  font-size: 24px;
+  text-align: center;
+  z-index: 99;
+  margin: 0;
+  padding: 0;
+  line-height: 2;
+
+  &:hover {
+    background: #333;
+    opacity: 0.8;
+  }
+}
+
+.owl-theme .owl-nav .owl-next {
+  border-left: 0;
+}
+
+.owl-carousel .btn-group {
+  position: absolute;
+  top: 0;
+  right:0;
+  z-index: 99;
+}
+/* END SLIDER */

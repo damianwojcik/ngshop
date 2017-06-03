@@ -13,7 +13,9 @@
                     <h3><span class="label label-warning">{{product.price | number:2 }}$</span></h3>
 
                     <div ng-repeat="image in images" class="pull-left" style="position:relative;">
+
                         <img ng-src="uploads/{{product.id}}/{{image}}" alt="{{image}}" class="pull-left img-thumbnail" style="width: 150px;margin:5px;">
+
                     </div>
 
                     <div class="clearfix"></div>

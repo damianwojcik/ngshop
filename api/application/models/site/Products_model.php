@@ -38,6 +38,17 @@ class Products_model extends CI_Model {
 
     }
 
+    public function getCategoryName( $id )
+    {
+
+        $this->db->where( 'id' , $id );
+        $q = $this->db->get( 'categories' );
+        $q = $q->row();
+
+        return $q->name;
+
+    }
+
     public function getByCategorySlug( $slug )
     {
 
