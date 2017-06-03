@@ -10,13 +10,13 @@ controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService
 
         $scope.products = data;
 
-
     }).error( function(){
 
         console.log( 'Error on communicate with API.' );
 
     });
 
+    // get categories
     categoriesService.getData().then(function(data) {
 
         $scope.categories = data.data;
@@ -187,6 +187,40 @@ controllersSite.controller( 'siteOrders' , [ '$scope' , '$http' , 'checkToken', 
     }).error( function(){
         console.log( 'Error on communicate with API.' );
     });
+
+}]);
+
+controllersSite.controller( 'siteCategory' , [ '$scope' , '$http' , '$routeParams' , 'cartService', 'productsService', 'categoriesService', function( $scope , $http , $routeParams, cartService, productsService, categoriesService ){
+
+    var slug = $routeParams.slug;
+
+    // get products
+    productsService.getByCategorySlug(slug).then(function(data) {
+
+        $scope.products = data.data;
+
+    });
+
+    // get categories
+    categoriesService.getData().then(function(data) {
+
+        $scope.categories = data.data;
+
+    });
+
+    $scope.addToCart = function (product) {
+        cartService.add(product);
+    };
+
+    $scope.checkCart = function (product) {
+        if (cartService.show().length) {
+            angular.forEach(cartService.show(), function(item) {
+                if (item.id == product.id) {
+                    product.amount = item.amount;
+                }
+            });
+        }
+    };
 
 }]);
 

@@ -22,10 +22,18 @@ class Products extends CI_Controller {
         echo json_encode($result);
     }
 
-    public function getByCategory( $id = false )
+    public function getByCategoryId( $id = false )
     {
 
-        $result = $this->Products_model->getByCategory($id);
+        $result = $this->Products_model->getByCategoryId($id);
+
+        echo json_encode($result);
+    }
+
+    public function getByCategorySlug( $slug )
+    {
+
+        $result = $this->Products_model->getByCategorySlug($slug);
 
         echo json_encode($result);
     }

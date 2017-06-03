@@ -5924,13 +5924,16 @@ p {
 
 .btn {
   position: relative;
-  border-radius: 0; }
+  border-radius: 0;
+  transition: all 0.4s ease-in-out;
+  outline: 0; }
 
 .btn-default {
   background-color: #0484c7;
   color: #FFF; }
   .btn-default:hover {
-    background-color: #000; }
+    background-color: #000;
+    color: #FFF; }
 
 .btn-outline {
   border: 1px solid #000; }
@@ -5957,9 +5960,16 @@ p {
 
 .btn-gray {
   background-color: #ddd; }
+  .btn-gray:hover {
+    background-color: #e30000;
+    color: #FFF; }
 
 select {
-  min-width: 300px; }
+  min-width: 300px;
+  border-radius: 0; }
+
+.form-control {
+  border-radius: 0; }
 
 .ui-select-container .btn-default {
   color: #000; }
@@ -6002,19 +6012,8 @@ select {
       height: 55px;
       padding: 0 20px;
       line-height: 55px; }
-      .nav-bottom .nav li a:hover {
+      .nav-bottom .nav li a:hover, .nav-bottom .nav li a:active, .nav-bottom .nav li a:focus {
         background-color: transparent; }
-    .nav-bottom .nav li.active a:after {
-      content: "";
-      position: absolute;
-      height: 3px;
-      width: 100%;
-      background: #0484c7;
-      top: -3px;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: 0 auto; }
   .nav-bottom .navbar-right {
     position: absolute;
     right: 0;
@@ -6071,6 +6070,14 @@ select {
     .mini-cart__section:last-child {
       border-top: 1px solid #ddd; }
 
+#magic-line {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 100px;
+  height: 3px;
+  background: #0484c7; }
+
 .my-drop-zone {
   border: dotted 3px lightgray; }
 
@@ -6087,6 +6094,17 @@ canvas {
   border: 1px solid #c3c3c3;
   height: 100px;
   margin: 6px 0 0 6px; }
+
+.thumbnail-block {
+  position: relative;
+  display: block;
+  border-radius: 0; }
+  .thumbnail-block .btn-group {
+    position: absolute;
+    right: 0;
+    bottom: 0; }
+    .thumbnail-block .btn-group span {
+      padding: 0; }
 
 .img-thumbnail {
   border-radius: 0;
@@ -6127,7 +6145,9 @@ canvas {
     margin-top: 25px;
     margin-bottom: 15px;
     padding: 0;
-    height: 32px; }
+    height: 32px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
     .col-sm-3 .panel-title a {
       color: inherit; }
   .col-sm-3 .panel-label {

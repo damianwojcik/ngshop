@@ -17,25 +17,25 @@
 
         <div class="col-sm-12">
 
-            <div class="panel panel-default" ng-repeat="category in categories track by $index | filter : search">
+            <div class="panel panel-default" ng-repeat="category in categories | filter : search">
 
                 <div class="panel-body" ng-init="getProducts(category.id)">
 
                     <h2>
-                        <a ng-if="$index != 0" href="#/admin/category/edit/{{ category.id }}">{{ category.name }}</a>
-                        <span ng-if="$index == 0" >{{ category.name }}</span>
+                        <a ng-if="category.id != 1" href="#/admin/category/edit/{{ category.id }}">{{ category.name }}</a>
+                        <span ng-if="category.id == 1" >{{ category.name }}</span>
                     </h2>
                     <h4>
                         Products in category:
-                        <a ng-if="$index != 0" class="inline" href="#/admin/category/edit/{{ category.id }}">
+                        <a ng-if="category.id != 1" class="inline" href="#/admin/category/edit/{{ category.id }}">
                             {{ productsCount[category.id] }}
                         </a>
-                        <span ng-if="$index == 0" class="inline">
+                        <span ng-if="category.id == 1" class="inline">
                             {{ productsCount[category.id] }}
                         </span>
                     </h4>
 
-                    <div ng-if="$index != 0">
+                    <div ng-if="category.id != 1">
                         <button ng-click="delete(category, $index)" class="btn btn-danger pull-right">Delete category</button>
                         <a href="#/admin/category/edit/{{ category.id }}" class="btn btn-success pull-right">Edit category</a>
                     </div>

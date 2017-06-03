@@ -1,5 +1,10 @@
 select {
   min-width: 300px;
+  border-radius: 0;
+}
+
+.form-control {
+  border-radius: 0;
 }
 
 .ui-select-container .btn-default {

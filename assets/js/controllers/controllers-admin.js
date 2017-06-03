@@ -2,8 +2,9 @@
 
 var controllersAdmin = angular.module( 'controllersAdmin' , ['angularFileUpload', 'myDirectives', 'ui.select', 'ngSanitize' ] );
 
-controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', function( $scope , $http, checkToken ){
+controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', 'categoriesService', function( $scope , $http, checkToken, categoriesService ){
 
+    // get products
     $http.post( 'api/admin/products/get', {
 
        token: checkToken.raw()
@@ -14,6 +15,13 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', f
 
     }).error( function(){
         console.log( 'Error on communicate with API.' );
+    });
+
+    // get categories
+    categoriesService.getData().then(function(data) {
+
+        $scope.categories = data.data;
+
     });
 
     $scope.delete = function(product, $index) {
@@ -33,7 +41,7 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', f
             console.log( 'Error on communicate with API.' );
         });
 
-    }
+    };
 
 }]);
 
@@ -250,7 +258,7 @@ controllersAdmin.controller( 'categories' , [ '$scope' , '$http' , 'categoriesSe
 
     $scope.getProducts = function( id ){
 
-        productsService.getByCategory( id ).then(function(data) {
+        productsService.getByCategoryId( id ).then(function(data) {
 
             $scope.products[id] = data.data;
             $scope.productsCount[id] = $scope.products[id].length;
@@ -295,7 +303,7 @@ controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout
     });
 
     // get products without category - category '1'
-    productsService.getByCategory(1).then(function(data) {
+    productsService.getByCategoryId(1).then(function(data) {
 
         $scope.products = data.data;
 
@@ -340,7 +348,7 @@ controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout
                 $scope.category['id'] = $scope.categories.length + 1;
 
             });
-            productsService.getByCategory(1).then(function(data) {
+            productsService.getByCategoryId(1).then(function(data) {
 
                 $scope.products = data.data;
 
@@ -385,14 +393,14 @@ controllersAdmin.controller( 'categoryEdit', [ '$scope' , '$http' , '$q', '$time
     });
 
     // get products from this category + uncategorized
-    $scope.productsUncategorized = $http.get('api/site/products/getByCategory/1', {cache: false});
-    $scope.productsFromCategory = $http.get('api/site/products/getByCategory/' + categoryId, {'cache': false});
+    $scope.productsUncategorized = $http.get('api/site/products/getByCategoryId/1', {cache: false});
+    $scope.productsFromCategory = $http.get('api/site/products/getByCategoryId/' + categoryId, {'cache': false});
 
     $q.all([$scope.productsUncategorized, $scope.productsFromCategory]).then(function(data) {
         $scope.products = data[0].data.concat(data[1].data);
     });
 
-    $http.get( 'api/site/products/getByCategory/' + categoryId).success( function( data ){
+    $http.get( 'api/site/products/getByCategoryId/' + categoryId).success( function( data ){
 
         $scope.products.selected = data;
 
@@ -494,7 +502,6 @@ controllersAdmin.controller( 'categoryEdit', [ '$scope' , '$http' , '$q', '$time
 
 
 }]);
-
 
 controllersAdmin.controller( 'users' , [ '$scope' , '$http', 'checkToken', function( $scope , $http, checkToken ){
 
@@ -674,6 +681,68 @@ controllersAdmin.controller( 'orders' , [ '$scope' , '$http' , 'checkToken', fun
 
         }).error( function(){
             console.log( 'Error on communicate with API.' );
+        });
+
+    };
+
+}]);
+
+controllersAdmin.controller( 'adminCategory' , [ '$scope', '$http', '$location', '$window', '$routeParams', 'productsService', 'categoriesService', 'checkToken', function( $scope, $http, $location, $window, $routeParams, productsService, categoriesService, checkToken ){
+
+    var slug = $routeParams.slug;
+
+    // get products
+    productsService.getByCategorySlug(slug).then(function(data) {
+
+        $scope.products = data.data;
+
+    });
+
+    // get categories
+    categoriesService.getByCategorySlug(slug).then(function(data) {
+
+        $scope.category = data.data;
+
+    });
+
+    $scope.deleteProduct = function(product, $index) {
+
+        if (!confirm('Are you really want to delete this product?')) {
+            return false;
+        }
+
+        $scope.products.splice($index, 1);
+
+        $http.post( 'api/admin/products/delete/', {
+
+            token: checkToken.raw(),
+            product: product
+
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
+
+    };
+
+    $scope.deleteCategory = function(category) {
+
+        if (!confirm('Are you really want to delete this category?')) {
+            return false;
+        }
+
+        $http.post( 'api/admin/categories/delete/', {
+
+            token: checkToken.raw(),
+            category: category
+
+        }).success( function(){
+
+            $location.path('/admin/categories');
+
+        }).error( function(){
+
+            console.log( 'Error on communicate with API.' );
+
         });
 
     };

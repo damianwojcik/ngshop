@@ -23,4 +23,12 @@ class Categories extends CI_Controller {
 
     }
 
+    public function getByCategorySlug( $slug )
+    {
+
+        $result = $this->Categories_model->getByCategorySlug($slug);
+
+        echo json_encode($result);
+    }
+
 }

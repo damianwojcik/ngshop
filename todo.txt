@@ -26,3 +26,17 @@
 - wywalic console.log / var_dump
 -style buttonow poprawic
 -wiadomosc przy usuwaniu kategorii ze wszystkie produkty z tej kategorii trafia do 'uncategorized'
+-selecty bez border radius
+-ujednolicic style selectow
+- glowna: slider / najnowsze promocje (4) / najpopularniejsze produkty (8) - best sellers / nowosci (8) / odbior osobisty / stopka (ala kfd)
+- kod znizkowy?
+- facebook / google login
+- w uploads stworzyc foldery products/promos
+- urle do productow wg slugow nie ID
+- stopka copyrights
+- 404 page, localhost/slug tez!
+- http://indrimuska.github.io/angular-selector/
+- magic line fix na podstronach
+- przy usuwaniu kategorii zeby znikaly z menu
+- po wybraniu z categories-> category zmianna active w menu
+- glowna nawigacja (na samej górze) podświetlać active

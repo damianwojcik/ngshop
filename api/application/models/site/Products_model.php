@@ -19,7 +19,7 @@ class Products_model extends CI_Model {
 
     }
 
-    public function getByCategory( $id = false )
+    public function getByCategoryId( $id = false )
     {
 
         if ( $id == false )
@@ -33,6 +33,21 @@ class Products_model extends CI_Model {
             $q = $this->db->get( 'products' );
             $q = $q->result_array();
         }
+
+        return $q;
+
+    }
+
+    public function getByCategorySlug( $slug )
+    {
+
+        $this->db->where( 'slug' , $slug );
+        $category = $this->db->get( 'categories' );
+        $category = $category->row();
+        $categoryId = $category->id;
+        $this->db->where( 'category' , $categoryId );
+        $q = $this->db->get( 'products' );
+        $q = $q->result_array();
 
         return $q;
 

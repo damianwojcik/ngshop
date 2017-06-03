@@ -18,4 +18,15 @@ class Categories_model extends CI_Model {
         return $q;
     }
 
+    public function getByCategorySlug( $slug )
+    {
+
+        $this->db->where( 'slug' , $slug );
+        $category = $this->db->get( 'categories' );
+        $category = $category->row();
+
+        return $category;
+
+    }
+
 }

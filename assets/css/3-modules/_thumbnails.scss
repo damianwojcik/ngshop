@@ -1,3 +1,19 @@
+.thumbnail-block {
+  position: relative;
+  display: block;
+  border-radius: 0;
+
+  .btn-group {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    span {
+      padding: 0;
+    }
+  }
+}
+
 .img-thumbnail {
   border-radius: 0;
   width: 100%;

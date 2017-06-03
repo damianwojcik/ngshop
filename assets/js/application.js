@@ -58,6 +58,12 @@ app.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $h
 		templateUrl : 'partials/admin/orders.html'
 	});
 
+    // ============ ADMIN CATEGORY ============
+    $routeProvider.when( '/admin/:slug' , {
+        controller: 'adminCategory',
+        templateUrl : 'partials/admin/category.html'
+    });
+
 	// ============ SITE PRODUCTS ============
 	$routeProvider.when( '/products' , {
 		controller : 'siteProducts',
@@ -79,6 +85,12 @@ app.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $h
 		controller: 'siteOrders',
 		templateUrl : 'partials/site/orders.html'
 	});
+
+    // ============ SITE CATEGORY ============
+    $routeProvider.when( '/:slug' , {
+        controller: 'siteCategory',
+        templateUrl : 'partials/site/category.html'
+    });
 
 	// ============ LOGIN & REGISTER ============
 	$routeProvider.when( '/login' , {

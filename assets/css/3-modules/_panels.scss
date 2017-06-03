@@ -24,6 +24,8 @@
       margin-bottom: 15px;
       padding: 0;
       height: 32px;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       a {
         color: inherit;

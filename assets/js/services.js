@@ -129,9 +129,25 @@ myServices.service('checkToken', ['store', 'jwtHelper', function(store, jwtHelpe
 
 myServices.service('productsService', [ '$http' , function ( $http ) {
 
-    this.getByCategory = function ( id ) {
+    this.getByCategoryId = function ( id ) {
 
-        return $http.get('api/site/products/getByCategory/' + id)
+        return $http.get('api/site/products/getByCategoryId/' + id)
+
+            .success(function(data){
+
+                return data;
+
+            }).error(function(){
+
+                console.log( 'Error on communicate with API.' );
+
+            });
+
+    };
+
+    this.getByCategorySlug = function ( slug ) {
+
+        return $http.get('api/site/products/getByCategorySlug/' + slug)
 
             .success(function(data){
 
@@ -149,10 +165,25 @@ myServices.service('productsService', [ '$http' , function ( $http ) {
 
 myServices.service('categoriesService', [ '$http' , function ( $http ) {
 
-
     this.getData = function() {
 
         return $http.get('api/site/categories/get')
+
+            .success(function(data){
+
+                return data;
+
+            }).error(function(){
+
+                console.log( 'Error on communicate with API.' );
+
+            });
+
+    };
+
+    this.getByCategorySlug = function ( slug ) {
+
+        return $http.get('api/site/categories/getByCategorySlug/' + slug)
 
             .success(function(data){
 

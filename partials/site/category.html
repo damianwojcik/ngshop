@@ -1,0 +1,45 @@
+<div class="container" ng-if="products">
+
+    <div class="row">
+
+        <div class="col-xs-6">
+            <input type="text" class="form-control" placeholder="Search products..." ng-model="search">
+            <br>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-3" ng-repeat="product in products | filter : search">
+
+            <div class="panel panel-default" >
+
+                <div class="panel-body" ng-init="checkCart(product)">
+
+                    <div class="thumbnail-block">
+
+                        <a class="thumbnail-link" href="#/product/{{product.id}}">
+                            <img ng-if="product.thumbnail" ng-src="{{ product.thumbnail }}" alt="Image Thumbnail" class="img-thumbnail">
+                            <img ng-if="!product.thumbnail" src="http://placehold.it/260x260" alt="Image Thumbnail" class="img-thumbnail">
+                            <span class="thumbnail-label">{{ categories[product.category - 1].name }}</span>
+                        </a>
+
+                    </div>
+
+                    <h2 class="panel-title"><a href="#/product/{{product.id}}">{{ product.name }}</a></h2>
+                    <h3 class="panel-label">{{ product.price | number:2 }} $</h3>
+                    <br>
+
+                    <button ng-click="addToCart(product); checkCart(product)" class="btn btn-success" ng-if="!product.amount">Add to Shopping Cart</button>
+                    <button ng-click="addToCart(product); checkCart(product)" class="btn btn-success" ng-if="product.amount">In cart: {{product.amount}}</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

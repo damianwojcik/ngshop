@@ -67,6 +67,12 @@ app.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $h
 		templateUrl : 'partials/admin/orders.html'
 	});
 
+    // ============ ADMIN CATEGORY ============
+    $routeProvider.when( '/admin/:slug' , {
+        controller: 'adminCategory',
+        templateUrl : 'partials/admin/category.html'
+    });
+
 	// ============ SITE PRODUCTS ============
 	$routeProvider.when( '/products' , {
 		controller : 'siteProducts',
@@ -88,6 +94,12 @@ app.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $h
 		controller: 'siteOrders',
 		templateUrl : 'partials/site/orders.html'
 	});
+
+    // ============ SITE CATEGORY ============
+    $routeProvider.when( '/:slug' , {
+        controller: 'siteCategory',
+        templateUrl : 'partials/site/category.html'
+    });
 
 	// ============ LOGIN & REGISTER ============
 	$routeProvider.when( '/login' , {
@@ -119,56 +131,73 @@ var myDirectives = angular.module( 'myDirectives' , [] );
     // Only for example
 
 
-    /**
-     * The ng-thumb directive
-     * @author: nerv
-     * @version: 0.1.2, 2014-01-09
-     */
-    myDirectives.directive('ngThumb', ['$window', function($window) {
-        var helper = {
-            support: !!($window.FileReader && $window.CanvasRenderingContext2D),
-            isFile: function(item) {
-                return angular.isObject(item) && item instanceof $window.File;
-            },
-            isImage: function(file) {
-                var type =  '|' + file.type.slice(file.type.lastIndexOf('/') + 1) + '|';
-                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+/**
+ * The ng-thumb directive
+ * @author: nerv
+ * @version: 0.1.2, 2014-01-09
+ */
+myDirectives.directive('ngThumb', ['$window', function($window) {
+
+    var helper = {
+        support: !!($window.FileReader && $window.CanvasRenderingContext2D),
+        isFile: function(item) {
+            return angular.isObject(item) && item instanceof $window.File;
+        },
+        isImage: function(file) {
+            var type =  '|' + file.type.slice(file.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+    };
+
+    return {
+        restrict: 'A',
+        template: '<canvas/>',
+        link: function(scope, element, attributes) {
+            if (!helper.support) return;
+
+            var params = scope.$eval(attributes.ngThumb);
+
+            if (!helper.isFile(params.file)) return;
+            if (!helper.isImage(params.file)) return;
+
+            var canvas = element.find('canvas');
+            var reader = new FileReader();
+
+            reader.onload = onLoadFile;
+            reader.readAsDataURL(params.file);
+
+            function onLoadFile(event) {
+                var img = new Image();
+                img.onload = onLoadImage;
+                img.src = event.target.result;
             }
-        };
 
-        return {
-            restrict: 'A',
-            template: '<canvas/>',
-            link: function(scope, element, attributes) {
-                if (!helper.support) return;
-
-                var params = scope.$eval(attributes.ngThumb);
-
-                if (!helper.isFile(params.file)) return;
-                if (!helper.isImage(params.file)) return;
-
-                var canvas = element.find('canvas');
-                var reader = new FileReader();
-
-                reader.onload = onLoadFile;
-                reader.readAsDataURL(params.file);
-
-                function onLoadFile(event) {
-                    var img = new Image();
-                    img.onload = onLoadImage;
-                    img.src = event.target.result;
-                }
-
-                function onLoadImage() {
-                    var width = params.width || this.width / this.height * params.height;
-                    var height = params.height || this.height / this.width * params.width;
-                    canvas.attr({ width: width, height: height });
-                    canvas[0].getContext('2d').drawImage(this, 0, 0, width, height);
-                }
+            function onLoadImage() {
+                var width = params.width || this.width / this.height * params.height;
+                var height = params.height || this.height / this.width * params.width;
+                canvas.attr({ width: width, height: height });
+                canvas[0].getContext('2d').drawImage(this, 0, 0, width, height);
             }
-        };
-    }]);
+        }
+    };
 
+}]);
+
+
+myDirectives.directive('onFinishRender', function ($timeout) {
+
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            if (scope.$last === true) {
+                $timeout(function () {
+                    scope.$emit(attr.onFinishRender);
+                });
+            }
+        }
+    };
+
+});
 'use strict';
 
 var myServices = angular.module( 'myServices' , [] );
@@ -300,9 +329,25 @@ myServices.service('checkToken', ['store', 'jwtHelper', function(store, jwtHelpe
 
 myServices.service('productsService', [ '$http' , function ( $http ) {
 
-    this.getByCategory = function ( id ) {
+    this.getByCategoryId = function ( id ) {
 
-        return $http.get('api/site/products/getByCategory/' + id)
+        return $http.get('api/site/products/getByCategoryId/' + id)
+
+            .success(function(data){
+
+                return data;
+
+            }).error(function(){
+
+                console.log( 'Error on communicate with API.' );
+
+            });
+
+    };
+
+    this.getByCategorySlug = function ( slug ) {
+
+        return $http.get('api/site/products/getByCategorySlug/' + slug)
 
             .success(function(data){
 
@@ -320,10 +365,25 @@ myServices.service('productsService', [ '$http' , function ( $http ) {
 
 myServices.service('categoriesService', [ '$http' , function ( $http ) {
 
-
     this.getData = function() {
 
         return $http.get('api/site/categories/get')
+
+            .success(function(data){
+
+                return data;
+
+            }).error(function(){
+
+                console.log( 'Error on communicate with API.' );
+
+            });
+
+    };
+
+    this.getByCategorySlug = function ( slug ) {
+
+        return $http.get('api/site/categories/getByCategorySlug/' + slug)
 
             .success(function(data){
 
@@ -342,8 +402,9 @@ myServices.service('categoriesService', [ '$http' , function ( $http ) {
 
 var controllersAdmin = angular.module( 'controllersAdmin' , ['angularFileUpload', 'myDirectives', 'ui.select', 'ngSanitize' ] );
 
-controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', function( $scope , $http, checkToken ){
+controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', 'categoriesService', function( $scope , $http, checkToken, categoriesService ){
 
+    // get products
     $http.post( 'api/admin/products/get', {
 
        token: checkToken.raw()
@@ -354,6 +415,13 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', f
 
     }).error( function(){
         console.log( 'Error on communicate with API.' );
+    });
+
+    // get categories
+    categoriesService.getData().then(function(data) {
+
+        $scope.categories = data.data;
+
     });
 
     $scope.delete = function(product, $index) {
@@ -373,7 +441,7 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', f
             console.log( 'Error on communicate with API.' );
         });
 
-    }
+    };
 
 }]);
 
@@ -590,7 +658,7 @@ controllersAdmin.controller( 'categories' , [ '$scope' , '$http' , 'categoriesSe
 
     $scope.getProducts = function( id ){
 
-        productsService.getByCategory( id ).then(function(data) {
+        productsService.getByCategoryId( id ).then(function(data) {
 
             $scope.products[id] = data.data;
             $scope.productsCount[id] = $scope.products[id].length;
@@ -635,7 +703,7 @@ controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout
     });
 
     // get products without category - category '1'
-    productsService.getByCategory(1).then(function(data) {
+    productsService.getByCategoryId(1).then(function(data) {
 
         $scope.products = data.data;
 
@@ -680,7 +748,7 @@ controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout
                 $scope.category['id'] = $scope.categories.length + 1;
 
             });
-            productsService.getByCategory(1).then(function(data) {
+            productsService.getByCategoryId(1).then(function(data) {
 
                 $scope.products = data.data;
 
@@ -699,8 +767,9 @@ controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout
 
 }]);
 
-controllersAdmin.controller( 'categoryEdit', [ '$scope' , '$http' , '$q', '$timeout', '$routeParams', 'checkToken', 'categoriesService', 'productsService' , function( $scope , $http, $q, $timeout, $routeParams, checkToken, categoriesService, productsService ) {
+controllersAdmin.controller( 'categoryEdit', [ '$scope' , '$http' , '$q', '$timeout', '$routeParams', 'checkToken' , function( $scope , $http, $q, $timeout, $routeParams, checkToken ) {
 
+    // arrays difference
     Array.prototype.diff = function(a) {
         return this.filter(function(i) {return a.indexOf(i) < 0;});
     };
@@ -724,15 +793,14 @@ controllersAdmin.controller( 'categoryEdit', [ '$scope' , '$http' , '$q', '$time
     });
 
     // get products from this category + uncategorized
-    $scope.productsUncategorized = $http.get('api/site/products/getByCategory/1', {cache: false});
-    $scope.productsFromCategory = $http.get('api/site/products/getByCategory/' + categoryId, {'cache': false});
+    $scope.productsUncategorized = $http.get('api/site/products/getByCategoryId/1', {cache: false});
+    $scope.productsFromCategory = $http.get('api/site/products/getByCategoryId/' + categoryId, {'cache': false});
 
     $q.all([$scope.productsUncategorized, $scope.productsFromCategory]).then(function(data) {
         $scope.products = data[0].data.concat(data[1].data);
     });
 
-    $http.get( 'api/site/products/getByCategory/' + categoryId)
-        .success( function( data ){
+    $http.get( 'api/site/products/getByCategoryId/' + categoryId).success( function( data ){
 
         $scope.products.selected = data;
 
@@ -745,74 +813,95 @@ controllersAdmin.controller( 'categoryEdit', [ '$scope' , '$http' , '$q', '$time
     // save changes
     $scope.saveChanges = function(category, products) {
 
-        console.log(products);
-        console.log(products.selected);
-
-        console.log('dupa');
-
-        var myArray = products.filter(function( obj ) {
+        var productsArr = products.filter(function( obj ) {
             return obj.id !== products.length;
         });
 
-        console.log(myArray);
+        var unselectedProductsArr = [];
 
-        // if(products != products.selected) {
-        //     $scope.productsUnselected = products.diff(products.selected);
-        // } else {
-        //     $scope.productsUnselected = '';
-        // }
-        //
-        // console.log($scope.productsUnselected);
+        if(productsArr.length === products.selected.length ) {
 
+            unselectedProductsArr = [];
 
-        // post category
-        // $http.post( 'api/admin/categories/update/', {
-        //
-        //     token: checkToken.raw(),
-        //     category: category
-        //
-        // }).success( function(){
-        //
-        //     $scope.success = true;
-        //
-        //     $timeout(function(){
-        //
-        //         $scope.success = false;
-        //
-        //     }, 3000);
-        //
-        // }).error( function(){
-        //
-        //     console.log( 'Error on communicate with API.' );
-        //
-        // });
+        } else {
 
-        // angular.forEach(products.selected, function(item) {
-        //
-        //     item.category = category.id;
-        //
-        //     $http.post( 'api/admin/products/update/', {
-        //
-        //         token: checkToken.raw(),
-        //         product: item
-        //
-        //     }).success( function(){
-        //
-        //         $scope.success = true;
-        //
-        //     }).error( function(){
-        //
-        //         console.log( 'Error on communicate with API.' );
-        //
-        //     });
-        //
-        // });
+            unselectedProductsArr = productsArr.diff(products.selected);
+
+        }
+
+        $http.post( 'api/admin/categories/update/', {
+
+            token: checkToken.raw(),
+            category: category
+
+        }).success( function(){
+
+            $scope.success = true;
+
+            $timeout(function(){
+
+                $scope.success = false;
+
+            }, 3000);
+
+        }).error( function(){
+
+            console.log( 'Error on communicate with API.' );
+
+        });
+
+        // update selected products category
+        angular.forEach(products.selected, function(item) {
+
+            item.category = category.id;
+
+            $http.post( 'api/admin/products/update/', {
+
+                token: checkToken.raw(),
+                product: item
+
+            }).success( function(){
+
+                $scope.success = true;
+
+            }).error( function(){
+
+                console.log( 'Error on communicate with API.' );
+
+            });
+
+        });
+
+        if(unselectedProductsArr.length) {
+
+            // update unselected products category
+            angular.forEach(unselectedProductsArr, function(item) {
+
+                item.category = 1;
+
+                $http.post( 'api/admin/products/update/', {
+
+                    token: checkToken.raw(),
+                    product: item
+
+                }).success( function(){
+
+                    $scope.success = true;
+
+                }).error( function(){
+
+                    console.log( 'Error on communicate with API.' );
+
+                });
+
+            });
+
+        }
 
     };
 
 
 }]);
-
 
 controllersAdmin.controller( 'users' , [ '$scope' , '$http', 'checkToken', function( $scope , $http, checkToken ){
 
@@ -997,9 +1086,71 @@ controllersAdmin.controller( 'orders' , [ '$scope' , '$http' , 'checkToken', fun
     };
 
 }]);
+
+controllersAdmin.controller( 'adminCategory' , [ '$scope', '$http', '$location', '$window', '$routeParams', 'productsService', 'categoriesService', 'checkToken', function( $scope, $http, $location, $window, $routeParams, productsService, categoriesService, checkToken ){
+
+    var slug = $routeParams.slug;
+
+    // get products
+    productsService.getByCategorySlug(slug).then(function(data) {
+
+        $scope.products = data.data;
+
+    });
+
+    // get categories
+    categoriesService.getByCategorySlug(slug).then(function(data) {
+
+        $scope.category = data.data;
+
+    });
+
+    $scope.deleteProduct = function(product, $index) {
+
+        if (!confirm('Are you really want to delete this product?')) {
+            return false;
+        }
+
+        $scope.products.splice($index, 1);
+
+        $http.post( 'api/admin/products/delete/', {
+
+            token: checkToken.raw(),
+            product: product
+
+        }).error( function(){
+            console.log( 'Error on communicate with API.' );
+        });
+
+    };
+
+    $scope.deleteCategory = function(category) {
+
+        if (!confirm('Are you really want to delete this category?')) {
+            return false;
+        }
+
+        $http.post( 'api/admin/categories/delete/', {
+
+            token: checkToken.raw(),
+            category: category
+
+        }).success( function(){
+
+            $location.path('/admin/categories');
+
+        }).error( function(){
+
+            console.log( 'Error on communicate with API.' );
+
+        });
+
+    };
+
+}]);
 'use strict';
 
-var controllersNavigation = angular.module( 'controllersNavigation', [] );
+var controllersNavigation = angular.module( 'controllersNavigation', [ 'myDirectives' ] );
 
 controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$location' , 'checkToken', 'store', 'cartService', 'categoriesService',  function( $scope , $http, $location, checkToken, store, cartService, categoriesService ){
 
@@ -1084,6 +1235,55 @@ controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$locati
 
     });
 
+    // navigation magic line jquery
+    $scope.$on('ngRepeatFinished', function() {
+
+        var $mainNav = $(".nav-bottom .nav");
+
+        if($(".nav-bottom .nav li.active").length) {
+
+            $mainNav.append("<li id='magic-line'></li>");
+            $scope.magicLine = $("#magic-line");
+
+            $scope.magicLine
+                .width($(".nav-bottom .nav li.active").width())
+                .css("left", $(".nav-bottom .nav li.active").position().left)
+                .data("origLeft", $scope.magicLine.position().left)
+                .data("origWidth", $scope.magicLine.width());
+
+            $(".nav-bottom .nav li").hover(function() {
+                $scope.el = $(this);
+                $scope.leftPos = $scope.el.position().left;
+                $scope.newWidth = $scope.el.width();
+                $scope.magicLine.stop().animate({
+                    left: $scope.leftPos,
+                    width: $scope.newWidth
+                });
+            }, function() {
+                $scope.magicLine.stop().animate({
+                    left: $scope.magicLine.data("origLeft"),
+                    width: $scope.magicLine.data("origWidth")
+                });
+
+            });
+
+            $(".nav-bottom .nav li").click(function() {
+                $scope.el = $(this);
+                $scope.leftPos = $scope.el.position().left;
+                $scope.newWidth = $scope.el.width();
+                $scope.magicLine
+                    .data("origLeft", $scope.el.position().left)
+                    .data("origWidth", $scope.el.width());
+                $scope.magicLine.stop().animate({
+                    left: $scope.leftPos,
+                    width: $scope.newWidth
+                });
+            });
+
+        }
+
+	});
+
 }]);
 'use strict';
 
@@ -1097,13 +1297,13 @@ controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService
 
         $scope.products = data;
 
-
     }).error( function(){
 
         console.log( 'Error on communicate with API.' );
 
     });
 
+    // get categories
     categoriesService.getData().then(function(data) {
 
         $scope.categories = data.data;
@@ -1274,6 +1474,40 @@ controllersSite.controller( 'siteOrders' , [ '$scope' , '$http' , 'checkToken', 
     }).error( function(){
         console.log( 'Error on communicate with API.' );
     });
+
+}]);
+
+controllersSite.controller( 'siteCategory' , [ '$scope' , '$http' , '$routeParams' , 'cartService', 'productsService', 'categoriesService', function( $scope , $http , $routeParams, cartService, productsService, categoriesService ){
+
+    var slug = $routeParams.slug;
+
+    // get products
+    productsService.getByCategorySlug(slug).then(function(data) {
+
+        $scope.products = data.data;
+
+    });
+
+    // get categories
+    categoriesService.getData().then(function(data) {
+
+        $scope.categories = data.data;
+
+    });
+
+    $scope.addToCart = function (product) {
+        cartService.add(product);
+    };
+
+    $scope.checkCart = function (product) {
+        if (cartService.show().length) {
+            angular.forEach(cartService.show(), function(item) {
+                if (item.id == product.id) {
+                    product.amount = item.amount;
+                }
+            });
+        }
+    };
 
 }]);
 

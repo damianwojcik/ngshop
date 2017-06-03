@@ -46,7 +46,7 @@
                                 <li ng-class="{ active : isActive('/login') }" ng-if="!loggedIn"><a href="#/login"><span class="glyphicon glyphicon-user"></span>Login</a></li>
                                 <li ng-class="{ active : isActive('/logout') }" ng-if="loggedIn"><a href="#" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
                                 <li ng-class="{ active : isActive('/register') }" ng-if="!loggedIn"><a href="#/register"><span class="glyphicon glyphicon-edit"></span>Register</a></li>
-                                <li ng-class="{ active : isActive('/admin/orders') }" ng-if="isAdmin"><a href="#/admin/orders"><span class="glyphicon glyphicon-asterisk"></span>Admin</a></li>
+                                <li ng-class="{ active : isActive('/admin/products') }" ng-if="isAdmin"><a href="#/admin/products"><span class="glyphicon glyphicon-asterisk"></span>Admin</a></li>
                             </ul>
 
                         </div>
@@ -70,8 +70,8 @@
         <div class="collapse navbar-collapse">
 
             <ul class="nav text-center case-c">
-                <li class="active"><a href="/">Wszystkie</a></li>
-                <li ng-repeat="category in categories"><a href="/{{ category.slug }}">{{ category.name }}</a></li>
+                <li ng-class="{ active : isActive('/products') }"><a href="#/products">Wszystkie</a></li>
+                <li on-finish-render="ngRepeatFinished" ng-class="{ active : isActive('/{{ category.slug }}') }" ng-repeat="category in categories" ng-if="$index > 0"><a href="#/{{ category.slug }}">{{ category.name }}</a></li>
             </ul>
 
             <div class="navbar-btn-group btn-group navbar-right">
