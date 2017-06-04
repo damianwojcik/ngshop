@@ -44,3 +44,13 @@
 - testy mobile (dodac ng-touch do modali bootstrapowych)
 - optymalizacja (lazy load, wszystko do 1 pliku css/js)
 - posprawdzac ktore moduly gdzie potrzebne i wywalic jak nie potrzebne nganimate ngsanitize itp
+- dodac img cropper do slidow https://codepen.io/muralidharm/pen/gMmJPN
+- ostylowac modal
+- pozmieniac nazwy forma z user/register na promo uplaod
+- nie ruszac domyslnego stylowania bootstrapa, nadpisac swoimi klasami
+ -dodawanie opinii (najpopularniejsze produkty wg ilosci opin)
+ - dodaj slajd + odrazu usun nie działa bo nie mamy $indexu z ng-repeat w promotion.position ( moze jak pozycja bedzie dobrze działać to ogarniemy! )
+ - notyfikacje po dodaniu / usunieciu itp alerty
+ - promotion.position zrobić
+ - przy usuwaniu promocji usunac obrazek
+ - funkcje w kontrollerze admin/images uploadPromo i upload ujednolicic

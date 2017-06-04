@@ -1,6 +1,6 @@
 'use strict';
 
-var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'myDirectives', 'ui.select', 'ngSanitize', 'angular-owl-carousel-2' ] );
+var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'myDirectives', 'ui.select', 'angular-owl-carousel-2', 'ngAnimate', 'ngSanitize', 'ui.bootstrap' ] );
 
 controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', 'productsService', function( $scope , $http, checkToken, productsService ){
 
@@ -92,6 +92,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
     // get images
     function getImages() {
+
         $http.post( 'api/admin/images/get/' + productId , {
 
             token: checkToken.raw()
@@ -105,6 +106,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
             console.log( 'Error on communicate with API.' );
 
         }));
+
     }
 
     getImages();
@@ -822,15 +824,14 @@ controllersAdmin.controller( 'adminCategory' , [ '$scope', '$http', '$location',
 
 }]);
 
-controllersAdmin.controller( 'adminHome' , [ '$scope', function( $scope){
+controllersAdmin.controller( 'adminHome' , [ '$scope', '$http', '$uibModal', 'sliderFactory', '$timeout', function( $scope, $http, $uibModal, sliderFactory, $timeout ){
 
     var owlAPi;
-    $scope.showModal = false;
-    $scope.items = [1, 2, 3, 4, 5, 6, 7, 8, 10];
 
-    $scope.properties = {
+    $scope.owlProperties = {
 
         animateIn: 'fadeIn',
+        animateOut: 'fadeOut',
         lazyLoad: true,
         loop: true,
         items: 1,
@@ -846,7 +847,131 @@ controllersAdmin.controller( 'adminHome' , [ '$scope', function( $scope){
     };
 
     $scope.ready = function ($api) {
+
         owlAPi = $api;
+
+    };
+
+    // get slides
+    $scope.$watch(function () {
+
+        $scope.items = sliderFactory.show();
+
+    });
+
+    $scope.removeItem = function ($index) {
+
+        if (!confirm('Are you really want to delete this promotion?')) {
+            return false;
+        }
+
+        if($scope.items.length > 1) {
+
+            owlAPi.trigger('next.owl.carousel');
+            sliderFactory.delete($scope.items[$index]);
+            $(".owl-carousel").trigger('remove.owl.carousel', [$index]).trigger('refresh.owl.carousel');
+            $scope.items.splice($index, 1);
+
+        }
+
+    };
+
+    // modal
+    $scope.promotion = {};
+    $scope.showForm = function () {
+
+        var modalInstance = $uibModal.open({
+            templateUrl: 'partials/modal.html',
+            controller: ModalInstanceCtrl,
+            scope: $scope,
+            resolve: {
+                userForm: function () {
+                    return $scope.userForm;
+                }
+            }
+
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+
+            $scope.promotion = {};
+
+        }, function () {
+
+            $scope.promotion = {};
+
+        });
     };
 
 }]);
+
+var ModalInstanceCtrl = function ($scope, $http, checkToken, $uibModalInstance, userForm, FileUploader) {
+
+    // init uploader
+    var uploader = $scope.uploader = new FileUploader({
+
+        token: checkToken.raw(),
+        url: 'api/admin/images/uploadPromo/',
+        queueLimit: 1
+
+    });
+
+    uploader.filters.push({
+
+        name: 'imageFilter',
+        fn: function(item /*{File|FileLikeObject}*/, options) {
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+
+    });
+
+    uploader.onCompleteItem = function(fileItem, response, status, headers) {
+
+        $scope.promotion.src = "uploads/promotions/" + fileItem._file.name;
+
+    };
+
+    // $scope.form = {};
+    $scope.submitForm = function (promotion) {
+
+        if ($scope.form.userForm.$valid) {
+
+            $uibModalInstance.close();
+
+            $http.post( 'api/admin/promotions/create/', {
+
+                token: checkToken.raw(),
+                promotion: promotion
+
+            }).then( function() {
+
+                var html = '<div class="item"><a href="' + promotion.link + '"><img src="' + promotion.src + '" alt=""></a></div><div class="btn-group"><a class="btn btn-default" href="#/cart"><span class="glyphicon glyphicon-pencil"></span></a><button class="btn btn-default" ng-click="showForm()"><span class="glyphicon glyphicon-upload"></span></button><button type="button" class="btn btn-gray" ng-click="removeItem(' + promotion.position +');"><span class="glyphicon glyphicon-trash"></span></button></div>';
+
+                $(".owl-carousel").trigger('add.owl.carousel', [$('<div class="owl-item" style="width: 100%">' + html + '</div>')]).trigger('refresh.owl.carousel');
+
+                $scope.promotion = {};
+
+            }, ( function() {
+
+                console.log( 'Error on communicate with API.' );
+
+            }));
+
+        } else {
+
+            console.log($scope.form.userForm.error);
+
+        }
+
+    };
+
+    $scope.cancel = function () {
+
+        $uibModalInstance.dismiss('cancel');
+
+    };
+
+};
+
+

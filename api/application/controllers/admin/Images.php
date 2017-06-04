@@ -41,6 +41,35 @@ class Images extends CI_Controller {
 
     }
 
+    public function uploadPromo ()
+    {
+
+        if ( !empty( $_FILES ) ) {
+
+            $tempPath = $_FILES[ 'file' ][ 'tmp_name' ];
+
+            $basePath = FCPATH . '..' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
+            $basePath = $basePath . 'promotions' . DIRECTORY_SEPARATOR;
+
+
+            $uploadPath = $basePath . $_FILES[ 'file' ][ 'name' ];
+
+            move_uploaded_file( $tempPath, $uploadPath );
+
+            $answer = array( 'answer' => 'File transfer completed' );
+
+            $json = json_encode( $answer );
+
+            echo $json;
+
+        } else {
+
+            echo 'No files';
+
+        }
+
+    }
+
     public function get( $id )
     {
 
@@ -84,9 +113,7 @@ class Images extends CI_Controller {
 
 //        $id = $this->input->post('id');
         $image = $this->input->post('image');
-
         $imagePath = FCPATH . '..' . DIRECTORY_SEPARATOR . $image;
-
         unlink($imagePath);
 
     }

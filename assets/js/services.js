@@ -213,3 +213,44 @@ myServices.service('categoriesService', [ '$http' , function ( $http ) {
     };
 
 }]);
+
+myServices.factory('sliderFactory', ['$http', 'checkToken', function ( $http, checkToken ) {
+
+    var slider = {};
+
+   $http.get('api/site/promotions/get')
+
+        .then(function(data){
+
+            slider = data.data;
+
+        }, (function(){
+
+            console.log( 'Error on communicate with API.' );
+
+        }));
+
+    slider.show = function () {
+
+        return slider;
+
+    };
+
+    slider.delete = function(promotion) {
+
+        $http.post( 'api/admin/promotions/delete/', {
+
+            token: checkToken.raw(),
+            promotion: promotion
+
+        }, ( function(){
+
+            console.log( 'Error on communicate with API.' );
+
+        }));
+
+    };
+
+    return slider;
+
+}]);

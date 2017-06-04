@@ -1,32 +1,25 @@
 <div class="container">
 
-    {{ showModal }}
-
-    <button type="button" class="btn btn-default" ng-click="open()"><span class="glyphicon glyphicon-save"></span></button>
-
     <div class="row">
 
-        <ng-owl-carousel class="owl-theme" owl-items="items" owl-properties="properties" owl-ready="ready($api)">
+        <ng-owl-carousel class="owl-theme" owl-items="items" owl-properties="owlProperties" owl-ready="ready($api)">
 
-            <div class="item">
+            <div class="item" data-ng-repeat="item in items">
 
-                <a href="#">
-                    <img src="uploads/promos/promo2.jpg" alt="Promo 1">
+                <a ng-href="{{ item.link }}">
+
+                    <img ng-src="{{ item.src }}" ng-alt="{{ item.src }}">
+
                 </a>
 
                 <div class="btn-group">
 
                     <a class="btn btn-default" href="#/cart"><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a class="btn btn-default" href="#/cart"><span class="glyphicon glyphicon-upload"></span></a>
-                    <button type="button" class="btn btn-gray" ng-click="removeItem($index); $event.stopPropagation();"><span class="glyphicon glyphicon-trash"></span></button>
+                    <button class="btn btn-default" ng-click="showForm()"><span class="glyphicon glyphicon-upload"></span></button>
+                    <button type="button" class="btn btn-gray" ng-click="removeItem($index);"><span class="glyphicon glyphicon-trash"></span></button>
+
                 </div>
 
-            </div>
-
-            <div class="item" data-ng-repeat="item in items">
-                <a href="#">
-                    <img src="" alt="">
-                </a>
             </div>
 
         </ng-owl-carousel>
@@ -35,6 +28,5 @@
 
 </div><!-- ./container-->
 
-<div class="modal-demo">
 
-</div>
+
