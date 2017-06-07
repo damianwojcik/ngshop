@@ -2,7 +2,6 @@
 
 var myServices = angular.module( 'myServices' , [] );
 
-
 myServices.factory('cartService', ['store', function (store) {
 
     if (store.get('cart')) {
@@ -254,3 +253,15 @@ myServices.factory('sliderFactory', ['$http', 'checkToken', function ( $http, ch
     return slider;
 
 }]);
+
+// myServices.factory('slugValidator', function($q, $routeParams, valid_slugs) {
+//
+//     function isValidSlug(slug) {
+//         return valid_slugs.indexOf(slug) > -1 ? $q.resolve(slug) : $q.reject()
+//     }
+//     return {
+//         isValidSlug: isValidSlug
+//     }
+//
+//
+// });

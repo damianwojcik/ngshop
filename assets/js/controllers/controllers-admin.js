@@ -417,7 +417,7 @@ controllersAdmin.controller( 'categoryEdit', [ '$scope' , '$http' , '$q', '$time
 
     }).then( function( data ){
 
-        $scope.category = data;
+        $scope.category = data.data;
 
     }, ( function(){
 
@@ -435,7 +435,7 @@ controllersAdmin.controller( 'categoryEdit', [ '$scope' , '$http' , '$q', '$time
 
     $http.get( 'api/site/products/getByCategoryId/' + categoryId).then( function( data ){
 
-        $scope.products.selected = data;
+        $scope.products.selected = data.data;
 
     }, ( function(){
 
@@ -643,6 +643,8 @@ controllersAdmin.controller( 'userCreate' , [ '$scope' , '$http' , '$timeout', '
 
     $scope.createUser = function(user) {
 
+        console.log(user);
+
         $http.post( 'api/admin/users/create/', {
 
             token: checkToken.raw(),
@@ -694,7 +696,7 @@ controllersAdmin.controller( 'orders' , [ '$scope' , '$http' , 'checkToken', fun
 
     }).then( function( data ){
 
-        $scope.orders = data;
+        $scope.orders = data.data;
 
         angular.forEach( $scope.orders , function( order , key ){
 

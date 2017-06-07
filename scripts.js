@@ -258,7 +258,6 @@ myDirectives.directive('owlCarouselItem', [function() {
 
 var myServices = angular.module( 'myServices' , [] );
 
-
 myServices.factory('cartService', ['store', function (store) {
 
     if (store.get('cart')) {
@@ -929,7 +928,7 @@ controllersAdmin.controller( 'categoryEdit', [ '$scope' , '$http' , '$q', '$time
 
     }).then( function( data ){
 
-        $scope.category = data;
+        $scope.category = data.data;
 
     }, ( function(){
 
@@ -947,7 +946,7 @@ controllersAdmin.controller( 'categoryEdit', [ '$scope' , '$http' , '$q', '$time
 
     $http.get( 'api/site/products/getByCategoryId/' + categoryId).then( function( data ){
 
-        $scope.products.selected = data;
+        $scope.products.selected = data.data;
 
     }, ( function(){
 
@@ -1858,9 +1857,9 @@ controllersSite.controller( 'siteCategory' , [ '$scope' , '$http' , '$routeParam
     });
 
     // get categories
-    categoriesService.getData().then(function(data) {
+    categoriesService.getByCategorySlug(slug).then(function(data) {
 
-        $scope.categories = data.data;
+        $scope.category = data.data;
 
     });
 

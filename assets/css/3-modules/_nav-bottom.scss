@@ -5,22 +5,6 @@
 .nav-bottom {
   margin-bottom: 30px;
 
-  a {
-    color: $black;
-
-    &:hover {
-      color: $blue;
-    }
-  }
-
-  .btn-default {
-    color: $white;
-
-    &:hover {
-      color: $white;
-    }
-  }
-
   .collapse {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
@@ -61,9 +45,11 @@
         height: 55px;
         padding: 0 20px;
         line-height: 55px;
+        color: $black;
 
         &:hover, &:active, &:focus {
           background-color: transparent;
+          color: $blue;
         }
       }
     }

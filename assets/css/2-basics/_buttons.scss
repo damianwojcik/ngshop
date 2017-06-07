@@ -5,18 +5,28 @@
   outline: 0;
 }
 
-.btn-default {
+.btn-blue {
   background-color: $blue;
   color: $white;
 
-  &:hover {
+  &:hover, &:active, &:focus, &:active:hover, &:active:focus {
     background-color: $black;
+    color: $white;
+  }
+}
+
+.btn-gray {
+  background-color: $gray;
+
+  &:hover {
+    background-color: $red;
     color: $white;
   }
 }
 
 .btn-outline {
   border: 1px solid $black;
+  color: $black;
 
   span {
     padding: 0;
@@ -35,21 +45,4 @@
   border-radius: 50%;
 }
 
-.btn-success {
-  background-color: $blue;
-  color: $white;
 
-  &:hover, &:active, &:focus, &:active:hover, &:active:focus {
-    background-color: $black;
-    color: $white;
-  }
-}
-
-.btn-gray {
-  background-color: $gray;
-
-  &:hover {
-    background-color: $red;
-    color: $white;
-  }
-}

@@ -6151,15 +6151,22 @@ p {
   transition: all 0.4s ease-in-out;
   outline: 0; }
 
-.btn-default {
+.btn-blue {
   background-color: #0484c7;
   color: #FFF; }
-  .btn-default:hover {
+  .btn-blue:hover, .btn-blue:active, .btn-blue:focus, .btn-blue:active:hover, .btn-blue:active:focus {
     background-color: #000;
     color: #FFF; }
 
+.btn-gray {
+  background-color: #ddd; }
+  .btn-gray:hover {
+    background-color: #e30000;
+    color: #FFF; }
+
 .btn-outline {
-  border: 1px solid #000; }
+  border: 1px solid #000;
+  color: #000; }
   .btn-outline span {
     padding: 0; }
 
@@ -6173,19 +6180,6 @@ p {
   line-height: 23px;
   font-size: 11px;
   border-radius: 50%; }
-
-.btn-success {
-  background-color: #0484c7;
-  color: #FFF; }
-  .btn-success:hover, .btn-success:active, .btn-success:focus, .btn-success:active:hover, .btn-success:active:focus {
-    background-color: #000;
-    color: #FFF; }
-
-.btn-gray {
-  background-color: #ddd; }
-  .btn-gray:hover {
-    background-color: #e30000;
-    color: #FFF; }
 
 select {
   min-width: 300px;
@@ -6240,14 +6234,6 @@ select {
 
 .nav-bottom {
   margin-bottom: 30px; }
-  .nav-bottom a {
-    color: #000; }
-    .nav-bottom a:hover {
-      color: #0484c7; }
-  .nav-bottom .btn-default {
-    color: #FFF; }
-    .nav-bottom .btn-default:hover {
-      color: #FFF; }
   .nav-bottom .collapse {
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
@@ -6275,9 +6261,11 @@ select {
     .nav-bottom .nav li a {
       height: 55px;
       padding: 0 20px;
-      line-height: 55px; }
+      line-height: 55px;
+      color: #000; }
       .nav-bottom .nav li a:hover, .nav-bottom .nav li a:active, .nav-bottom .nav li a:focus {
-        background-color: transparent; }
+        background-color: transparent;
+        color: #0484c7; }
   .nav-bottom .navbar-right {
     position: absolute;
     right: 0;

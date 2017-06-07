@@ -231,9 +231,9 @@ controllersSite.controller( 'siteCategory' , [ '$scope' , '$http' , '$routeParam
     });
 
     // get categories
-    categoriesService.getData().then(function(data) {
+    categoriesService.getByCategorySlug(slug).then(function(data) {
 
-        $scope.categories = data.data;
+        $scope.category = data.data;
 
     });
 
@@ -355,5 +355,44 @@ controllersSite.controller( 'siteHome' , [ '$scope' , '$http', '$timeout', funct
     $scope.ready = function ($api) {
         owlAPi = $api;
     };
+
+}]);
+
+
+controllersSite.controller( 'siteHome' , [ '$scope', '$http', 'sliderFactory', function( $scope, $http, sliderFactory ){
+
+    var owlAPi;
+
+    $scope.owlProperties = {
+
+        animateIn: 'fadeIn',
+        animateOut: 'fadeOut',
+        lazyLoad: true,
+        loop: true,
+        items: 1,
+        autoplay: false,
+        autoplayHoverPause: true,
+        nav: true,
+        dots: false,
+        navText: [
+            "<span class='glyphicon glyphicon-chevron-left'></span>",
+            "<span class='glyphicon glyphicon-chevron-right'></span>"
+        ]
+
+    };
+
+    $scope.ready = function ($api) {
+
+        owlAPi = $api;
+
+    };
+
+    // get slides
+    $scope.$watch(function () {
+
+        $scope.items = sliderFactory.show();
+
+    });
+
 
 }]);

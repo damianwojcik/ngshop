@@ -4,6 +4,7 @@
 -dodać taby Opis produktu / skład /wartości odżywcze / opinie
 -zoom jak na kfd
 -layout jak pasjonat.cc
+-intercom
 -wrzucic na hosting / portfolio
 -zapis i reset bazy co 24h
 -animacje ng animate
@@ -54,3 +55,6 @@
  - promotion.position zrobić
  - przy usuwaniu promocji usunac obrazek
  - funkcje w kontrollerze admin/images uploadPromo i upload ujednolicic
+ - dodac wybor szablonu (css theme)
+ - cart dropdown zamienic na ten z ui-angular zeby byla animacja
+ - duplikat owl carousel w stylach

@@ -69,6 +69,7 @@ class Users extends CI_Controller {
         {
             $user = $this->input->post('user');
             unset($user['passconf']);
+            $user['password'] = crypt($user['password'], config_item('encryption_key'));
             $this->Users_model->create($user);
         } else
         {
