@@ -3,6 +3,10 @@
     <div class="container">
 
         <div class="row">
+            <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}</div>
+        </div>
+
+        <div class="row">
 
             <div class="col-sm-6">
 

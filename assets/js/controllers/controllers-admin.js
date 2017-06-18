@@ -1,6 +1,6 @@
 'use strict';
 
-var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'myDirectives', 'ui.select', 'angular-owl-carousel-2', 'ngAnimate', 'ngSanitize', 'ui.bootstrap' ] );
+var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'myDirectives', 'ui.select', 'angular-owl-carousel-2', 'ngSanitize', 'ui.bootstrap' ] );
 
 controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', 'productsService', function( $scope , $http, checkToken, productsService ){
 
@@ -170,6 +170,13 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
     };
 
+    // alerts
+    $scope.alerts = [];
+
+    $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1);
+    };
+
     // save changes
     $scope.saveChanges = function(product) {
 
@@ -201,6 +208,10 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
                 $scope.success = false;
 
+                $scope.alerts = [
+                    { type: 'success', msg: 'Changes saved!' }
+                ];
+
             }, 3000);
 
         }, ( function(){
@@ -227,9 +238,118 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
 }]);
 
-controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout', 'checkToken', 'categoriesService', function( $scope , $http, $timeout, checkToken, categoriesService ){
+controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$route', '$timeout', 'checkToken', 'categoriesService', 'FileUploader', function( $scope , $http, $route, $timeout, checkToken, categoriesService, FileUploader ){
 
     $scope.product = {};
+
+    // alerts
+    $scope.alerts = [];
+
+    $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1);
+    };
+
+    // get products
+    $http.post( 'api/admin/products/get', {
+
+        token: checkToken.raw()
+
+    }).then( function( data ){
+
+        $scope.products = data.data;
+
+        if($scope.products.length > 0) {
+            $scope.product['id'] = Number($scope.products[$scope.products.length-1].id)+1;
+        } else {
+            $scope.product['id'] = 1;
+        }
+
+        // init uploader
+        var uploader = $scope.uploader = new FileUploader({
+
+            token: checkToken.raw(),
+            url: 'api/admin/images/upload/' + $scope.product['id']
+
+        });
+
+        uploader.filters.push({
+
+            name: 'imageFilter',
+            fn: function(item /*{File|FileLikeObject}*/, options) {
+                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+            }
+
+        });
+
+        uploader.onCompleteItem = function(fileItem, response, status, headers) {
+
+            getImages();
+            $scope.product.thumbnail = "uploads/" + $scope.product['id'] + "/" + fileItem._file.name;
+
+        };
+
+        getImages();
+
+    }, ( function(){
+
+        console.log( 'Error on communicate with API.' );
+
+    }));
+
+    // get images
+    function getImages() {
+
+        $http.post( 'api/admin/images/get/' + $scope.product['id'] , {
+
+            token: checkToken.raw()
+
+        }).then( function( data ){
+
+            $scope.images = data.data;
+
+        }, ( function(){
+
+            console.log( 'Error on communicate with API.' );
+
+        }));
+
+    }
+
+    // delete image
+    $scope.delImage = function (image, $index) {
+
+        $scope.images.splice($index, 1);
+
+        $http.post( 'api/admin/images/delete/' , {
+
+            token: checkToken.raw(),
+            id : $scope.product['id'],
+            image : image
+
+        }, ( function(){
+
+            console.log( 'Error on communicate with API.' );
+
+        }));
+
+    };
+
+    // set thumbnail
+    $scope.setThumbnail = function (product, image) {
+
+        if($scope.product.thumbnail == image) {
+
+            $scope.product.thumbnail = '';
+
+        } else {
+
+            $scope.product.thumbnail = image;
+
+        }
+
+    };
+
 
     // get categories
     categoriesService.getData().then(function(data) {
@@ -254,15 +374,72 @@ controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout'
         }).then( function( ){
 
             $scope.success = true;
-            $scope.product = {};
             $timeout(function(){
                 $scope.success = false;
+                $scope.product = {};
                 categoriesService.getData().then(function(data) {
 
                     $scope.categories = data.data;
                     $scope.product.category = data.data[0];
 
                 });
+
+                $scope.alerts = [
+                    { type: 'success', msg: 'Product added!' }
+                ];
+
+                $scope.uploader = undefined;
+
+                // get products
+                $http.post( 'api/admin/products/get', {
+
+                    token: checkToken.raw()
+
+                }).then( function( data ){
+
+                    $scope.products = data.data;
+
+                    if($scope.products.length > 0) {
+                        $scope.product['id'] = Number($scope.products[$scope.products.length-1].id)+1;
+                    } else {
+                        $scope.product['id'] = 1;
+                    }
+
+                    // init uploader
+                    var uploader = $scope.uploader = new FileUploader({
+
+                        token: checkToken.raw(),
+                        url: 'api/admin/images/upload/' + $scope.product['id']
+
+                    });
+
+                    uploader.filters.push({
+
+                        name: 'imageFilter',
+                        fn: function(item /*{File|FileLikeObject}*/, options) {
+                            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+                            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+                        }
+
+                    });
+
+                    console.log($scope.uploader);
+
+                    uploader.onCompleteItem = function(fileItem, response, status, headers) {
+
+                        getImages();
+                        $scope.product.thumbnail = "uploads/" + $scope.product['id'] + "/" + fileItem._file.name;
+
+                    };
+
+                    getImages();
+
+                }, ( function(){
+
+                    console.log( 'Error on communicate with API.' );
+
+                }));
+
             }, 3000);
 
         }, ( function(){
@@ -327,11 +504,24 @@ controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout
 
     $scope.category = {};
 
+    // alerts
+    $scope.alerts = [];
+
+    $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1);
+    };
+
     // get categories
     categoriesService.getData().then(function(data) {
 
         $scope.categories = data.data;
-        $scope.category['id'] = $scope.categories.length + 1;
+
+        if($scope.categories.length > 1) {
+            $scope.category['id'] = Number($scope.categories[$scope.categories.length-1].id)+1;
+        } else {
+            $scope.category['id'] = 2;
+        }
+
 
     });
 
@@ -388,6 +578,10 @@ controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout
             });
             $timeout(function(){
                 $scope.success = false;
+
+                $scope.alerts = [
+                    { type: 'success', msg: 'Category added!' }
+                ];
             }, 3000);
 
         }, ( function(){
@@ -405,6 +599,13 @@ controllersAdmin.controller( 'categoryEdit', [ '$scope' , '$http' , '$q', '$time
     // arrays difference
     Array.prototype.diff = function(a) {
         return this.filter(function(i) {return a.indexOf(i) < 0;});
+    };
+
+    // alerts
+    $scope.alerts = [];
+
+    $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1);
     };
 
     var categoryId = $routeParams.id;
@@ -474,6 +675,10 @@ controllersAdmin.controller( 'categoryEdit', [ '$scope' , '$http' , '$q', '$time
             $timeout(function(){
 
                 $scope.success = false;
+
+                $scope.alerts = [
+                    { type: 'success', msg: 'Category changes saved!' }
+                ];
 
             }, 3000);
 
@@ -643,8 +848,6 @@ controllersAdmin.controller( 'userCreate' , [ '$scope' , '$http' , '$timeout', '
 
     $scope.createUser = function(user) {
 
-        console.log(user);
-
         $http.post( 'api/admin/users/create/', {
 
             token: checkToken.raw(),
@@ -735,6 +938,8 @@ controllersAdmin.controller( 'orders' , [ '$scope' , '$http' , 'checkToken', fun
     };
 
     $scope.changeStatus = function(order) {
+
+        console.log(order.status);
 
         if(order.status == 0) {
 

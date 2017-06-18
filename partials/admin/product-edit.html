@@ -2,7 +2,11 @@
 
   <div class="container" nv-file-drop="" uploader="uploader">
 
-    <div class="row">
+      <div class="row">
+          <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}}</div>
+      </div>
+
+      <div class="row">
 
       <div class="col-sm-6">
 
@@ -36,7 +40,7 @@
 
         <h3>Upload product photo</h3>
 
-        <div ng-show="uploader.isHTML5">
+        <div ng-show="uploader.isHTML5" ng-if="uploader !== undefined">
           <!-- 3. nv-file-over uploader="link" over-class="className" -->
           <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
             Drag & drop photo here
@@ -44,7 +48,7 @@
         </div>
 
         <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
-        <input class="btn btn-default" type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
+        <input ng-if="uploader !== undefined" class="btn btn-default" type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
 
         <table class="table">
           <thead>

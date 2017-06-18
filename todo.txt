@@ -58,3 +58,10 @@
  - dodac wybor szablonu (css theme)
  - cart dropdown zamienic na ten z ui-angular zeby byla animacja
  - duplikat owl carousel w stylach
+ - zmiana walut
+ - lista zyczen
+ - http://allthingssmitty.com/2016/10/24/show-my-password-please/?mc_cid=b32ac5d898&mc_eid=b38d4b9b7a
+ - powiadomienie email o zamowieniu
+ - dodac file uploader do product create
+ - z kontrolem zaznaczanie wielu produktów
+ - dodac drag n drop do slidera

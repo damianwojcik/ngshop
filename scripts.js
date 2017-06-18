@@ -511,7 +511,7 @@ myServices.factory('sliderFactory', ['$http', 'checkToken', function ( $http, ch
 }]);
 'use strict';
 
-var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'myDirectives', 'ui.select', 'angular-owl-carousel-2', 'ngAnimate', 'ngSanitize', 'ui.bootstrap' ] );
+var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'myDirectives', 'ui.select', 'angular-owl-carousel-2', 'ngSanitize', 'ui.bootstrap' ] );
 
 controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', 'productsService', function( $scope , $http, checkToken, productsService ){
 
@@ -738,9 +738,47 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
 }]);
 
-controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout', 'checkToken', 'categoriesService', function( $scope , $http, $timeout, checkToken, categoriesService ){
+controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout', 'checkToken', 'categoriesService', 'FileUploader', function( $scope , $http, $timeout, checkToken, categoriesService, FileUploader ){
 
     $scope.product = {};
+
+    // get products
+    $http.post( 'api/admin/products/get', {
+
+        token: checkToken.raw()
+
+    }).then( function( data ){
+
+        $scope.products = data.data;
+
+        if($scope.products.length > 0) {
+            $scope.product['id'] = Number($scope.products[$scope.products.length-1].id)+1;
+        } else {
+            $scope.product['id'] = 1;
+        }
+
+        var uploader = $scope.uploader = new FileUploader({
+
+            token: checkToken.raw(),
+            url: 'api/admin/images/upload/' + $scope.product['id']
+
+        });
+
+        uploader.filters.push({
+
+            name: 'imageFilter',
+            fn: function(item /*{File|FileLikeObject}*/, options) {
+                var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+                return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+            }
+
+        });
+
+    }, ( function(){
+
+        console.log( 'Error on communicate with API.' );
+
+    }));
 
     // get categories
     categoriesService.getData().then(function(data) {
@@ -749,6 +787,69 @@ controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$timeout'
         $scope.product.category = data.data[0];
 
     });
+
+    // get images
+    //function getImages() {
+    //
+    //    $http.post( 'api/admin/images/get/' + $scope.product['id'] , {
+    //
+    //        token: checkToken.raw()
+    //
+    //    }).then( function( data ){
+    //
+    //        $scope.images = data.data;
+    //
+    //    }, ( function(){
+    //
+    //        console.log( 'Error on communicate with API.' );
+    //
+    //    }));
+    //
+    //}
+
+    // init uploader
+
+
+    // uploader.onCompleteItem = function(fileItem, response, status, headers) {
+
+        //getImages();
+        $scope.product.thumbnail = "uploads/" + $scope.product['id'] + "/" + fileItem._file.name;
+
+    };
+
+    // delete image
+    $scope.delImage = function (image, $index) {
+
+        $scope.images.splice($index, 1);
+
+        $http.post( 'api/admin/images/delete/' , {
+
+            token: checkToken.raw(),
+            id : $scope.product['id'],
+            image : image
+
+        }, ( function(){
+
+            console.log( 'Error on communicate with API.' );
+
+        }));
+
+    };
+
+    // set thumbnail
+    $scope.setThumbnail = function (product, image) {
+
+        if($scope.product.thumbnail == image) {
+
+            $scope.product.thumbnail = '';
+
+        } else {
+
+            $scope.product.thumbnail = image;
+
+        }
+
+    };
 
     // post product
     $scope.createProduct = function(product) {
@@ -842,7 +943,7 @@ controllersAdmin.controller( 'categoryCreate' , [ '$scope' , '$http' , '$timeout
     categoriesService.getData().then(function(data) {
 
         $scope.categories = data.data;
-        $scope.category['id'] = $scope.categories.length + 1;
+        $scope.category['id'] = Number($scope.categories[$scope.categories.length-1].id)+1;
 
     });
 
@@ -1205,7 +1306,7 @@ controllersAdmin.controller( 'orders' , [ '$scope' , '$http' , 'checkToken', fun
 
     }).then( function( data ){
 
-        $scope.orders = data;
+        $scope.orders = data.data;
 
         angular.forEach( $scope.orders , function( order , key ){
 
@@ -1244,6 +1345,8 @@ controllersAdmin.controller( 'orders' , [ '$scope' , '$http' , 'checkToken', fun
     };
 
     $scope.changeStatus = function(order) {
+
+        console.log(order.status);
 
         if(order.status == 0) {
 
@@ -1628,7 +1731,7 @@ controllersNavigation.controller( 'navigation' , [ '$scope' , '$http' , '$locati
 
 var controllersSite = angular.module( 'controllersSite' , [ 'myDirectives', 'angular-owl-carousel-2' ] );
 
-controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', 'categoriesService', 'productsService', function( $scope , $http, cartService, categoriesService, productsService ){
+controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', 'productsService', function( $scope , $http, cartService, productsService ){
 
     // get products
     $http.get( 'api/site/products/get' ).
@@ -1981,5 +2084,72 @@ controllersSite.controller( 'siteHome' , [ '$scope' , '$http', '$timeout', funct
     $scope.ready = function ($api) {
         owlAPi = $api;
     };
+
+}]);
+
+
+controllersSite.controller( 'siteHome' , [ '$scope', '$http', 'sliderFactory', 'productsService', function( $scope, $http, sliderFactory, productsService ){
+
+    var owlAPi;
+
+    $scope.owlProperties = {
+
+        animateIn: 'fadeIn',
+        animateOut: 'fadeOut',
+        lazyLoad: true,
+        loop: true,
+        items: 1,
+        autoplay: false,
+        autoplayHoverPause: true,
+        nav: true,
+        dots: false,
+        navText: [
+            "<span class='glyphicon glyphicon-chevron-left'></span>",
+            "<span class='glyphicon glyphicon-chevron-right'></span>"
+        ]
+
+    };
+
+    $scope.ready = function ($api) {
+
+        owlAPi = $api;
+
+    };
+
+    // get slides
+    $scope.$watch(function () {
+
+        $scope.items = sliderFactory.show();
+
+    });
+
+    // get products
+    $http.get( 'api/site/products/get' ).
+        then( function( data ){
+
+            $scope.products = data.data;
+
+            angular.forEach($scope.products, function( item ) {
+
+                productsService.getCategoryName( item.category ).then(function( data ) {
+
+                    item.categoryName = data.data.replace(/['"]+/g, '');
+
+                });
+
+            });
+
+        }, ( function(){
+
+            console.log( 'Error on communicate with API.' );
+
+        }));
+
+
+}]);
+
+controllersSite.controller( '404' , [ '$scope', '$http', function( $scope, $http ){
+
+
 
 }]);

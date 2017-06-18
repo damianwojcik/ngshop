@@ -2,7 +2,7 @@
 
 var controllersSite = angular.module( 'controllersSite' , [ 'myDirectives', 'angular-owl-carousel-2' ] );
 
-controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', 'categoriesService', 'productsService', function( $scope , $http, cartService, categoriesService, productsService ){
+controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', 'productsService', function( $scope , $http, cartService, productsService ){
 
     // get products
     $http.get( 'api/site/products/get' ).
@@ -359,7 +359,7 @@ controllersSite.controller( 'siteHome' , [ '$scope' , '$http', '$timeout', funct
 }]);
 
 
-controllersSite.controller( 'siteHome' , [ '$scope', '$http', 'sliderFactory', function( $scope, $http, sliderFactory ){
+controllersSite.controller( 'siteHome' , [ '$scope', '$http', 'sliderFactory', 'productsService', function( $scope, $http, sliderFactory, productsService ){
 
     var owlAPi;
 
@@ -393,6 +393,34 @@ controllersSite.controller( 'siteHome' , [ '$scope', '$http', 'sliderFactory', f
         $scope.items = sliderFactory.show();
 
     });
+
+    // get products
+    $http.get( 'api/site/products/get' ).
+        then( function( data ){
+
+            $scope.products = data.data;
+
+            angular.forEach($scope.products, function( item ) {
+
+                productsService.getCategoryName( item.category ).then(function( data ) {
+
+                    item.categoryName = data.data.replace(/['"]+/g, '');
+
+                });
+
+            });
+
+        }, ( function(){
+
+            console.log( 'Error on communicate with API.' );
+
+        }));
+
+
+}]);
+
+controllersSite.controller( '404' , [ '$scope', '$http', function( $scope, $http ){
+
 
 
 }]);
