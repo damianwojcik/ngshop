@@ -442,6 +442,19 @@ p {
 .case-c {
   text-transform: capitalize; }
 
+.striked {
+  color: #d0d0d0;
+  position: relative;
+  margin-bottom: 10px;
+  display: inline-block; }
+  .striked:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    border-bottom: 1px solid #d0d0d0; }
+
 /* BEGIN TYPOGRAPHY */
 .vcenter {
   display: table-cell;

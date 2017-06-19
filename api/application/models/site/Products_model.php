@@ -64,4 +64,14 @@ class Products_model extends CI_Model {
 
     }
 
+    public function getPromos()
+    {
+
+        $this->db->where('promodate !=', '0000-00-00');
+        $q = $this->db->get('products')->result_array();
+
+        return $q;
+
+    }
+
 }

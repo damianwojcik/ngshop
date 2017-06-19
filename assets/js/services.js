@@ -175,6 +175,22 @@ myServices.service('productsService', [ '$http' , function ( $http ) {
 
     };
 
+    this.getPromos = function ( ) {
+
+        return $http.get('api/site/products/getPromos/')
+
+            .then(function ( data ){
+
+                return data;
+
+            }, (function (){
+
+                console.log( 'Error on communicate with API.' );
+
+            }));
+
+    };
+
 }]);
 
 myServices.service('categoriesService', [ '$http' , function ( $http ) {

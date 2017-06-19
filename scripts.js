@@ -534,6 +534,7 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', '
         $scope.currentPage = 1;
         $scope.numPerPage = 8;
         $scope.maxSize = 5;
+        $scope.filteredlist = [];
 
         angular.forEach($scope.products, function( item ) {
 
@@ -551,13 +552,16 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', '
 
     }));
 
-    $scope.delete = function(product, $index) {
+    $scope.delete = function(product) {
 
         if (!confirm('Are you really want to delete this product?')) {
             return false;
         }
 
-        $scope.products.splice($index, 1);
+        var index = $scope.products.findIndex(x => x.id==product.id);
+
+        $scope.products.splice(index, 1);
+
 
         $http.post( 'api/admin/products/delete/', {
 
@@ -886,6 +890,10 @@ controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$route', 
 
         if(product) {
             product.category = product.category.id;
+
+            if(product.promoprice) {
+                $scope.product.promodate = new Date().toISOString().substring(0, 10);
+            }
         }
 
         $http.post( 'api/admin/products/create/', {
@@ -944,8 +952,6 @@ controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$route', 
                         }
 
                     });
-
-                    console.log($scope.uploader);
 
                     uploader.onCompleteItem = function(fileItem, response, status, headers) {
 
@@ -1295,13 +1301,15 @@ controllersAdmin.controller( 'users' , [ '$scope' , '$http', 'checkToken', funct
         $scope.sort = item;
     };
 
-    $scope.delete = function(user, $index) {
+    $scope.delete = function(user) {
 
         if (!confirm('Are you really want to delete this user?')) {
             return false;
         }
 
-        $scope.users.splice($index, 1);
+        var index = $scope.users.findIndex(x => x.id==user.id);
+
+        $scope.users.splice(index, 1);
 
         $http.post( 'api/admin/users/delete/', {
 
@@ -1575,13 +1583,15 @@ controllersAdmin.controller( 'adminCategory' , [ '$scope', '$http', '$location',
 
     });
 
-    $scope.deleteProduct = function(product, $index) {
+    $scope.deleteProduct = function(product) {
 
         if (!confirm('Are you really want to delete this product?')) {
             return false;
         }
 
-        $scope.products.splice($index, 1);
+        var index = $scope.products.findIndex(x => x.id==product.id);
+
+        $scope.products.splice(index, 1);
 
         $http.post( 'api/admin/products/delete/', {
 

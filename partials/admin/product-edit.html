@@ -38,6 +38,13 @@
 
         </div>
 
+        <div class="form-group">
+
+          <label for="promoprice">(Optionally) Product promotion price:</label>
+          <input id="promoprice" type="text" class="form-control" ng-model="product.promoprice">
+
+        </div>
+
         <h3>Upload product photo</h3>
 
         <div ng-show="uploader.isHTML5" ng-if="uploader !== undefined">
@@ -123,7 +130,11 @@
         <h2>{{ product.name }}</h2>
         <h4>{{ product.category.name }}</h4>
         <p>{{ product.description }}</p>
-        <h3><span class="label label-warning">{{ product.price | number:2 }}$</span></h3>
+        <h3>
+            <span ng-if="!product.promoprice" class="label label-danger">{{ product.price | number:2 }}$</span>
+            <span ng-if="product.promoprice" class="striked">{{ product.price | number:2 }}$</span><br/>
+            <span ng-if="product.promoprice" class="label label-danger">{{ product.promoprice | number:2 }}$</span>
+        </h3>
 
         <p>&nbsp;</p>
 

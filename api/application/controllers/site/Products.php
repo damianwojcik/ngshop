@@ -46,6 +46,14 @@ class Products extends CI_Controller {
         echo json_encode($result);
     }
 
+    public function getPromos( )
+    {
+
+        $result = $this->Products_model->getPromos();
+
+        echo json_encode($result);
+    }
+
     public function getImages( $id ) {
 
         $basePath = FCPATH . '..' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
