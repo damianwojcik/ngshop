@@ -13,6 +13,11 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', '
 
         $scope.products = data.data;
 
+        // pagination
+        $scope.currentPage = 1;
+        $scope.numPerPage = 8;
+        $scope.maxSize = 5;
+
         angular.forEach($scope.products, function( item ) {
 
             productsService.getCategoryName( item.category ).then(function( data ) {
@@ -50,7 +55,15 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', '
 
     };
 
-}]);
+}]).filter('pagination', function() {
+    return function(input, currentPage, pageSize) {
+        if(angular.isArray(input)) {
+            var start = (currentPage-1)*pageSize;
+            var end = currentPage*pageSize;
+            return input.slice(start, end);
+        }
+    };
+});
 
 controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', '$timeout', 'checkToken', 'categoriesService', function( $scope , $http , $routeParams, FileUploader, $timeout, checkToken, categoriesService ){
 
@@ -751,11 +764,27 @@ controllersAdmin.controller( 'users' , [ '$scope' , '$http', 'checkToken', funct
 
         $scope.users = data.data;
 
+        angular.forEach($scope.users, function( item ) {
+
+            item['id'] = Number(item.id);
+
+        });
+
+        // pagination
+        $scope.currentPage = 1;
+        $scope.numPerPage = 20;
+        $scope.maxSize = 5;
+
     }, ( function(){
 
         console.log( 'Error on communicate with API.' );
 
     }));
+
+    $scope.changeSort = function (item) {
+        $scope.reverse = $scope.reverse =! $scope.reverse;
+        $scope.sort = item;
+    };
 
     $scope.delete = function(user, $index) {
 
@@ -776,14 +805,55 @@ controllersAdmin.controller( 'users' , [ '$scope' , '$http', 'checkToken', funct
 
         }));
 
-    }
+    };
 
-}]);
+    $scope.changeRole = function(user) {
+
+        if(user.role == 'user') {
+
+            user.role = 'admin';
+
+        } else {
+
+            user.role = 'user';
+
+        }
+
+        $http.post( 'api/admin/users/updateRole/' , {
+
+            token: checkToken.raw(),
+            id: user.id,
+            role: user.role
+
+        }, ( function(){
+
+            console.log( 'Error on communicate with API.' );
+
+        }));
+
+    };
+
+}]).filter('pagination', function() {
+    return function(input, currentPage, pageSize) {
+        if(angular.isArray(input)) {
+            var start = (currentPage-1)*pageSize;
+            var end = currentPage*pageSize;
+            return input.slice(start, end);
+        }
+    };
+});
 
 controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' , '$timeout', 'checkToken', function( $scope , $http , $routeParams, $timeout, checkToken ){
 
     var userId = $routeParams.id;
     $scope.id = userId;
+
+    // alerts
+    $scope.alerts = [];
+
+    $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1);
+    };
 
     $http.post( 'api/admin/users/get/' + userId, {
 
@@ -816,15 +886,20 @@ controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' 
 
             $scope.submit = true;
 
-            if (errors) {
+            if (errors.data) {
 
                 $scope.errors = errors.data;
 
             } else {
 
                 $scope.success = true;
+                console.log($scope.success);
                 $timeout(function(){
                     $scope.success = false;
+
+                    $scope.alerts = [
+                        { type: 'success', msg: 'User updated!' }
+                    ];
                 }, 3000);
 
             }
@@ -845,6 +920,13 @@ controllersAdmin.controller( 'userCreate' , [ '$scope' , '$http' , '$timeout', '
 
     $scope.user = {};
     $scope.user.role = 'user';
+
+    // alerts
+    $scope.alerts = [];
+
+    $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1);
+    };
 
     $scope.createUser = function(user) {
 
@@ -873,6 +955,10 @@ controllersAdmin.controller( 'userCreate' , [ '$scope' , '$http' , '$timeout', '
                 $timeout(function(){
 
                     $scope.success = false;
+
+                    $scope.alerts = [
+                        { type: 'success', msg: 'User added!' }
+                    ];
 
                 }, 3000);
 
@@ -939,8 +1025,6 @@ controllersAdmin.controller( 'orders' , [ '$scope' , '$http' , 'checkToken', fun
 
     $scope.changeStatus = function(order) {
 
-        console.log(order.status);
-
         if(order.status == 0) {
 
             order.status = 1;
@@ -975,6 +1059,11 @@ controllersAdmin.controller( 'adminCategory' , [ '$scope', '$http', '$location',
     productsService.getByCategorySlug(slug).then(function(data) {
 
         $scope.products = data.data;
+
+        // pagination
+        $scope.currentPage = 1;
+        $scope.numPerPage = 8;
+        $scope.maxSize = 5;
 
     });
 
@@ -1029,7 +1118,15 @@ controllersAdmin.controller( 'adminCategory' , [ '$scope', '$http', '$location',
 
     };
 
-}]);
+}]).filter('pagination', function() {
+    return function(input, currentPage, pageSize) {
+        if(angular.isArray(input)) {
+            var start = (currentPage-1)*pageSize;
+            var end = currentPage*pageSize;
+            return input.slice(start, end);
+        }
+    };
+});
 
 controllersAdmin.controller( 'adminHome' , [ '$scope', '$http', '$uibModal', 'sliderFactory', '$timeout', function( $scope, $http, $uibModal, sliderFactory, $timeout ){
 

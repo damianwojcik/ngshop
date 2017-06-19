@@ -1,6 +1,6 @@
 'use strict';
 
-var controllersSite = angular.module( 'controllersSite' , [ 'myDirectives', 'angular-owl-carousel-2' ] );
+var controllersSite = angular.module( 'controllersSite' , [ 'myDirectives', 'angular-owl-carousel-2', 'ui.bootstrap' ] );
 
 controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', 'productsService', function( $scope , $http, cartService, productsService ){
 
@@ -9,6 +9,11 @@ controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService
     then( function( data ){
 
         $scope.products = data.data;
+
+        // pagination
+        $scope.currentPage = 1;
+        $scope.numPerPage = 8;
+        $scope.maxSize = 5;
 
         angular.forEach($scope.products, function( item ) {
 
@@ -60,7 +65,15 @@ controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService
 
     };
 
-}]);
+}]).filter('pagination', function() {
+    return function(input, currentPage, pageSize) {
+        if(angular.isArray(input)) {
+            var start = (currentPage-1)*pageSize;
+            var end = currentPage*pageSize;
+            return input.slice(start, end);
+        }
+    };
+});
 
 
 controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams' , 'cartService', function( $scope , $http , $routeParams, cartService ){
@@ -228,6 +241,11 @@ controllersSite.controller( 'siteCategory' , [ '$scope' , '$http' , '$routeParam
 
         $scope.products = data.data;
 
+        // pagination
+        $scope.currentPage = 1;
+        $scope.numPerPage = 8;
+        $scope.maxSize = 5;
+
     });
 
     // get categories
@@ -251,7 +269,15 @@ controllersSite.controller( 'siteCategory' , [ '$scope' , '$http' , '$routeParam
         }
     };
 
-}]);
+}]).filter('pagination', function() {
+    return function(input, currentPage, pageSize) {
+        if(angular.isArray(input)) {
+            var start = (currentPage-1)*pageSize;
+            var end = currentPage*pageSize;
+            return input.slice(start, end);
+        }
+    };
+});
 
 controllersSite.controller( 'login' , [ '$scope' , '$http' , 'store', 'checkToken', '$location', function( $scope , $http, store, checkToken, $location ){
 

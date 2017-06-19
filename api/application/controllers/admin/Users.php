@@ -42,6 +42,7 @@ class Users extends CI_Controller {
         if ($this->form_validation->run())
         {
             $user = $this->input->post('user');
+            unset($user['passconf']);
             $user['password'] = crypt($user['password'], config_item('encryption_key'));
             $this->Users_model->update($user);
         } else
@@ -53,6 +54,16 @@ class Users extends CI_Controller {
             $errors['passconf'] = form_error('passconf');
             echo json_encode($errors);
         }
+    }
+
+    public function updateRole()
+    {
+
+        $id = $this->input->post('id');
+        $data['role'] = $this->input->post('role');
+
+        $this->Users_model->updateRole($id, $data);
+
     }
 
     public function create()

@@ -3,10 +3,6 @@
 var myDirectives = angular.module( 'myDirectives' , [] );
 
 
-    // Angular File Upload module does not include this directive
-    // Only for example
-
-
 /**
  * The ng-thumb directive
  * @author: nerv

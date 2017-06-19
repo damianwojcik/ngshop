@@ -534,6 +534,11 @@ select {
   z-index: 99; }
 
 /* END SLIDER */
+.table-users thead th {
+  cursor: pointer; }
+  .table-users thead th .glyphicon {
+    margin-right: 5px; }
+
 .navbar-collapse {
   padding: 0; }
 

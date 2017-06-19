@@ -24,6 +24,12 @@ class Users_model extends CI_Model {
         $this->db->update('users', $user);
     }
 
+    public function updateRole($id, $data)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('users', $data);
+    }
+
     public function create($user)
     {
         $this->db->insert('users', $user);
