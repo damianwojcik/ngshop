@@ -65,16 +65,7 @@ controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService
 
     };
 
-}]).filter('pagination', function() {
-    return function(input, currentPage, pageSize) {
-        if(angular.isArray(input)) {
-            var start = (currentPage-1)*pageSize;
-            var end = currentPage*pageSize;
-            return input.slice(start, end);
-        }
-    };
-});
-
+}]);
 
 controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams' , 'cartService', function( $scope , $http , $routeParams, cartService ){
 
@@ -269,15 +260,7 @@ controllersSite.controller( 'siteCategory' , [ '$scope' , '$http' , '$routeParam
         }
     };
 
-}]).filter('pagination', function() {
-    return function(input, currentPage, pageSize) {
-        if(angular.isArray(input)) {
-            var start = (currentPage-1)*pageSize;
-            var end = currentPage*pageSize;
-            return input.slice(start, end);
-        }
-    };
-});
+}]);
 
 controllersSite.controller( 'login' , [ '$scope' , '$http' , 'store', 'checkToken', '$location', function( $scope , $http, store, checkToken, $location ){
 
@@ -383,7 +366,6 @@ controllersSite.controller( 'siteHome' , [ '$scope' , '$http', '$timeout', funct
     };
 
 }]);
-
 
 controllersSite.controller( 'siteHome' , [ '$scope', '$http', 'sliderFactory', 'productsService', function( $scope, $http, sliderFactory, productsService ){
 

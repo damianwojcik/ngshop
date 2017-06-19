@@ -9,7 +9,17 @@
 !function(){angular.module("angular-storage",["angular-storage.store"]),angular.module("angular-storage.cookieStorage",[]).service("cookieStorage",["$cookies",function(e){this.set=function(t,r){return e.put(t,r)},this.get=function(t){return e.get(t)},this.remove=function(t){return e.remove(t)}}]),angular.module("angular-storage.internalStore",["angular-storage.localStorage","angular-storage.sessionStorage"]).factory("InternalStore",["$log","$injector",function(e,t){function r(e,r,o,a){this.namespace=e||null,(angular.isUndefined(a)||null==a)&&(a=!0),this.useCache=a,this.delimiter=o||".",this.inMemoryCache={},this.storage=t.get(r||"localStorage")}return r.prototype.getNamespacedKey=function(e){return this.namespace?[this.namespace,e].join(this.delimiter):e},r.prototype.set=function(e,t){this.useCache&&(this.inMemoryCache[e]=t),this.storage.set(this.getNamespacedKey(e),JSON.stringify(t))},r.prototype.get=function(t){var r=null;if(this.useCache&&t in this.inMemoryCache)return this.inMemoryCache[t];var o=this.storage.get(this.getNamespacedKey(t));try{r="undefined"==typeof o||"undefined"===o?void 0:JSON.parse(o),this.useCache&&(this.inMemoryCache[t]=r)}catch(a){e.error("Error parsing saved value",a),this.remove(t)}return r},r.prototype.remove=function(e){this.useCache&&(this.inMemoryCache[e]=null),this.storage.remove(this.getNamespacedKey(e))},r}]),angular.module("angular-storage.localStorage",["angular-storage.cookieStorage"]).service("localStorage",["$window","$injector",function(e,t){var r;try{e.localStorage.setItem("testKey","test"),e.localStorage.removeItem("testKey"),r=!0}catch(o){r=!1}if(r)this.set=function(t,r){return e.localStorage.setItem(t,r)},this.get=function(t){return e.localStorage.getItem(t)},this.remove=function(t){return e.localStorage.removeItem(t)},this.clear=function(){e.localStorage.clear()};else{var a=t.get("cookieStorage");this.set=a.set,this.get=a.get,this.remove=a.remove}}]),angular.module("angular-storage.sessionStorage",["angular-storage.cookieStorage"]).service("sessionStorage",["$window","$injector",function(e,t){var r;try{e.sessionStorage.setItem("testKey","test"),e.sessionStorage.removeItem("testKey"),r=!0}catch(o){r=!1}if(r)this.set=function(t,r){return e.sessionStorage.setItem(t,r)},this.get=function(t){return e.sessionStorage.getItem(t)},this.remove=function(t){return e.sessionStorage.removeItem(t)};else{var a=t.get("cookieStorage");this.set=a.set,this.get=a.get,this.remove=a.remove}}]),angular.module("angular-storage.store",["angular-storage.internalStore"]).provider("store",function(){var e="localStorage",t=!0;this.setStore=function(t){t&&angular.isString(t)&&(e=t)},this.setCaching=function(e){t=!!e},this.$get=["InternalStore",function(r){var o=new r(null,e,null,t);return o.getNamespacedStore=function(e,t,o,a){return new r(e,t,o,a)},o}]})}();
 'use strict';
 
-var app = angular.module( 'app' , [ 'ngRoute' , 'angular-storage', 'angular-jwt', 'controllersNavigation', 'controllersAdmin', 'controllersSite', 'myServices' ] );
+var app = angular.module( 'app' , [ 'ngRoute' , 'angular-storage', 'angular-jwt', 'controllersNavigation', 'controllersAdmin', 'controllersSite', 'myServices' ])
+
+    .filter('pagination', function() {
+        return function(input, currentPage, pageSize) {
+            if(angular.isArray(input)) {
+                var start = (currentPage-1)*pageSize;
+                var end = currentPage*pageSize;
+                return input.slice(start, end);
+            }
+        };
+    });
 
 app.config( [ '$routeProvider' , '$httpProvider' , '$locationProvider', function( $routeProvider , $httpProvider, $locationProvider ) {
 
@@ -507,7 +517,7 @@ myServices.factory('sliderFactory', ['$http', 'checkToken', function ( $http, ch
 }]);
 'use strict';
 
-var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'myDirectives', 'ui.select', 'angular-owl-carousel-2', 'ngSanitize', 'ui.bootstrap' ] );
+var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'myDirectives', 'ui.select', 'angular-owl-carousel-2', 'ngSanitize', 'ui.bootstrap' ]);
 
 controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', 'productsService', function( $scope , $http, checkToken, productsService ){
 
@@ -562,15 +572,7 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', '
 
     };
 
-}]).filter('pagination', function() {
-    return function(input, currentPage, pageSize) {
-        if(angular.isArray(input)) {
-            var start = (currentPage-1)*pageSize;
-            var end = currentPage*pageSize;
-            return input.slice(start, end);
-        }
-    };
-});
+}]);
 
 controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', '$timeout', 'checkToken', 'categoriesService', function( $scope , $http , $routeParams, FileUploader, $timeout, checkToken, categoriesService ){
 
@@ -1340,15 +1342,7 @@ controllersAdmin.controller( 'users' , [ '$scope' , '$http', 'checkToken', funct
 
     };
 
-}]).filter('pagination', function() {
-    return function(input, currentPage, pageSize) {
-        if(angular.isArray(input)) {
-            var start = (currentPage-1)*pageSize;
-            var end = currentPage*pageSize;
-            return input.slice(start, end);
-        }
-    };
-});
+}]);
 
 controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' , '$timeout', 'checkToken', function( $scope , $http , $routeParams, $timeout, checkToken ){
 
@@ -1625,15 +1619,7 @@ controllersAdmin.controller( 'adminCategory' , [ '$scope', '$http', '$location',
 
     };
 
-}]).filter('pagination', function() {
-    return function(input, currentPage, pageSize) {
-        if(angular.isArray(input)) {
-            var start = (currentPage-1)*pageSize;
-            var end = currentPage*pageSize;
-            return input.slice(start, end);
-        }
-    };
-});
+}]);
 
 controllersAdmin.controller( 'adminHome' , [ '$scope', '$http', '$uibModal', 'sliderFactory', '$timeout', function( $scope, $http, $uibModal, sliderFactory, $timeout ){
 
@@ -1991,16 +1977,7 @@ controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService
 
     };
 
-}]).filter('pagination', function() {
-    return function(input, currentPage, pageSize) {
-        if(angular.isArray(input)) {
-            var start = (currentPage-1)*pageSize;
-            var end = currentPage*pageSize;
-            return input.slice(start, end);
-        }
-    };
-});
-
+}]);
 
 controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams' , 'cartService', function( $scope , $http , $routeParams, cartService ){
 
@@ -2195,15 +2172,7 @@ controllersSite.controller( 'siteCategory' , [ '$scope' , '$http' , '$routeParam
         }
     };
 
-}]).filter('pagination', function() {
-    return function(input, currentPage, pageSize) {
-        if(angular.isArray(input)) {
-            var start = (currentPage-1)*pageSize;
-            var end = currentPage*pageSize;
-            return input.slice(start, end);
-        }
-    };
-});
+}]);
 
 controllersSite.controller( 'login' , [ '$scope' , '$http' , 'store', 'checkToken', '$location', function( $scope , $http, store, checkToken, $location ){
 
@@ -2309,7 +2278,6 @@ controllersSite.controller( 'siteHome' , [ '$scope' , '$http', '$timeout', funct
     };
 
 }]);
-
 
 controllersSite.controller( 'siteHome' , [ '$scope', '$http', 'sliderFactory', 'productsService', function( $scope, $http, sliderFactory, productsService ){
 

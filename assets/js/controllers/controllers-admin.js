@@ -1,6 +1,6 @@
 'use strict';
 
-var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'myDirectives', 'ui.select', 'angular-owl-carousel-2', 'ngSanitize', 'ui.bootstrap' ] );
+var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'myDirectives', 'ui.select', 'angular-owl-carousel-2', 'ngSanitize', 'ui.bootstrap' ]);
 
 controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', 'productsService', function( $scope , $http, checkToken, productsService ){
 
@@ -55,15 +55,7 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', '
 
     };
 
-}]).filter('pagination', function() {
-    return function(input, currentPage, pageSize) {
-        if(angular.isArray(input)) {
-            var start = (currentPage-1)*pageSize;
-            var end = currentPage*pageSize;
-            return input.slice(start, end);
-        }
-    };
-});
+}]);
 
 controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', '$timeout', 'checkToken', 'categoriesService', function( $scope , $http , $routeParams, FileUploader, $timeout, checkToken, categoriesService ){
 
@@ -833,15 +825,7 @@ controllersAdmin.controller( 'users' , [ '$scope' , '$http', 'checkToken', funct
 
     };
 
-}]).filter('pagination', function() {
-    return function(input, currentPage, pageSize) {
-        if(angular.isArray(input)) {
-            var start = (currentPage-1)*pageSize;
-            var end = currentPage*pageSize;
-            return input.slice(start, end);
-        }
-    };
-});
+}]);
 
 controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' , '$timeout', 'checkToken', function( $scope , $http , $routeParams, $timeout, checkToken ){
 
@@ -1118,15 +1102,7 @@ controllersAdmin.controller( 'adminCategory' , [ '$scope', '$http', '$location',
 
     };
 
-}]).filter('pagination', function() {
-    return function(input, currentPage, pageSize) {
-        if(angular.isArray(input)) {
-            var start = (currentPage-1)*pageSize;
-            var end = currentPage*pageSize;
-            return input.slice(start, end);
-        }
-    };
-});
+}]);
 
 controllersAdmin.controller( 'adminHome' , [ '$scope', '$http', '$uibModal', 'sliderFactory', '$timeout', function( $scope, $http, $uibModal, sliderFactory, $timeout ){
 
