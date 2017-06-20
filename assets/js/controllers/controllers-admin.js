@@ -74,6 +74,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
     }).then( function( data ){
 
         $scope.product = data.data;
+        $scope.oldPromoPrice = $scope.product.promoprice;
 
         // get categories
         categoriesService.getData().then(function(data) {
@@ -190,11 +191,15 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
     $scope.saveChanges = function(product) {
 
         if(product) {
+
             product.category = product.category.id;
 
-            if(product.promoprice) {
+            // if promoprice changed set new promodate
+            if(product.promoprice != $scope.oldPromoPrice) {
                 $scope.product.promodate = new Date().toISOString().substring(0, 10);
-            } else {
+            }
+
+            if (!product.promoprice) {
                 $scope.product.promodate = '';
             }
         }

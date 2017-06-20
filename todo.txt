@@ -65,3 +65,4 @@
  - dodac file uploader do product create
  - z kontrolem zaznaczanie wielu produktów
  - dodac drag n drop do slidera
+ - link do produktu po name a nie po ID
