@@ -437,6 +437,22 @@ myServices.service('productsService', [ '$http' , function ( $http ) {
 
     };
 
+    this.getPromos = function ( ) {
+
+        return $http.get('api/site/products/getPromos/')
+
+            .then(function ( data ){
+
+                return data;
+
+            }, (function (){
+
+                console.log( 'Error on communicate with API.' );
+
+            }));
+
+    };
+
 }]);
 
 myServices.service('categoriesService', [ '$http' , function ( $http ) {
@@ -591,6 +607,7 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
     }).then( function( data ){
 
         $scope.product = data.data;
+        $scope.oldPromoPrice = $scope.product.promoprice;
 
         // get categories
         categoriesService.getData().then(function(data) {
@@ -707,7 +724,17 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
     $scope.saveChanges = function(product) {
 
         if(product) {
+
             product.category = product.category.id;
+
+            // if promoprice changed set new promodate
+            if(product.promoprice != $scope.oldPromoPrice) {
+                $scope.product.promodate = new Date().toISOString().substring(0, 10);
+            }
+
+            if (!product.promoprice) {
+                $scope.product.promodate = '';
+            }
         }
 
         // post product
@@ -950,6 +977,7 @@ controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$route', 
                             var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
                             return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
                         }
+                        
 
                     });
 
@@ -2261,34 +2289,6 @@ controllersSite.controller( 'register' , [ '$scope' , '$http' , function( $scope
 
 }]);
 
-controllersSite.controller( 'siteHome' , [ '$scope' , '$http', '$timeout', function( $scope , $http, $timeout ){
-
-    var owlAPi;
-    $scope.items = [1, 2, 3, 4, 5, 6, 7, 8, 10];
-
-    $scope.properties = {
-
-        animateIn: 'fadeIn',
-        lazyLoad: true,
-        loop: true,
-        items: 1,
-        autoplay: true,
-        autoplayHoverPause: true,
-        nav: true,
-        dots: false,
-        navText: [
-            "<span class='glyphicon glyphicon-chevron-left'></span>",
-            "<span class='glyphicon glyphicon-chevron-right'></span>"
-        ]
-
-    };
-
-    $scope.ready = function ($api) {
-        owlAPi = $api;
-    };
-
-}]);
-
 controllersSite.controller( 'siteHome' , [ '$scope', '$http', 'sliderFactory', 'productsService', function( $scope, $http, sliderFactory, productsService ){
 
     var owlAPi;
@@ -2344,7 +2344,24 @@ controllersSite.controller( 'siteHome' , [ '$scope', '$http', 'sliderFactory', '
 
             console.log( 'Error on communicate with API.' );
 
-        }));
+    }));
+
+    // get promos
+    productsService.getPromos().then(function(data) {
+
+        $scope.promoProducts = data.data;
+
+        angular.forEach($scope.promoProducts, function( item ) {
+
+            productsService.getCategoryName( item.category ).then(function( data ) {
+
+                item.categoryName = data.data.replace(/['"]+/g, '');
+
+            });
+
+        });
+
+    });
 
 
 }]);
