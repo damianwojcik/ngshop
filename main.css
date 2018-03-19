@@ -740,6 +740,19 @@ canvas {
   top: 15px; }
 
 /* END MODALS */
+.zoom {
+  margin: 0;
+  background-position: 50% 50%;
+  position: relative;
+  overflow: hidden;
+  cursor: crosshair; }
+  .zoom img {
+    transition: opacity .5s;
+    display: block;
+    width: 100%; }
+  .zoom img:hover {
+    opacity: 0; }
+
 /* BEGIN HEADER */
 .header {
   position: relative;

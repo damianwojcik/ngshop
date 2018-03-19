@@ -1,7 +1,5 @@
 -paginacja produktów i uzytkowników: http://stackoverflow.com/questions/10816073/how-to-do-paging-in-angularjs
--dodac kategorie produktów
 -dodać taby Opis produktu / skład /wartości odżywcze / opinie
--zoom jak na kfd
 -layout jak pasjonat.cc
 -intercom
 -wrzucic na hosting / portfolio
@@ -11,18 +9,12 @@
 -dodać wiadomość Witaj, {{user.firstname}}
 -zablkoowac dostep uzytkownikom do: http://localhost/ngshop/api/site/user/get/4 (moga pobrac maile)
 -na windowsie (serverze) zmienic w api/controllers/admin/images mkdir( $basePath , 0777 ); na 0700
--dodac image thumbnail jesli nie ma obrazka
--strona category/id (pojedynczej kategorii)
-- style z index.html przeniesc
 - service z kategoriami
--admin moze zmieniac role uzytkownika (select)
 -dodac opcję przeceny (%)
 - poprawic checkcart ( chyba trzseba przekazac caly cart) do strony products bo po wywaleniu z koszyka nadal pisze ze mamy w koszyku - albo przy usuwaniu wywolacz checkCart
-- przy dodawaniu produktu dodac placeholder thumbnaila jesli uzytkownik nie wybierze zdjecia (i zapisywac go do bazy! bo potem sa odczytywane na podstawie bazy)
 -smart search
 -animacja powiekszania cyfry w koszyku przy dodaniu produktu
 - wywalic console.log / var_dump
--style buttonow poprawic
 -wiadomosc przy usuwaniu kategorii ze wszystkie produkty z tej kategorii trafia do 'uncategorized'
 -selecty bez border radius
 -ujednolicic style selectow
@@ -53,14 +45,12 @@
  - promotion.position zrobić
  - przy usuwaniu promocji usunac obrazek
  - funkcje w kontrollerze admin/images uploadPromo i upload ujednolicic
- - dodac wybor szablonu (css theme)
  - cart dropdown zamienic na ten z ui-angular zeby byla animacja
- - duplikat owl carousel w stylach
  - zmiana walut
  - lista zyczen
  - http://allthingssmitty.com/2016/10/24/show-my-password-please/?mc_cid=b32ac5d898&mc_eid=b38d4b9b7a
  - powiadomienie email o zamowieniu
- - dodac file uploader do product create
  - z kontrolem zaznaczanie wielu produktów
  - dodac drag n drop do slidera
- - link do produktu po name a nie po ID
+ - my account strona
+ - w controllers admin productCreate DRY

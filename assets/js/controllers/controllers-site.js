@@ -3,7 +3,7 @@
 var controllersSite = angular.module( 'controllersSite' , [ 'myDirectives', 'angular-owl-carousel-2', 'ui.bootstrap' ] );
 
 controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService', 'productsService', function( $scope , $http, cartService, productsService ){
-
+    
     // get products
     $http.get( 'api/site/products/get' ).
     then( function( data ){

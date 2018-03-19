@@ -108,3 +108,21 @@ myDirectives.directive('owlCarouselItem', [function() {
     };
 
 }]);
+
+myDirectives.directive('myZoom', [function() {
+
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            element.on('mousemove', function(e) {
+                var zoomer = e.currentTarget,
+                    offsetX = e.offsetX,
+                    offsetY = e.offsetY,
+                    x = offsetX/zoomer.offsetWidth*100,
+                    y = offsetY/zoomer.offsetHeight*100;
+                zoomer.style.backgroundPosition = x + '% ' + y + '%';
+            });
+        }
+    };
+
+}]);
