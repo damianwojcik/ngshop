@@ -8,7 +8,7 @@
         </div>
 
         <div class="col-xs-6">
-            <a href="#/admin/user/create" class="btn btn-success pull-right">Add user</a>
+            <a href="admin/user/create" class="btn btn-success pull-right">Add user</a>
         </div>
 
     </div>
@@ -67,7 +67,7 @@
                             <button ng-if="user.role == 'admin'" ng-click="changeRole(user)" class="btn btn-blue btn-sm">Admin</button>
                         </td>
                         <td>
-                            <a href="#/admin/user/edit/{{user.id}}" class="btn btn-success btn-sm pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a href="admin/user/edit/{{user.id}}" class="btn btn-success btn-sm pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
                         </td>
                         <td>
                             <button ng-click="delete(user)" class="btn btn-danger btn-sm pull-right"><span class="glyphicon glyphicon-trash"></span></button>

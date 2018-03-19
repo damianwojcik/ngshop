@@ -8,7 +8,7 @@
 
                 <div class="brand-col hidden-xs">
 
-                    <a href="#">
+                    <a href="./">
                         <img src="assets/img/logo.png" alt="Logo">
                     </a>
 
@@ -22,10 +22,10 @@
 
                             <ul>
                                 <li>
-                                    <a href="#/">Home</a>
+                                    <a href="./">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#products">Products</a>
+                                    <a href="products">Products</a>
                                 </li>
                             </ul>
 
@@ -42,11 +42,11 @@
                         <div class="vcenter">
 
                             <ul>
-                                <li ng-class="{ active : isActive('/orders') }" ng-if="loggedIn"><a href="#/orders">Orders</a></li>
-                                <li ng-class="{ active : isActive('/login') }" ng-if="!loggedIn"><a href="#/login"><span class="glyphicon glyphicon-user"></span>Login</a></li>
-                                <li ng-class="{ active : isActive('/logout') }" ng-if="loggedIn"><a href="#" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
-                                <li ng-class="{ active : isActive('/register') }" ng-if="!loggedIn"><a href="#/register"><span class="glyphicon glyphicon-edit"></span>Register</a></li>
-                                <li ng-class="{ active : isActive('/admin/products') }" ng-if="isAdmin"><a href="#/admin"><span class="glyphicon glyphicon-asterisk"></span>Admin</a></li>
+                                <li ng-class="{ active : isActive('/orders') }" ng-if="loggedIn"><a href="orders">Orders</a></li>
+                                <li ng-class="{ active : isActive('/login') }" ng-if="!loggedIn"><a href="login"><span class="glyphicon glyphicon-user"></span>Login</a></li>
+                                <li ng-class="{ active : isActive('/logout') }" ng-if="loggedIn"><a href="./" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                                <li ng-class="{ active : isActive('/register') }" ng-if="!loggedIn"><a href="register"><span class="glyphicon glyphicon-edit"></span>Register</a></li>
+                                <li ng-class="{ active : isActive('/admin/products') }" ng-if="isAdmin"><a href="admin"><span class="glyphicon glyphicon-asterisk"></span>Admin</a></li>
                             </ul>
 
                         </div>
@@ -70,8 +70,8 @@
         <div class="collapse navbar-collapse">
 
             <ul class="nav text-center case-c">
-                <li ng-class="{ active : isActive('/products') }"><a href="#/products">Wszystkie</a></li>
-                <li on-finish-render="ngRepeatFinished" ng-class="{ active : isActive('/{{ category.slug }}') }" ng-repeat="category in categories" ng-if="$index > 0"><a href="#/{{ category.slug }}">{{ category.name }}</a></li>
+                <li ng-class="{ active : isActive('/products') }"><a href="products">Wszystkie</a></li>
+                <li on-finish-render="ngRepeatFinished" ng-class="{ active : isActive('{{ category.slug }}') }" ng-repeat="category in categories" ng-if="$index > 0"><a href="{{ category.slug }}">{{ category.name }}</a></li>
             </ul>
 
             <div class="navbar-btn-group btn-group navbar-right">
@@ -97,7 +97,7 @@
                                     <span>{{ item.amount }} x {{ item.price | number:2 }} $</span>
 
                                     <div class="btn-group">
-                                        <a class="btn btn-default" href="#/cart"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <a class="btn btn-default" href="cart"><span class="glyphicon glyphicon-pencil"></span></a>
                                         <button type='button' class="btn btn-gray" ng-click="removeItem($index); $event.stopPropagation();"><span class="glyphicon glyphicon-trash"></span></button>
                                     </div>
 
@@ -111,7 +111,7 @@
 
                     <section class="mini-cart__section">
 
-                        <a href="#/cart" class="btn btn-block btn-default">Go to shopping cart</a>
+                        <a href="cart" class="btn btn-block btn-default">Go to shopping cart</a>
 
                     </section><!-- /.mini-cart__section -->
 

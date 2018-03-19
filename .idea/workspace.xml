@@ -2,315 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64a078b0-0140-42bc-b8c3-fec6c55fff69" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/1/kfd-f-burner-100-kaps-spalacz-tluszczu-nowa-wersja-.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/3/kfd-premium-wpc-80-700-g-bialko (1).jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/3/kfd-premium-wpc-80-700-g-bialko.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/.htaccess" afterPath="$PROJECT_DIR$/api/application/.htaccess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/cache/.htaccess" afterPath="$PROJECT_DIR$/api/application/cache/.htaccess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/cache/index.html" afterPath="$PROJECT_DIR$/api/application/cache/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/autoload.php" afterPath="$PROJECT_DIR$/api/application/config/autoload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/config.php" afterPath="$PROJECT_DIR$/api/application/config/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/constants.php" afterPath="$PROJECT_DIR$/api/application/config/constants.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/database.php" afterPath="$PROJECT_DIR$/api/application/config/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/doctypes.php" afterPath="$PROJECT_DIR$/api/application/config/doctypes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/foreign_chars.php" afterPath="$PROJECT_DIR$/api/application/config/foreign_chars.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/hooks.php" afterPath="$PROJECT_DIR$/api/application/config/hooks.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/index.html" afterPath="$PROJECT_DIR$/api/application/config/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/memcached.php" afterPath="$PROJECT_DIR$/api/application/config/memcached.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/migration.php" afterPath="$PROJECT_DIR$/api/application/config/migration.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/mimes.php" afterPath="$PROJECT_DIR$/api/application/config/mimes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/profiler.php" afterPath="$PROJECT_DIR$/api/application/config/profiler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/routes.php" afterPath="$PROJECT_DIR$/api/application/config/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/smileys.php" afterPath="$PROJECT_DIR$/api/application/config/smileys.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/config/user_agents.php" afterPath="$PROJECT_DIR$/api/application/config/user_agents.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/controllers/admin/Categories.php" afterPath="$PROJECT_DIR$/api/application/controllers/admin/Categories.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/controllers/admin/Promotions.php" afterPath="$PROJECT_DIR$/api/application/controllers/admin/Promotions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/controllers/index.html" afterPath="$PROJECT_DIR$/api/application/controllers/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/controllers/site/Categories.php" afterPath="$PROJECT_DIR$/api/application/controllers/site/Categories.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/controllers/site/Promotions.php" afterPath="$PROJECT_DIR$/api/application/controllers/site/Promotions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/core/index.html" afterPath="$PROJECT_DIR$/api/application/core/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/helpers/index.html" afterPath="$PROJECT_DIR$/api/application/helpers/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/helpers/slugify_helper.php" afterPath="$PROJECT_DIR$/api/application/helpers/slugify_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/hooks/index.html" afterPath="$PROJECT_DIR$/api/application/hooks/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/index.html" afterPath="$PROJECT_DIR$/api/application/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/english/index.html" afterPath="$PROJECT_DIR$/api/application/language/english/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/index.html" afterPath="$PROJECT_DIR$/api/application/language/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/.gitattributes" afterPath="$PROJECT_DIR$/api/application/language/polish/.gitattributes" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/README.md" afterPath="$PROJECT_DIR$/api/application/language/polish/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/calendar_lang.php" afterPath="$PROJECT_DIR$/api/application/language/polish/calendar_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/date_lang.php" afterPath="$PROJECT_DIR$/api/application/language/polish/date_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/db_lang.php" afterPath="$PROJECT_DIR$/api/application/language/polish/db_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/email_lang.php" afterPath="$PROJECT_DIR$/api/application/language/polish/email_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/form_validation_lang.php" afterPath="$PROJECT_DIR$/api/application/language/polish/form_validation_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/ftp_lang.php" afterPath="$PROJECT_DIR$/api/application/language/polish/ftp_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/imglib_lang.php" afterPath="$PROJECT_DIR$/api/application/language/polish/imglib_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/index.html" afterPath="$PROJECT_DIR$/api/application/language/polish/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/migration_lang.php" afterPath="$PROJECT_DIR$/api/application/language/polish/migration_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/number_lang.php" afterPath="$PROJECT_DIR$/api/application/language/polish/number_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/profiler_lang.php" afterPath="$PROJECT_DIR$/api/application/language/polish/profiler_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/unit_test_lang.php" afterPath="$PROJECT_DIR$/api/application/language/polish/unit_test_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/language/polish/upload_lang.php" afterPath="$PROJECT_DIR$/api/application/language/polish/upload_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/libraries/index.html" afterPath="$PROJECT_DIR$/api/application/libraries/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/logs/index.html" afterPath="$PROJECT_DIR$/api/application/logs/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/models/admin/Categories_model.php" afterPath="$PROJECT_DIR$/api/application/models/admin/Categories_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/models/admin/Promotions_model.php" afterPath="$PROJECT_DIR$/api/application/models/admin/Promotions_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/models/index.html" afterPath="$PROJECT_DIR$/api/application/models/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/models/site/Categories_model.php" afterPath="$PROJECT_DIR$/api/application/models/site/Categories_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/models/site/Promotions_model.php" afterPath="$PROJECT_DIR$/api/application/models/site/Promotions_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/third_party/index.html" afterPath="$PROJECT_DIR$/api/application/third_party/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/errors/cli/error_404.php" afterPath="$PROJECT_DIR$/api/application/views/errors/cli/error_404.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/errors/cli/error_db.php" afterPath="$PROJECT_DIR$/api/application/views/errors/cli/error_db.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/errors/cli/error_exception.php" afterPath="$PROJECT_DIR$/api/application/views/errors/cli/error_exception.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/errors/cli/error_general.php" afterPath="$PROJECT_DIR$/api/application/views/errors/cli/error_general.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/errors/cli/error_php.php" afterPath="$PROJECT_DIR$/api/application/views/errors/cli/error_php.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/errors/cli/index.html" afterPath="$PROJECT_DIR$/api/application/views/errors/cli/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/errors/html/error_404.php" afterPath="$PROJECT_DIR$/api/application/views/errors/html/error_404.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/errors/html/error_db.php" afterPath="$PROJECT_DIR$/api/application/views/errors/html/error_db.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/errors/html/error_exception.php" afterPath="$PROJECT_DIR$/api/application/views/errors/html/error_exception.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/errors/html/error_general.php" afterPath="$PROJECT_DIR$/api/application/views/errors/html/error_general.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/errors/html/error_php.php" afterPath="$PROJECT_DIR$/api/application/views/errors/html/error_php.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/errors/html/index.html" afterPath="$PROJECT_DIR$/api/application/views/errors/html/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/errors/index.html" afterPath="$PROJECT_DIR$/api/application/views/errors/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/index.html" afterPath="$PROJECT_DIR$/api/application/views/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/application/views/welcome_message.php" afterPath="$PROJECT_DIR$/api/application/views/welcome_message.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/contributing.md" afterPath="$PROJECT_DIR$/api/contributing.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/index.php" afterPath="$PROJECT_DIR$/api/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/license.txt" afterPath="$PROJECT_DIR$/api/license.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/readme.rst" afterPath="$PROJECT_DIR$/api/readme.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/.htaccess" afterPath="$PROJECT_DIR$/api/system/.htaccess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Benchmark.php" afterPath="$PROJECT_DIR$/api/system/core/Benchmark.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/CodeIgniter.php" afterPath="$PROJECT_DIR$/api/system/core/CodeIgniter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Common.php" afterPath="$PROJECT_DIR$/api/system/core/Common.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Config.php" afterPath="$PROJECT_DIR$/api/system/core/Config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Controller.php" afterPath="$PROJECT_DIR$/api/system/core/Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Exceptions.php" afterPath="$PROJECT_DIR$/api/system/core/Exceptions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Hooks.php" afterPath="$PROJECT_DIR$/api/system/core/Hooks.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Input.php" afterPath="$PROJECT_DIR$/api/system/core/Input.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Lang.php" afterPath="$PROJECT_DIR$/api/system/core/Lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Loader.php" afterPath="$PROJECT_DIR$/api/system/core/Loader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Log.php" afterPath="$PROJECT_DIR$/api/system/core/Log.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Model.php" afterPath="$PROJECT_DIR$/api/system/core/Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Output.php" afterPath="$PROJECT_DIR$/api/system/core/Output.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Router.php" afterPath="$PROJECT_DIR$/api/system/core/Router.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Security.php" afterPath="$PROJECT_DIR$/api/system/core/Security.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/URI.php" afterPath="$PROJECT_DIR$/api/system/core/URI.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/Utf8.php" afterPath="$PROJECT_DIR$/api/system/core/Utf8.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/compat/hash.php" afterPath="$PROJECT_DIR$/api/system/core/compat/hash.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/compat/index.html" afterPath="$PROJECT_DIR$/api/system/core/compat/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/compat/mbstring.php" afterPath="$PROJECT_DIR$/api/system/core/compat/mbstring.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/compat/password.php" afterPath="$PROJECT_DIR$/api/system/core/compat/password.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/compat/standard.php" afterPath="$PROJECT_DIR$/api/system/core/compat/standard.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/core/index.html" afterPath="$PROJECT_DIR$/api/system/core/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/DB.php" afterPath="$PROJECT_DIR$/api/system/database/DB.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/DB_cache.php" afterPath="$PROJECT_DIR$/api/system/database/DB_cache.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/DB_driver.php" afterPath="$PROJECT_DIR$/api/system/database/DB_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/DB_forge.php" afterPath="$PROJECT_DIR$/api/system/database/DB_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/DB_query_builder.php" afterPath="$PROJECT_DIR$/api/system/database/DB_query_builder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/DB_result.php" afterPath="$PROJECT_DIR$/api/system/database/DB_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/DB_utility.php" afterPath="$PROJECT_DIR$/api/system/database/DB_utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/cubrid/cubrid_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/cubrid/cubrid_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/cubrid/cubrid_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/cubrid/cubrid_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/cubrid/cubrid_result.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/cubrid/cubrid_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/cubrid/cubrid_utility.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/cubrid/cubrid_utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/cubrid/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/cubrid/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/ibase/ibase_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/ibase/ibase_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/ibase/ibase_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/ibase/ibase_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/ibase/ibase_result.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/ibase/ibase_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/ibase/ibase_utility.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/ibase/ibase_utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/ibase/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/ibase/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mssql/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/mssql/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mssql/mssql_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/mssql/mssql_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mssql/mssql_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/mssql/mssql_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mssql/mssql_result.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/mssql/mssql_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mssql/mssql_utility.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/mssql/mssql_utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mysql/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/mysql/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mysql/mysql_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/mysql/mysql_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mysql/mysql_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/mysql/mysql_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mysql/mysql_result.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/mysql/mysql_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mysql/mysql_utility.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/mysql/mysql_utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mysqli/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/mysqli/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mysqli/mysqli_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/mysqli/mysqli_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mysqli/mysqli_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/mysqli/mysqli_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mysqli/mysqli_result.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/mysqli/mysqli_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/mysqli/mysqli_utility.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/mysqli/mysqli_utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/oci8/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/oci8/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/oci8/oci8_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/oci8/oci8_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/oci8/oci8_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/oci8/oci8_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/oci8/oci8_result.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/oci8/oci8_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/oci8/oci8_utility.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/oci8/oci8_utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/odbc/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/odbc/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/odbc/odbc_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/odbc/odbc_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/odbc/odbc_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/odbc/odbc_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/odbc/odbc_result.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/odbc/odbc_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/odbc/odbc_utility.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/odbc/odbc_utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/pdo_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/pdo_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/pdo_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/pdo_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/pdo_result.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/pdo_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/pdo_utility.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/pdo_utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_4d_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_4d_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_4d_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_4d_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_cubrid_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_cubrid_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_cubrid_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_cubrid_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_dblib_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_dblib_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_dblib_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_dblib_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_firebird_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_firebird_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_firebird_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_firebird_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_ibm_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_ibm_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_ibm_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_ibm_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_informix_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_informix_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_informix_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_informix_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_mysql_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_mysql_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_mysql_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_mysql_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_oci_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_oci_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_oci_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_oci_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_odbc_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_odbc_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_odbc_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_odbc_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_pgsql_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_pgsql_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_pgsql_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_pgsql_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_sqlite_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_sqlite_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_sqlite_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_sqlite_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_sqlsrv_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_sqlsrv_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_sqlsrv_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/pdo/subdrivers/pdo_sqlsrv_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/postgre/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/postgre/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/postgre/postgre_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/postgre/postgre_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/postgre/postgre_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/postgre/postgre_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/postgre/postgre_result.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/postgre/postgre_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/postgre/postgre_utility.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/postgre/postgre_utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlite/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlite/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlite/sqlite_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlite/sqlite_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlite/sqlite_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlite/sqlite_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlite/sqlite_result.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlite/sqlite_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlite/sqlite_utility.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlite/sqlite_utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlite3/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlite3/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlite3/sqlite3_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlite3/sqlite3_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlite3/sqlite3_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlite3/sqlite3_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlite3/sqlite3_result.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlite3/sqlite3_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlite3/sqlite3_utility.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlite3/sqlite3_utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlsrv/index.html" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlsrv/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlsrv/sqlsrv_driver.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlsrv/sqlsrv_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlsrv/sqlsrv_forge.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlsrv/sqlsrv_forge.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlsrv/sqlsrv_result.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlsrv/sqlsrv_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/drivers/sqlsrv/sqlsrv_utility.php" afterPath="$PROJECT_DIR$/api/system/database/drivers/sqlsrv/sqlsrv_utility.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/database/index.html" afterPath="$PROJECT_DIR$/api/system/database/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/fonts/index.html" afterPath="$PROJECT_DIR$/api/system/fonts/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/array_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/array_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/captcha_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/captcha_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/cookie_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/cookie_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/date_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/date_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/directory_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/directory_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/download_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/download_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/email_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/email_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/file_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/file_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/form_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/form_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/html_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/html_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/index.html" afterPath="$PROJECT_DIR$/api/system/helpers/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/inflector_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/inflector_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/language_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/language_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/number_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/number_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/path_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/path_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/security_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/security_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/smiley_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/smiley_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/string_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/string_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/text_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/text_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/typography_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/typography_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/url_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/url_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/helpers/xml_helper.php" afterPath="$PROJECT_DIR$/api/system/helpers/xml_helper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/index.html" afterPath="$PROJECT_DIR$/api/system/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/calendar_lang.php" afterPath="$PROJECT_DIR$/api/system/language/english/calendar_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/date_lang.php" afterPath="$PROJECT_DIR$/api/system/language/english/date_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/db_lang.php" afterPath="$PROJECT_DIR$/api/system/language/english/db_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/email_lang.php" afterPath="$PROJECT_DIR$/api/system/language/english/email_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/form_validation_lang.php" afterPath="$PROJECT_DIR$/api/system/language/english/form_validation_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/ftp_lang.php" afterPath="$PROJECT_DIR$/api/system/language/english/ftp_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/imglib_lang.php" afterPath="$PROJECT_DIR$/api/system/language/english/imglib_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/index.html" afterPath="$PROJECT_DIR$/api/system/language/english/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/migration_lang.php" afterPath="$PROJECT_DIR$/api/system/language/english/migration_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/number_lang.php" afterPath="$PROJECT_DIR$/api/system/language/english/number_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/pagination_lang.php" afterPath="$PROJECT_DIR$/api/system/language/english/pagination_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/profiler_lang.php" afterPath="$PROJECT_DIR$/api/system/language/english/profiler_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/unit_test_lang.php" afterPath="$PROJECT_DIR$/api/system/language/english/unit_test_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/english/upload_lang.php" afterPath="$PROJECT_DIR$/api/system/language/english/upload_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/language/index.html" afterPath="$PROJECT_DIR$/api/system/language/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Cache/Cache.php" afterPath="$PROJECT_DIR$/api/system/libraries/Cache/Cache.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/Cache_apc.php" afterPath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/Cache_apc.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/Cache_dummy.php" afterPath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/Cache_dummy.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/Cache_file.php" afterPath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/Cache_file.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/Cache_memcached.php" afterPath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/Cache_memcached.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/Cache_redis.php" afterPath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/Cache_redis.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/Cache_wincache.php" afterPath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/Cache_wincache.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/index.html" afterPath="$PROJECT_DIR$/api/system/libraries/Cache/drivers/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Cache/index.html" afterPath="$PROJECT_DIR$/api/system/libraries/Cache/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Calendar.php" afterPath="$PROJECT_DIR$/api/system/libraries/Calendar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Cart.php" afterPath="$PROJECT_DIR$/api/system/libraries/Cart.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Driver.php" afterPath="$PROJECT_DIR$/api/system/libraries/Driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Email.php" afterPath="$PROJECT_DIR$/api/system/libraries/Email.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Encrypt.php" afterPath="$PROJECT_DIR$/api/system/libraries/Encrypt.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Encryption.php" afterPath="$PROJECT_DIR$/api/system/libraries/Encryption.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Form_validation.php" afterPath="$PROJECT_DIR$/api/system/libraries/Form_validation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Ftp.php" afterPath="$PROJECT_DIR$/api/system/libraries/Ftp.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Image_lib.php" afterPath="$PROJECT_DIR$/api/system/libraries/Image_lib.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Javascript.php" afterPath="$PROJECT_DIR$/api/system/libraries/Javascript.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Javascript/Jquery.php" afterPath="$PROJECT_DIR$/api/system/libraries/Javascript/Jquery.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Javascript/index.html" afterPath="$PROJECT_DIR$/api/system/libraries/Javascript/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Migration.php" afterPath="$PROJECT_DIR$/api/system/libraries/Migration.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Pagination.php" afterPath="$PROJECT_DIR$/api/system/libraries/Pagination.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Parser.php" afterPath="$PROJECT_DIR$/api/system/libraries/Parser.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Profiler.php" afterPath="$PROJECT_DIR$/api/system/libraries/Profiler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Session/Session.php" afterPath="$PROJECT_DIR$/api/system/libraries/Session/Session.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Session/SessionHandlerInterface.php" afterPath="$PROJECT_DIR$/api/system/libraries/Session/SessionHandlerInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Session/Session_driver.php" afterPath="$PROJECT_DIR$/api/system/libraries/Session/Session_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Session/drivers/Session_database_driver.php" afterPath="$PROJECT_DIR$/api/system/libraries/Session/drivers/Session_database_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Session/drivers/Session_files_driver.php" afterPath="$PROJECT_DIR$/api/system/libraries/Session/drivers/Session_files_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Session/drivers/Session_memcached_driver.php" afterPath="$PROJECT_DIR$/api/system/libraries/Session/drivers/Session_memcached_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Session/drivers/Session_redis_driver.php" afterPath="$PROJECT_DIR$/api/system/libraries/Session/drivers/Session_redis_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Session/drivers/index.html" afterPath="$PROJECT_DIR$/api/system/libraries/Session/drivers/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Session/index.html" afterPath="$PROJECT_DIR$/api/system/libraries/Session/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Table.php" afterPath="$PROJECT_DIR$/api/system/libraries/Table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Trackback.php" afterPath="$PROJECT_DIR$/api/system/libraries/Trackback.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Typography.php" afterPath="$PROJECT_DIR$/api/system/libraries/Typography.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Unit_test.php" afterPath="$PROJECT_DIR$/api/system/libraries/Unit_test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Upload.php" afterPath="$PROJECT_DIR$/api/system/libraries/Upload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/User_agent.php" afterPath="$PROJECT_DIR$/api/system/libraries/User_agent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Xmlrpc.php" afterPath="$PROJECT_DIR$/api/system/libraries/Xmlrpc.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Xmlrpcs.php" afterPath="$PROJECT_DIR$/api/system/libraries/Xmlrpcs.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/Zip.php" afterPath="$PROJECT_DIR$/api/system/libraries/Zip.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/system/libraries/index.html" afterPath="$PROJECT_DIR$/api/system/libraries/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/1-tools/_fonts.scss" afterPath="$PROJECT_DIR$/assets/css/1-tools/_fonts.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/1-tools/_normalize.scss" afterPath="$PROJECT_DIR$/assets/css/1-tools/_normalize.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/1-tools/_vars.scss" afterPath="$PROJECT_DIR$/assets/css/1-tools/_vars.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/2-basics/_animations.scss" afterPath="$PROJECT_DIR$/assets/css/2-basics/_animations.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/2-basics/_buttons.scss" afterPath="$PROJECT_DIR$/assets/css/2-basics/_buttons.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/2-basics/_forms.scss" afterPath="$PROJECT_DIR$/assets/css/2-basics/_forms.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/2-basics/_helpers.scss" afterPath="$PROJECT_DIR$/assets/css/2-basics/_helpers.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/2-basics/_slider.scss" afterPath="$PROJECT_DIR$/assets/css/2-basics/_slider.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/2-basics/_tables.scss" afterPath="$PROJECT_DIR$/assets/css/2-basics/_tables.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/2-basics/_typography.scss" afterPath="$PROJECT_DIR$/assets/css/2-basics/_typography.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/3-modules/_file-uploader.scss" afterPath="$PROJECT_DIR$/assets/css/3-modules/_file-uploader.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/3-modules/_modals.scss" afterPath="$PROJECT_DIR$/assets/css/3-modules/_modals.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/3-modules/_nav-bottom.scss" afterPath="$PROJECT_DIR$/assets/css/3-modules/_nav-bottom.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/3-modules/_panels.scss" afterPath="$PROJECT_DIR$/assets/css/3-modules/_panels.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/3-modules/_thumbnails.scss" afterPath="$PROJECT_DIR$/assets/css/3-modules/_thumbnails.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/main.scss" afterPath="$PROJECT_DIR$/assets/css/main.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/assets/fonts/glyphicons-halflings-regular.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/controllers/controllers-admin.js" afterPath="$PROJECT_DIR$/assets/js/controllers/controllers-admin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.css" afterPath="$PROJECT_DIR$/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.min.css" afterPath="$PROJECT_DIR$/main.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/partials/admin/categories.html" afterPath="$PROJECT_DIR$/partials/admin/categories.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/partials/admin/category-create.html" afterPath="$PROJECT_DIR$/partials/admin/category-create.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/partials/admin/category-edit.html" afterPath="$PROJECT_DIR$/partials/admin/category-edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/partials/admin/category.html" afterPath="$PROJECT_DIR$/partials/admin/category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/partials/admin/home.html" afterPath="$PROJECT_DIR$/partials/admin/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/partials/modal.html" afterPath="$PROJECT_DIR$/partials/modal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/partials/site/404.html" afterPath="$PROJECT_DIR$/partials/site/404.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/partials/site/category.html" afterPath="$PROJECT_DIR$/partials/site/category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/partials/site/home.html" afterPath="$PROJECT_DIR$/partials/site/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts.js" afterPath="$PROJECT_DIR$/scripts.js" />
     </list>
     <ignored path="ngShop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -334,70 +30,40 @@
       <file leaf-file-name="controllers-admin.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/js/controllers/controllers-admin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="446" column="24" lean-forward="false" selection-start-line="446" selection-start-column="24" selection-end-line="446" selection-end-column="24" />
+            <state relative-caret-position="69">
+              <caret line="575" column="0" lean-forward="true" selection-start-line="575" selection-start-column="0" selection-end-line="575" selection-end-column="0" />
               <folding>
-                <marker date="1512582208463" expanded="true" signature="29285:29296" ph="..." />
+                <marker date="1513096183378" expanded="true" signature="29261:29272" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Images.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/application/controllers/admin/Images.php">
+      <file leaf-file-name="controllers-site.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/controllers/controllers-site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Products.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/application/controllers/admin/Products.php">
+      <file leaf-file-name="controllers-navigation.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/controllers/controllers-navigation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="46" column="48" lean-forward="false" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
+            <state relative-caret-position="1445">
+              <caret line="85" column="7" lean-forward="false" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
+      <file leaf-file-name="navigation.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/partials/site/navigation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-525">
-              <caret line="15" column="47" lean-forward="true" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gulpfile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_fonts.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/css/1-tools/_fonts.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="1445">
+              <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -406,8 +72,8 @@
       <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" column="66" lean-forward="false" selection-start-line="53" selection-start-column="66" selection-end-line="53" selection-end-column="66" />
+            <state relative-caret-position="4590">
+              <caret line="270" column="4" lean-forward="false" selection-start-line="270" selection-start-column="4" selection-end-line="270" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -421,6 +87,16 @@
       <find>products/up</find>
       <find>products/cr</find>
       <find>upda</find>
+      <find>update</find>
+      <find>catego</find>
+      <find>checkcar</find>
+      <find>checkca</find>
+      <find>CATEGORYCR</find>
+      <find>console.log($scope);</find>
+      <find>categorycre</find>
+      <find>setca</find>
+      <find>categorie</find>
+      <find>servi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -429,7 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/assets/js/angular-file-upload.min.js" />
         <option value="$PROJECT_DIR$/assets/js/directives.js" />
         <option value="$PROJECT_DIR$/api/application/config/routes.php" />
         <option value="$PROJECT_DIR$/api/application/.htaccess" />
@@ -464,27 +139,34 @@
         <option value="$PROJECT_DIR$/partials/admin/product-edit.html" />
         <option value="$PROJECT_DIR$/api/application/models/admin/Products_model.php" />
         <option value="$PROJECT_DIR$/partials/admin/products.html" />
-        <option value="$PROJECT_DIR$/assets/js/controllers/controllers-site.js" />
         <option value="$PROJECT_DIR$/partials/admin/navigation.html" />
         <option value="$PROJECT_DIR$/partials/site/products.html" />
-        <option value="$PROJECT_DIR$/partials/site/navigation.html" />
         <option value="$PROJECT_DIR$/partials/admin/home.html" />
-        <option value="$PROJECT_DIR$/assets/js/controllers/controllers-navigation.js" />
         <option value="$PROJECT_DIR$/assets/js/application.js" />
         <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/assets/js/services.js" />
         <option value="$PROJECT_DIR$/api/application/controllers/admin/Products.php" />
         <option value="$PROJECT_DIR$/api/application/controllers/admin/Images.php" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/assets/css/1-tools/_fonts.scss" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
+        <option value="$PROJECT_DIR$/partials/site/navigation.html" />
+        <option value="$PROJECT_DIR$/assets/js/controllers/controllers-site.js" />
+        <option value="$PROJECT_DIR$/partials/admin/category-create.html" />
         <option value="$PROJECT_DIR$/assets/js/controllers/controllers-admin.js" />
+        <option value="$PROJECT_DIR$/assets/js/controllers/controllers-navigation.js" />
+        <option value="$PROJECT_DIR$/assets/js/services.js" />
       </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>true</other-services-enabled>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
@@ -494,8 +176,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1312" />
-    <option name="y" value="303" />
+    <option name="x" value="54" />
+    <option name="y" value="-8" />
     <option name="width" value="1320" />
     <option name="height" value="784" />
   </component>
@@ -556,6 +238,56 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="uploads" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ngshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ngshop" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ngshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ngshop" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ngshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ngshop" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -740,8 +472,11 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="last_opened_file_path" value="C:/projects/simpleserver" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../adamjaminski/wp-content/themes/adamjaminski" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="JavaScriptPreferStrict" value="false" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -864,12 +599,15 @@
       <workItem from="1496690872782" duration="317000" />
       <workItem from="1512569841548" duration="4367000" />
       <workItem from="1512579860276" duration="598000" />
-      <workItem from="1512581903330" duration="297000" />
+      <workItem from="1512581903330" duration="2813000" />
+      <workItem from="1512669593792" duration="434000" />
+      <workItem from="1513090399785" duration="5342000" />
+      <workItem from="1513185565897" duration="238000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125792000" />
+    <option name="totallyTimeSpent" value="134322000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -881,17 +619,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1312" y="303" width="1320" height="784" extended-state="6" />
+    <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22777778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1452381" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32411674" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15053764" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -944,13 +682,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/api/application/models/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/partials/admin/product-create.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1135,31 +866,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/controllers/controllers-site.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="6" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partials/site/navigation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="81" lean-forward="false" selection-start-line="0" selection-start-column="81" selection-end-line="0" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/partials/admin/navigation.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partials/site/products.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1191,13 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/controllers/controllers-navigation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="2" column="85" lean-forward="false" selection-start-line="2" selection-start-column="85" selection-end-line="2" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1219,26 +922,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="66" lean-forward="false" selection-start-line="53" selection-start-column="66" selection-end-line="53" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/application/controllers/admin/Products.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="46" column="48" lean-forward="false" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/application/controllers/admin/Images.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1255,7 +942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1263,14 +949,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/1-tools/_fonts.scss">
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="208">
+          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/application/controllers/admin/Images.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1278,25 +970,69 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-525">
-          <caret line="15" column="47" lean-forward="true" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+          <caret line="15" column="47" lean-forward="false" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/1-tools/_fonts.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/site/navigation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+    <entry file="file://$PROJECT_DIR$/partials/admin/category-create.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        <state relative-caret-position="287">
+          <caret line="61" column="7" lean-forward="true" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/site/products.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="31" column="46" lean-forward="false" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/controllers/controllers-site.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/controllers/controllers-navigation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="85" column="7" lean-forward="false" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4590">
+          <caret line="270" column="4" lean-forward="false" selection-start-line="270" selection-start-column="4" selection-end-line="270" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/controllers/controllers-admin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="446" column="24" lean-forward="false" selection-start-line="446" selection-start-column="24" selection-end-line="446" selection-end-column="24" />
+        <state relative-caret-position="69">
+          <caret line="575" column="0" lean-forward="true" selection-start-line="575" selection-start-column="0" selection-end-line="575" selection-end-column="0" />
           <folding>
-            <marker date="1512582208463" expanded="true" signature="29285:29296" ph="..." />
+            <marker date="1513096183378" expanded="true" signature="29261:29272" ph="..." />
           </folding>
         </state>
       </provider>

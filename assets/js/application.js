@@ -14,7 +14,11 @@ var app = angular.module( 'app' , [ 'ngRoute' , 'angular-storage', 'angular-jwt'
 
 app.config( [ '$routeProvider' , '$httpProvider' , '$locationProvider', function( $routeProvider , $httpProvider, $locationProvider ) {
 
-    $locationProvider.hashPrefix('');
+	$locationProvider.hashPrefix('');
+	$locationProvider.html5Mode({
+		enabled: true,
+		requireBase: false
+	  });
 
 	// ============ ADMIN PRODUCTS ============
 	$routeProvider.when( '/admin/products' , {

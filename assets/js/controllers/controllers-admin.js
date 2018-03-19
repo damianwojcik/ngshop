@@ -444,7 +444,7 @@ controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$route', 
                             var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
                             return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
                         }
-                        
+
                     });
 
                     uploader.onCompleteItem = function(fileItem, response, status, headers) {

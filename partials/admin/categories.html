@@ -8,7 +8,7 @@
         </div>
 
         <div class="col-xs-6">
-            <a href="#/admin/category/create" class="btn btn-blue pull-right">Add category</a>
+            <a href="admin/category/create" class="btn btn-blue pull-right">Add category</a>
         </div>
 
     </div>
@@ -22,12 +22,12 @@
                 <div class="panel-body" ng-init="getProducts(category.id)">
 
                     <h2>
-                        <a ng-if="category.id != 1" href="#/admin/category/edit/{{ category.id }}">{{ category.name }}</a>
+                        <a ng-if="category.id != 1" href="admin/category/edit/{{ category.id }}">{{ category.name }}</a>
                         <span ng-if="category.id == 1" >{{ category.name }}</span>
                     </h2>
                     <h4>
                         Products in category:
-                        <a ng-if="category.id != 1" class="inline" href="#/admin/category/edit/{{ category.id }}">
+                        <a ng-if="category.id != 1" class="inline" href="admin/category/edit/{{ category.id }}">
                             {{ productsCount[category.id] }}
                         </a>
                         <span ng-if="category.id == 1" class="inline">
@@ -37,7 +37,7 @@
 
                     <div ng-if="category.id != 1">
                         <button ng-click="delete(category, $index)" class="btn btn-danger pull-right">Delete category</button>
-                        <a href="#/admin/category/edit/{{ category.id }}" class="btn btn-blue pull-right">Edit category</a>
+                        <a href="admin/category/edit/{{ category.id }}" class="btn btn-blue pull-right">Edit category</a>
                     </div>
 
                 </div>
