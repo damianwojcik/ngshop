@@ -63,7 +63,10 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', '
 
 controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', '$timeout', 'checkToken', 'categoriesService', function( $scope , $http , $routeParams, FileUploader, $timeout, checkToken, categoriesService ){
 
-    var productId = $routeParams.id;
+    // url consists of slug-id
+    var url = $routeParams.url;
+    // id is string after last '-'
+    var productId = url.split('-').pop().trim();
     $scope.id = productId;
 
     // get product

@@ -69,7 +69,10 @@ controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService
 
 controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams' , 'cartService', function( $scope , $http , $routeParams, cartService ){
 
-    var id = $routeParams.id;
+    // url consists of slug-id
+    var url = $routeParams.url;
+    // id is string after last '-'
+    var id = url.split('-').pop().trim();
 
     $http.post( 'api/site/products/get/' + id ).
 

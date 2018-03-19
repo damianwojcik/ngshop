@@ -11,6 +11,7 @@ class Products extends CI_Controller {
         $_POST = json_decode($post, true);
 
         $this->load->model('admin/Products_model');
+        $this->load->helper('slugify');
 
         $token = $this->input->post('token');
         $token = $this->jwt->decode($token, config_item('encryption_key'));
@@ -34,6 +35,7 @@ class Products extends CI_Controller {
     public function create()
     {
         $product = $this->input->post('product');
+        $product['url'] = slugify($product['name']) . '-' . $product['id'];
         $this->Products_model->create($product);
 
         $new_product_id = $this->db->insert_id();

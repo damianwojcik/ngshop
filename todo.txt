@@ -1,5 +1,4 @@
 -paginacja produktów i uzytkowników: http://stackoverflow.com/questions/10816073/how-to-do-paging-in-angularjs
--usunac hashe z hrefow
 -dodac kategorie produktów
 -dodać taby Opis produktu / skład /wartości odżywcze / opinie
 -zoom jak na kfd
@@ -31,7 +30,6 @@
 - kod znizkowy?
 - facebook / google login
 - w uploads stworzyc foldery products/promos
-- urle do productow wg slugow nie ID
 - stopka copyrights
 - 404 page, localhost/slug tez!
 - http://indrimuska.github.io/angular-selector/

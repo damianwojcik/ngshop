@@ -26,7 +26,7 @@ app.config( [ '$routeProvider' , '$httpProvider' , '$locationProvider', function
 		templateUrl : 'partials/admin/products.html'
 	})
 
-	.when( '/admin/product/edit/:id' , {
+	.when( '/admin/product/edit/:url' , {
 		controller: 'productEdit',
 		templateUrl : 'partials/admin/product-edit.html'
 	})
@@ -86,7 +86,7 @@ app.config( [ '$routeProvider' , '$httpProvider' , '$locationProvider', function
 		templateUrl : 'partials/site/products.html'
 	})
 
-	.when( '/product/:id' , {
+	.when( '/product/:url' , {
 		controller: 'siteProduct',
 		templateUrl : 'partials/site/product.html'
 	})
