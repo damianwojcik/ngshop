@@ -1,6 +1,4 @@
--paginacja produktów i uzytkowników: http://stackoverflow.com/questions/10816073/how-to-do-paging-in-angularjs
 -dodać taby Opis produktu / skład /wartości odżywcze / opinie
--layout jak pasjonat.cc
 -intercom
 -wrzucic na hosting / portfolio
 -zapis i reset bazy co 24h
@@ -54,3 +52,7 @@
  - dodac drag n drop do slidera
  - my account strona
  - w controllers admin productCreate DRY
+ - stylowanie cool
+ - translate wybierz plik przy dodawaniu zdjecia (produkt)
+ - przy zmianie nazwy kategorii wypadaja z niej wszystkie produkty
+ - przy przypisywaniu do kategorii produktow multi select nie widoczny

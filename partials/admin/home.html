@@ -26,6 +26,76 @@
 
     </div><!-- ./row -->
 
+    <div class="row">
+
+        <h2>New products</h2>
+
+        <div class="col-sm-3" ng-repeat="product in products | orderBy:'-1*id' | limitTo:8">
+
+            <div class="panel panel-default" >
+
+                <div class="panel-body" ng-init="checkCart(product)">
+
+                    <div class="thumbnail-block">
+
+                        <a class="thumbnail-link" href="product/{{product.url}}">
+                            <img ng-if="product.thumbnail" ng-src="{{ product.thumbnail }}" alt="Image Thumbnail" class="img-thumbnail">
+                            <img ng-if="!product.thumbnail" src="assets/img/noimage.jpg" alt="Image Thumbnail" class="img-thumbnail">
+                            <span class="thumbnail-label">{{ product.categoryName }}</span>
+                        </a>
+
+                    </div>
+
+                    <h2 class="panel-title"><a href="product/{{product.url}}">{{ product.name }}</a></h2>
+                    <h3 class="panel-label">{{ product.price | number:2 }} $</h3>
+                    <br>
+
+                    <button ng-click="addToCart(product); checkCart(product)" class="btn btn-success" ng-if="!product.amount">Add to Shopping Cart</button>
+                    <button ng-click="addToCart(product); checkCart(product)" class="btn btn-success" ng-if="product.amount">In cart: {{product.amount}}</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div><!-- ./row -->
+
+    <div class="row">
+
+        <h2>New promos</h2>
+
+        <div class="col-sm-3" ng-repeat="product in promoProducts | orderBy:'-promodate' | limitTo:8">
+
+            <div class="panel panel-default" >
+
+                <div class="panel-body" ng-init="checkCart(product)">
+
+                    <div class="thumbnail-block">
+
+                        <a class="thumbnail-link" href="product/{{product.url}}">
+                            <img ng-if="product.thumbnail" ng-src="{{ product.thumbnail }}" alt="Image Thumbnail" class="img-thumbnail">
+                            <img ng-if="!product.thumbnail" src="assets/img/noimage.jpg" alt="Image Thumbnail" class="img-thumbnail">
+                            <span class="thumbnail-label">{{ product.categoryName }}</span>
+                        </a>
+
+                    </div>
+
+                    <h2 class="panel-title"><a href="product/{{product.url}}">{{ product.name }}</a></h2>
+                    <h3 class="panel-label">{{ product.price | number:2 }} $</h3>
+                    <br>
+
+                    <button ng-click="addToCart(product); checkCart(product)" class="btn btn-success" ng-if="!product.amount">Add to Shopping Cart</button>
+                    <button ng-click="addToCart(product); checkCart(product)" class="btn btn-success" ng-if="product.amount">In cart: {{product.amount}}</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div><!-- ./row -->
+
 </div><!-- ./container-->
 
 

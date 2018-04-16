@@ -27,7 +27,7 @@
         <div class="form-group">
 
           <label for="description">Product description:</label>
-          <textarea id="description" rows="3" class="form-control" ng-model="product.description" style="resize:vertical;"></textarea>
+          <textarea froala="froalaOptions" id="description" class="form-control" ng-model="product.description"></textarea>
 
         </div>
 
@@ -129,7 +129,8 @@
 
         <h2>{{ product.name }}</h2>
         <h4>{{ product.category.name }}</h4>
-        <p>{{ product.description }}</p>
+        <div froala-view="product.description"></div>
+        
         <h3>
             <span ng-if="!product.promoprice" class="label label-danger">{{ product.price | number:2 }}$</span>
             <span ng-if="product.promoprice" class="striked">{{ product.price | number:2 }}$</span><br/>

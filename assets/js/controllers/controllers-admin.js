@@ -1,6 +1,14 @@
 'use strict';
 
-var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'myDirectives', 'ui.select', 'angular-owl-carousel-2', 'ngSanitize', 'ui.bootstrap' ]);
+var controllersAdmin = angular.module( 'controllersAdmin' , [ 'angularFileUpload', 'froala', 'myDirectives', 'ui.select', 'angular-owl-carousel-2', 'ui.bootstrap' ]).
+value('froalaConfig', {
+    toolbarInline: false,
+    placeholderText: 'Enter Text Here',
+    quickInsertTags: [''],
+    heightMin: 200,
+    htmlAllowedTags: ['.*'],
+    htmlRemoveTags: [''],
+});
 
 controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', 'productsService', function( $scope , $http, checkToken, productsService ){
 
@@ -62,6 +70,10 @@ controllersAdmin.controller( 'products' , [ '$scope' , '$http' , 'checkToken', '
 }]);
 
 controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams', 'FileUploader', '$timeout', 'checkToken', 'categoriesService', function( $scope , $http , $routeParams, FileUploader, $timeout, checkToken, categoriesService ){
+
+    $scope.froalaOptions = {
+		toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontSize', 'color', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertTable' , 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'help', 'html', '|', 'undo', 'redo']
+    }
 
     // url consists of slug-id
     var url = $routeParams.url;
@@ -263,6 +275,10 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
 controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , '$route', '$timeout', 'checkToken', 'categoriesService', 'FileUploader', function( $scope , $http, $route, $timeout, checkToken, categoriesService, FileUploader ){
 
+    $scope.froalaOptions = {
+		toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontSize', 'color', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertTable' , 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'help', 'html', '|', 'undo', 'redo']
+    }
+    
     $scope.product = {};
 
     // alerts
@@ -1128,7 +1144,7 @@ controllersAdmin.controller( 'adminCategory' , [ '$scope', '$http', '$location',
 
 }]);
 
-controllersAdmin.controller( 'adminHome' , [ '$scope', '$http', '$uibModal', 'sliderFactory', '$timeout', function( $scope, $http, $uibModal, sliderFactory, $timeout ){
+controllersAdmin.controller( 'adminHome' , [ '$scope', '$http', '$uibModal', 'sliderFactory', 'productsService', '$timeout', function( $scope, $http, $uibModal, sliderFactory, productsService, $timeout ){
 
     var owlAPi;
 
@@ -1206,6 +1222,45 @@ controllersAdmin.controller( 'adminHome' , [ '$scope', '$http', '$uibModal', 'sl
 
         });
     };
+
+    // get products
+    $http.get( 'api/site/products/get' ).
+        then( function( data ){
+
+            $scope.products = data.data;
+
+            angular.forEach($scope.products, function( item ) {
+
+                productsService.getCategoryName( item.category ).then(function( data ) {
+
+                    item.categoryName = data.data.replace(/['"]+/g, '');
+
+                });
+
+            });
+
+        }, ( function(){
+
+            console.log( 'Error on communicate with API.' );
+
+    }));
+
+    // get promos
+    productsService.getPromos().then(function(data) {
+
+        $scope.promoProducts = data.data;
+
+        angular.forEach($scope.promoProducts, function( item ) {
+
+            productsService.getCategoryName( item.category ).then(function( data ) {
+
+                item.categoryName = data.data.replace(/['"]+/g, '');
+
+            });
+
+        });
+
+    });
 
 }]);
 

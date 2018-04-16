@@ -404,8 +404,7 @@ a {
   position: relative;
   margin: auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
-  border-top: 4px solid #131416;
-  padding-bottom: 30px; }
+  border-top: 4px solid #131416; }
 
 .container {
   position: relative;
@@ -818,3 +817,18 @@ canvas {
       padding-left: 45px; }
 
 /* END HEADER */
+/* BEGIN FOOTER */
+.footer {
+  margin-top: 30px;
+  background-color: #131416;
+  text-align: center; }
+
+.copy {
+  color: #FFF;
+  padding: 30px 0 25px 0;
+  margin: 0;
+  line-height: 1; }
+  .copy a:hover {
+    color: #FFF; }
+
+/* END FOOTER */

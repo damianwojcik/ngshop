@@ -18,7 +18,7 @@ app.config( [ '$routeProvider' , '$httpProvider' , '$locationProvider', function
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false
-	  });
+	});
 
 	// ============ ADMIN PRODUCTS ============
 	$routeProvider.when( '/admin/products' , {

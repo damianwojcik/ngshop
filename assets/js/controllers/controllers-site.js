@@ -322,7 +322,7 @@ controllersSite.controller( 'register' , [ '$scope' , '$http' , function( $scope
             $scope.submit = true;
             $scope.user = {};
 
-            if (errors) {
+            if (errors.data) {
 
                 $scope.errors = errors.data;
 
